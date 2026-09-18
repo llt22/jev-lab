@@ -1,0 +1,17 @@
+[
+  {
+    "id": "arithmetic",
+    "question": "Seven shelves hold six books each. Five books are removed. How many books remain? Answer with the number only.",
+    "expected": "37"
+  },
+  {
+    "id": "decimal",
+    "question": "Which is larger, 0.8 or 0.75? Answer with the larger number only.",
+    "expected": "0.8"
+  },
+  {
+    "id": "sequence",
+    "question": "What is the next number in 2, 4, 6, 8? Answer with the number only.",
+    "expected": "10"
+  }
+]

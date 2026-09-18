@@ -1,0 +1,137 @@
+{
+  "created_at": "2026-09-18T04:07:23.712702+00:00",
+  "model": "cline-pass/deepseek-v4-flash",
+  "threshold": 0.7,
+  "rows": [
+    {
+      "id": "twelve_coins",
+      "mode": "baseline",
+      "correct": true,
+      "answer_ready_ms": 4400,
+      "final_answer": "Yes",
+      "total_elapsed_ms": 4400,
+      "initial": {
+        "elapsed_ms": 4400,
+        "stream_elapsed_ms": 4400,
+        "reasoning_chars": 1000,
+        "finish_reason": "stop",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "completion_tokens": 226,
+          "completion_tokens_details": {
+            "image_tokens": 0,
+            "reasoning_tokens": 223
+          },
+          "cost": 0.000300972,
+          "cost_details": null,
+          "is_byok": false,
+          "market_cost": 0.000300972,
+          "prompt_tokens": 159,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 158,
+            "video_tokens": 0
+          },
+          "total_tokens": 385
+        },
+        "checks": [],
+        "interrupted": false
+      },
+      "resumed": null
+    },
+    {
+      "id": "twelve_coins",
+      "mode": "observe",
+      "correct": true,
+      "answer_ready_ms": 2808,
+      "final_answer": "Yes",
+      "total_elapsed_ms": 3284,
+      "initial": {
+        "elapsed_ms": 3284,
+        "stream_elapsed_ms": 2808,
+        "reasoning_chars": 647,
+        "finish_reason": "stop",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "completion_tokens": 145,
+          "completion_tokens_details": {
+            "image_tokens": 0,
+            "reasoning_tokens": 142
+          },
+          "cost": 0.000194052,
+          "cost_details": null,
+          "is_byok": false,
+          "market_cost": 0.000194052,
+          "prompt_tokens": 159,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 158,
+            "video_tokens": 0
+          },
+          "total_tokens": 304
+        },
+        "checks": [
+          {
+            "at_ms": 3284,
+            "reasoning_chars": 54,
+            "action": "answer_now",
+            "answer_now_probability": 0.62,
+            "needs_more_probability": 0.74,
+            "jev_latency_ms": 1433.329,
+            "would_interrupt": false,
+            "too_late": true
+          }
+        ],
+        "interrupted": false
+      },
+      "resumed": null
+    },
+    {
+      "id": "twelve_coins",
+      "mode": "intervene",
+      "correct": true,
+      "answer_ready_ms": 16000,
+      "final_answer": "Yes",
+      "total_elapsed_ms": 16391,
+      "initial": {
+        "elapsed_ms": 16391,
+        "stream_elapsed_ms": 16000,
+        "reasoning_chars": 461,
+        "finish_reason": "stop",
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "completion_tokens": 103,
+          "completion_tokens_details": {
+            "image_tokens": 0,
+            "reasoning_tokens": 100
+          },
+          "cost": 0.000138612,
+          "cost_details": null,
+          "is_byok": false,
+          "market_cost": 0.000138612,
+          "prompt_tokens": 159,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 158,
+            "video_tokens": 0
+          },
+          "total_tokens": 262
+        },
+        "checks": [
+          {
+            "at_ms": 16391,
+            "reasoning_chars": 50,
+            "action": "continue",
+            "answer_now_probability": 0.44,
+            "needs_more_probability": 0.89,
+            "jev_latency_ms": 1425.769,
+            "would_interrupt": false,
+            "too_late": true
+          }
+        ],
+        "interrupted": false
+      },
+      "resumed": null
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[
+  {
+    "id": "twelve_coins",
+    "question": "There are 12 coins. Exactly one is counterfeit and may be heavier or lighter. With a balance scale and no reference coin, can you always identify the coin and whether it is heavier or lighter in three weighings? Think through the cases, then answer yes or no only.",
+    "expected": "yes"
+  }
+]
