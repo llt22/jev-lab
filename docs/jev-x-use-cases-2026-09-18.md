@@ -61,12 +61,26 @@ Cua 也在开发 `jev-use`，目标是在 macOS、Windows 和 Linux 上执行快
 - 是否需要回退到更强但更贵的模型。
 - 是否需要人工介入。
 
-已有开发者构建模型路由器，由 Jev 在多个模型之间选择，再把请求发送给被选中的模型。另有项目把 Jev 放进 Agent harness，负责循环中的评估和继续/终止判断。
+已有开发者构建模型路由器，由 Jev 在多个模型之间选择，再把请求发送给被选中的模型。不同项目还在探索循环中的评估和继续/终止判断；LangChain 文章展示的具体接入点则是运行级模型路由和工具执行前的风险检查，并未证明 Jev 接管了整个 Agent 循环。
 
 来源：
 
 - [Jev 模型路由器](https://x.com/ephraimduncan/status/2100454070536351824)
 - [Building a Harness with Jev](https://x.com/sydneyrunkle/status/2100754364545761643)
+
+#### LangChain 的框架级接入
+
+LangChain 发布的《Building a Harness with Jev》给出了三个明确的接口位置：
+
+| 组件 | Jev 负责什么 | 边界 |
+| --- | --- | --- |
+| `TypeSafeClassifier` | 将文本、结构化数据或 LangChain 消息作为状态，对类型化问题返回判断 | 是分类调用接口，不负责执行工具 |
+| `ModelRouterMiddleware` | 根据最新用户消息在预设模型中选择一个 | 所选模型用于整次运行，不是每步重新路由 |
+| `AutoModeMiddleware` | 在指定工具执行前检查调用风险，并可阻止调用 | 是风险判断节点，不替代权限硬规则 |
+
+这说明 Jev 已被封装为 Agent 框架可调用的中间件，而不仅是独立 demo。文章主要是接入说明和示例，没有给出上述中间件的端到端任务成功率、安全误报/漏报率或完整成本对照。不能据此推断“Jev 控制的 Agent 比 LLM 控制的 Agent 更可靠”。
+
+- [LangChain：Building a Harness with Jev](https://x.com/sydneyrunkle/status/2100754364545761643)
 
 ### 3. 编码 Agent 上下文压缩
 
@@ -223,7 +237,7 @@ Jev 在这里不是完整 Agent，而是控制循环中的低延迟语义控制�
 已经出现的组合包括：
 
 - Minecraft 中 Jev 做快速动作，生成模型提前规划。
-- 模型路由器逐轮判断是否需要升级到更强模型。
+- 部分模型路由实验探索逐轮升级；LangChain 示例则在运行开始时选定模型，不逐轮切换。
 - 编码 Agent 中主模型写代码，Jev 判断完成度、偏航和是否需要验证。
 - 多人 Agent 每轮并行判断是否值得记忆、任务是否完成、错误是否值得分析、请求能否交给小模型。
 
