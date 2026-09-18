@@ -1,0 +1,1186 @@
+{
+  "dataset": "evals/agent-control-v1.json",
+  "requested_model": "jev-1.13.0",
+  "started_at": "2026-09-18T03:44:59.323194+00:00",
+  "context_filtering": {
+    "rows": [
+      {
+        "id": "auth_regression",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.38
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.89
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.89
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.07
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.37
+            }
+          },
+          "usage": {
+            "input_tokens": 928,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1447.375,
+        "attempts": 1
+      },
+      {
+        "id": "flaky_payment_test",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.89
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.87
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.11
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.09
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.86
+            }
+          },
+          "usage": {
+            "input_tokens": 937,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1476.436,
+        "attempts": 1
+      },
+      {
+        "id": "task_pivot",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.1
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.16
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.9
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.94
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.32
+            }
+          },
+          "usage": {
+            "input_tokens": 919,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1454.135,
+        "attempts": 1
+      },
+      {
+        "id": "migration_safety",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.77
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.07
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.91
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.81
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.12
+            }
+          },
+          "usage": {
+            "input_tokens": 929,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1551.441,
+        "attempts": 1
+      },
+      {
+        "id": "frontend_layout",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.9
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.91
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.56
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.34
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.07
+            }
+          },
+          "usage": {
+            "input_tokens": 914,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1701.896,
+        "attempts": 1
+      },
+      {
+        "id": "security_patch",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.87
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.72
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.11
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.91
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.32
+            }
+          },
+          "usage": {
+            "input_tokens": 917,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1415.071,
+        "attempts": 1
+      },
+      {
+        "id": "api_contract",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.89
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.51
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.84
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.81
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.13
+            }
+          },
+          "usage": {
+            "input_tokens": 917,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1831.825,
+        "attempts": 1
+      },
+      {
+        "id": "later_dependency",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "keep_a1": {
+              "type": "noul",
+              "noul": 0.92
+            },
+            "keep_a2": {
+              "type": "noul",
+              "noul": 0.92
+            },
+            "keep_a3": {
+              "type": "noul",
+              "noul": 0.53
+            },
+            "keep_a4": {
+              "type": "noul",
+              "noul": 0.17
+            },
+            "keep_a5": {
+              "type": "noul",
+              "noul": 0.87
+            }
+          },
+          "usage": {
+            "input_tokens": 956,
+            "output_tokens": 94
+          }
+        },
+        "latency_ms": 1409.424,
+        "attempts": 1
+      }
+    ],
+    "decisions": {
+      "auth_regression": {
+        "a1": false,
+        "a2": true,
+        "a3": true,
+        "a4": false,
+        "a5": false
+      },
+      "flaky_payment_test": {
+        "a1": true,
+        "a2": true,
+        "a3": false,
+        "a4": false,
+        "a5": true
+      },
+      "task_pivot": {
+        "a1": false,
+        "a2": false,
+        "a3": true,
+        "a4": true,
+        "a5": false
+      },
+      "migration_safety": {
+        "a1": true,
+        "a2": false,
+        "a3": true,
+        "a4": true,
+        "a5": false
+      },
+      "frontend_layout": {
+        "a1": true,
+        "a2": true,
+        "a3": true,
+        "a4": false,
+        "a5": false
+      },
+      "security_patch": {
+        "a1": true,
+        "a2": true,
+        "a3": false,
+        "a4": true,
+        "a5": false
+      },
+      "api_contract": {
+        "a1": true,
+        "a2": true,
+        "a3": true,
+        "a4": true,
+        "a5": false
+      },
+      "later_dependency": {
+        "a1": true,
+        "a2": true,
+        "a3": true,
+        "a4": false,
+        "a5": true
+      }
+    },
+    "metrics": {
+      "accuracy": 0.95,
+      "precision": 0.9166666666666666,
+      "recall": 1.0,
+      "f1": 0.9565217391304348,
+      "artifacts": 40,
+      "reduction_ratio": 0.0627546657276523,
+      "oracle_reduction_ratio": 0.06911816489763066,
+      "unsafe_drops": []
+    },
+    "recent_two_baseline": {
+      "accuracy": 0.35,
+      "precision": 0.375,
+      "recall": 0.2727272727272727,
+      "f1": 0.3157894736842105,
+      "artifacts": 40,
+      "reduction_ratio": 0.9359877257407314,
+      "oracle_reduction_ratio": 0.06911816489763066,
+      "unsafe_drops": [
+        "auth_regression:a2",
+        "auth_regression:a3",
+        "flaky_payment_test:a1",
+        "flaky_payment_test:a2",
+        "task_pivot:a3",
+        "migration_safety:a1",
+        "migration_safety:a3",
+        "frontend_layout:a1",
+        "frontend_layout:a2",
+        "frontend_layout:a3",
+        "security_patch:a1",
+        "security_patch:a2",
+        "api_contract:a1",
+        "api_contract:a3",
+        "later_dependency:a1",
+        "later_dependency:a2"
+      ]
+    }
+  },
+  "semantic_pathfinding": {
+    "rows": [
+      {
+        "id": "refresh_rotation",
+        "selected": "src/security/session/renewal.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p2",
+              "confidence": 0.93,
+              "probabilities": {
+                "p4": 0.0,
+                "p1": 0.05,
+                "p2": 0.95,
+                "p3": 0.0,
+                "p5": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 466,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1617.424,
+        "attempts": 1
+      },
+      {
+        "id": "invoice_pdf",
+        "selected": "billing/documents/render_invoice.py",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 1.0,
+              "probabilities": {
+                "p2": 0.0,
+                "p1": 1.0,
+                "p4": 0.0,
+                "p5": 0.0,
+                "p3": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 465,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1644.61,
+        "attempts": 1
+      },
+      {
+        "id": "feature_flags",
+        "selected": "platform/experiments/gates.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 0.9,
+              "probabilities": {
+                "p3": 0.01,
+                "p1": 0.92,
+                "p2": 0.07,
+                "p5": 0.0,
+                "p4": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 458,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1434.456,
+        "attempts": 1
+      },
+      {
+        "id": "reconnect_backoff",
+        "selected": "transport/realtime/retry_policy.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 1.0,
+              "probabilities": {
+                "p1": 1.0,
+                "p2": 0.0,
+                "p5": 0.0,
+                "p3": 0.0,
+                "p4": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 469,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1481.843,
+        "attempts": 1
+      },
+      {
+        "id": "secret_redaction",
+        "selected": "observability/sanitizers/credentials.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 0.85,
+              "probabilities": {
+                "p4": 0.0,
+                "p1": 0.89,
+                "p2": 0.0,
+                "p3": 0.11,
+                "p5": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 478,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1401.118,
+        "attempts": 1
+      },
+      {
+        "id": "deadlock_retry",
+        "selected": "persistence/resilience/transactions.py",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 0.98,
+              "probabilities": {
+                "p1": 0.99,
+                "p2": 0.0,
+                "p4": 0.0,
+                "p5": 0.0,
+                "p3": 0.01
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 471,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1442.24,
+        "attempts": 2
+      },
+      {
+        "id": "recovery_email",
+        "selected": "identity/notifications/recovery_mailer.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 0.88,
+              "probabilities": {
+                "p5": 0.0,
+                "p3": 0.0,
+                "p1": 0.9,
+                "p4": 0.0,
+                "p2": 0.1
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 471,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1347.046,
+        "attempts": 2
+      },
+      {
+        "id": "csv_validation",
+        "selected": "ingestion/tabular/row_validator.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 0.66,
+              "probabilities": {
+                "p1": 0.73,
+                "p3": 0.0,
+                "p2": 0.26,
+                "p5": 0.01,
+                "p4": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1466.068,
+        "attempts": 1
+      },
+      {
+        "id": "rate_limit",
+        "selected": "gateway/traffic/quota_guard.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 1.0,
+              "probabilities": {
+                "p4": 0.0,
+                "p1": 1.0,
+                "p2": 0.0,
+                "p3": 0.0,
+                "p5": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 478,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1453.103,
+        "attempts": 1
+      },
+      {
+        "id": "thumbnail",
+        "selected": "media/derivatives/preview_worker.py",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 1.0,
+              "probabilities": {
+                "p3": 0.0,
+                "p2": 0.0,
+                "p4": 0.0,
+                "p5": 0.0,
+                "p1": 1.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 471,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1385.62,
+        "attempts": 1
+      },
+      {
+        "id": "locale_fallback",
+        "selected": "i18n/catalog/locale_chain.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 0.88,
+              "probabilities": {
+                "p2": 0.03,
+                "p1": 0.91,
+                "p4": 0.0,
+                "p3": 0.03,
+                "p5": 0.03
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 492,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 2201.397,
+        "attempts": 2
+      },
+      {
+        "id": "tax_engine",
+        "selected": "commerce/pricing/tax_engine.ts",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "path": {
+              "type": "choice",
+              "choice": "p1",
+              "confidence": 0.5,
+              "probabilities": {
+                "p5": 0.0,
+                "p4": 0.0,
+                "p1": 0.61,
+                "p3": 0.0,
+                "p2": 0.39
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 462,
+            "output_tokens": 58
+          }
+        },
+        "latency_ms": 1391.092,
+        "attempts": 1
+      }
+    ],
+    "metrics": {
+      "top1_accuracy": 1.0,
+      "errors": []
+    },
+    "lexical_baseline": {
+      "top1_accuracy": 0.75,
+      "errors": [
+        {
+          "id": "refresh_rotation",
+          "expected": "src/security/session/renewal.ts",
+          "selected": "src/identity/login.ts"
+        },
+        {
+          "id": "deadlock_retry",
+          "expected": "persistence/resilience/transactions.py",
+          "selected": "database/schema/locks.sql"
+        },
+        {
+          "id": "csv_validation",
+          "expected": "ingestion/tabular/row_validator.ts",
+          "selected": "ingestion/csv/reader.ts"
+        }
+      ]
+    }
+  },
+  "model_routing": {
+    "rows": [
+      {
+        "id": "rename_local",
+        "selected": "small_local",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "small_local",
+              "confidence": 0.98,
+              "probabilities": {
+                "small_local": 0.99,
+                "strong_reasoning": 0.0,
+                "fast_general": 0.01
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1359.024,
+        "attempts": 1
+      },
+      {
+        "id": "extract_codes",
+        "selected": "small_local",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "small_local",
+              "confidence": 0.93,
+              "probabilities": {
+                "small_local": 0.95,
+                "strong_reasoning": 0.0,
+                "fast_general": 0.05
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 427,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1398.057,
+        "attempts": 1
+      },
+      {
+        "id": "format_config",
+        "selected": "small_local",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "small_local",
+              "confidence": 0.99,
+              "probabilities": {
+                "strong_reasoning": 0.0,
+                "fast_general": 0.0,
+                "small_local": 1.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1383.168,
+        "attempts": 1
+      },
+      {
+        "id": "simple_test",
+        "selected": "small_local",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "small_local",
+              "confidence": 0.76,
+              "probabilities": {
+                "small_local": 0.84,
+                "strong_reasoning": 0.0,
+                "fast_general": 0.16
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 430,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1431.907,
+        "attempts": 1
+      },
+      {
+        "id": "doc_comment",
+        "selected": "small_local",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "small_local",
+              "confidence": 0.95,
+              "probabilities": {
+                "small_local": 0.97,
+                "strong_reasoning": 0.0,
+                "fast_general": 0.03
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 428,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1780.677,
+        "attempts": 1
+      },
+      {
+        "id": "known_endpoint",
+        "selected": "fast_general",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "fast_general",
+              "confidence": 0.58,
+              "probabilities": {
+                "strong_reasoning": 0.0,
+                "fast_general": 0.72,
+                "small_local": 0.28
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 428,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1367.783,
+        "attempts": 1
+      },
+      {
+        "id": "off_by_one",
+        "selected": "small_local",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "small_local",
+              "confidence": 0.51,
+              "probabilities": {
+                "small_local": 0.67,
+                "fast_general": 0.33,
+                "strong_reasoning": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 433,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 5172.234,
+        "attempts": 1
+      },
+      {
+        "id": "config_migration",
+        "selected": "fast_general",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "fast_general",
+              "confidence": 0.52,
+              "probabilities": {
+                "small_local": 0.32,
+                "strong_reasoning": 0.0,
+                "fast_general": 0.68
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 429,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1436.885,
+        "attempts": 1
+      },
+      {
+        "id": "component_state",
+        "selected": "fast_general",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "fast_general",
+              "confidence": 0.58,
+              "probabilities": {
+                "strong_reasoning": 0.0,
+                "small_local": 0.28,
+                "fast_general": 0.72
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 428,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1396.352,
+        "attempts": 1
+      },
+      {
+        "id": "sdk_adapter",
+        "selected": "fast_general",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "fast_general",
+              "confidence": 0.67,
+              "probabilities": {
+                "fast_general": 0.78,
+                "strong_reasoning": 0.0,
+                "small_local": 0.22
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 429,
+            "output_tokens": 44
+          }
+        },
+        "latency_ms": 1337.328,
+        "attempts": 1
+      },
+      {
+        "id": "distributed_deadlock",
+        "selected": "strong_reasoning",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "strong_reasoning",
+              "confidence": 0.98,
+              "probabilities": {
+                "small_local": 0.01,
+                "strong_reasoning": 0.98,
+                "fast_general": 0.01
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 46
+          }
+        },
+        "latency_ms": 1494.244,
+        "attempts": 1
+      },
+      {
+        "id": "auth_redesign",
+        "selected": "strong_reasoning",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "strong_reasoning",
+              "confidence": 0.98,
+              "probabilities": {
+                "fast_general": 0.01,
+                "small_local": 0.0,
+                "strong_reasoning": 0.99
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 433,
+            "output_tokens": 46
+          }
+        },
+        "latency_ms": 2364.908,
+        "attempts": 1
+      },
+      {
+        "id": "zero_downtime",
+        "selected": "strong_reasoning",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "strong_reasoning",
+              "confidence": 0.98,
+              "probabilities": {
+                "fast_general": 0.01,
+                "strong_reasoning": 0.99,
+                "small_local": 0.0
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 434,
+            "output_tokens": 46
+          }
+        },
+        "latency_ms": 1448.102,
+        "attempts": 1
+      },
+      {
+        "id": "data_corruption",
+        "selected": "strong_reasoning",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "strong_reasoning",
+              "confidence": 0.94,
+              "probabilities": {
+                "small_local": 0.01,
+                "strong_reasoning": 0.97,
+                "fast_general": 0.02
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 46
+          }
+        },
+        "latency_ms": 1473.067,
+        "attempts": 1
+      },
+      {
+        "id": "permission_model",
+        "selected": "strong_reasoning",
+        "response": {
+          "model": "jev-1.13.0",
+          "answers": {
+            "route": {
+              "type": "choice",
+              "choice": "strong_reasoning",
+              "confidence": 0.93,
+              "probabilities": {
+                "strong_reasoning": 0.96,
+                "small_local": 0.0,
+                "fast_general": 0.04
+              }
+            }
+          },
+          "usage": {
+            "input_tokens": 434,
+            "output_tokens": 46
+          }
+        },
+        "latency_ms": 1390.179,
+        "attempts": 1
+      }
+    ],
+    "metrics": {
+      "accuracy": 0.9333333333333333,
+      "under_route_rate": 0.06666666666666667,
+      "over_route_rate": 0.0,
+      "relative_cost": 0.976,
+      "errors": [
+        {
+          "id": "off_by_one",
+          "expected": "fast_general",
+          "selected": "small_local"
+        }
+      ]
+    },
+    "keyword_baseline": {
+      "accuracy": 1.0,
+      "under_route_rate": 0.0,
+      "over_route_rate": 0.0,
+      "relative_cost": 1.0,
+      "errors": []
+    },
+    "all_strong_baseline": {
+      "accuracy": 0.3333333333333333,
+      "under_route_rate": 0.0,
+      "over_route_rate": 0.6666666666666666,
+      "relative_cost": 2.4,
+      "errors": [
+        {
+          "id": "rename_local",
+          "expected": "small_local",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "extract_codes",
+          "expected": "small_local",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "format_config",
+          "expected": "small_local",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "simple_test",
+          "expected": "small_local",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "doc_comment",
+          "expected": "small_local",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "known_endpoint",
+          "expected": "fast_general",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "off_by_one",
+          "expected": "fast_general",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "config_migration",
+          "expected": "fast_general",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "component_state",
+          "expected": "fast_general",
+          "selected": "strong_reasoning"
+        },
+        {
+          "id": "sdk_adapter",
+          "expected": "fast_general",
+          "selected": "strong_reasoning"
+        }
+      ]
+    }
+  },
+  "finished_at": "2026-09-18T03:46:17.766079+00:00"
+}

@@ -1,0 +1,131 @@
+{
+  "context_filtering": [
+    {
+      "id": "auth_regression",
+      "goal": "Fix the refresh-token regression without changing generated files.",
+      "history": "The failing test points to token rotation. The user explicitly prohibited edits under src/generated.",
+      "artifacts": [
+        {"id": "a1", "age": 9, "kind": "Read", "source": "src/generated/schema.ts", "content": "Generated token schema; do not edit directly.", "chars": 6200, "keep": false},
+        {"id": "a2", "age": 7, "kind": "Read", "source": "src/auth/refresh.ts", "content": "rotateRefreshToken stores the old token hash before issuing the replacement.", "chars": 4800, "keep": true},
+        {"id": "a3", "age": 6, "kind": "Bash", "source": "npm test -- auth", "content": "FAIL refresh.test.ts: expected old token to be revoked after rotation.", "chars": 2100, "keep": true},
+        {"id": "a4", "age": 4, "kind": "Grep", "source": "TODO", "content": "Unrelated TODO comments in billing and docs.", "chars": 3600, "keep": false},
+        {"id": "a5", "age": 2, "kind": "Bash", "source": "npm run lint", "content": "Lint passed before any code changes.", "chars": 900, "keep": false}
+      ]
+    },
+    {
+      "id": "flaky_payment_test",
+      "goal": "Find the cause of an intermittent duplicate payment test failure.",
+      "history": "The failure only appears under concurrent retries and has not yet been fixed.",
+      "artifacts": [
+        {"id": "a1", "age": 12, "kind": "Bash", "source": "pytest -k payment --repeat=50", "content": "Iteration 37 created two charges with the same idempotency key after a timeout.", "chars": 9200, "keep": true},
+        {"id": "a2", "age": 10, "kind": "Read", "source": "payments/retry.py", "content": "Retry wrapper creates a new request object on every attempt.", "chars": 4100, "keep": true},
+        {"id": "a3", "age": 8, "kind": "Bash", "source": "pytest -k invoice", "content": "All invoice formatting tests passed.", "chars": 5700, "keep": false},
+        {"id": "a4", "age": 5, "kind": "Read", "source": "README.md", "content": "Local development setup instructions.", "chars": 2500, "keep": false},
+        {"id": "a5", "age": 1, "kind": "Grep", "source": "idempotency", "content": "Call sites in checkout.py and retry.py use the same idempotency helper.", "chars": 1800, "keep": true}
+      ]
+    },
+    {
+      "id": "task_pivot",
+      "goal": "Stop work on the dashboard and fix the CSV importer crash instead.",
+      "history": "The user explicitly changed the task after the dashboard investigation.",
+      "artifacts": [
+        {"id": "a1", "age": 11, "kind": "Read", "source": "dashboard/chart.tsx", "content": "Chart rendering component and tooltip state.", "chars": 7600, "keep": false},
+        {"id": "a2", "age": 9, "kind": "Bash", "source": "npm test -- dashboard", "content": "Dashboard tests pass.", "chars": 3300, "keep": false},
+        {"id": "a3", "age": 4, "kind": "Bash", "source": "pytest -k csv_import", "content": "FAIL at row 8001: integer conversion receives an empty string.", "chars": 4400, "keep": true},
+        {"id": "a4", "age": 3, "kind": "Read", "source": "imports/csv_rows.py", "content": "parse_integer handles null but not blank strings.", "chars": 5100, "keep": true},
+        {"id": "a5", "age": 1, "kind": "Read", "source": "imports/json_rows.py", "content": "JSON importer uses a different parsing path.", "chars": 2900, "keep": false}
+      ]
+    },
+    {
+      "id": "migration_safety",
+      "goal": "Prepare a reversible migration that makes customer.external_id unique.",
+      "history": "Production contains duplicate and null values; downtime is not allowed.",
+      "artifacts": [
+        {"id": "a1", "age": 10, "kind": "Bash", "source": "duplicate query", "content": "There are 183 duplicate external_id groups and 41 null values.", "chars": 1700, "keep": true},
+        {"id": "a2", "age": 8, "kind": "Read", "source": "migrations/018_old_index.sql", "content": "An unrelated index added to orders last year.", "chars": 2400, "keep": false},
+        {"id": "a3", "age": 6, "kind": "Read", "source": "runbooks/migrations.md", "content": "Unique indexes must be created concurrently and rollback SQL must be provided.", "chars": 6800, "keep": true},
+        {"id": "a4", "age": 3, "kind": "Bash", "source": "schema dump", "content": "customer.external_id is nullable text with no current index.", "chars": 12300, "keep": true},
+        {"id": "a5", "age": 1, "kind": "Bash", "source": "formatter", "content": "SQL formatter completed successfully.", "chars": 800, "keep": false}
+      ]
+    },
+    {
+      "id": "frontend_layout",
+      "goal": "Fix mobile toolbar overlap without changing desktop layout.",
+      "history": "The overlap occurs at 375px after validation text appears.",
+      "artifacts": [
+        {"id": "a1", "age": 9, "kind": "Screenshot", "source": "mobile 375px", "content": "Validation text pushes the toolbar over the save button.", "chars": 340000, "keep": true},
+        {"id": "a2", "age": 7, "kind": "Read", "source": "Toolbar.module.css", "content": "Toolbar uses a fixed 48px height and nowrap labels.", "chars": 3700, "keep": true},
+        {"id": "a3", "age": 5, "kind": "Screenshot", "source": "desktop 1440px", "content": "Desktop layout is correct before changes.", "chars": 310000, "keep": true},
+        {"id": "a4", "age": 3, "kind": "Bash", "source": "npm run build", "content": "Build succeeds.", "chars": 1200, "keep": false},
+        {"id": "a5", "age": 1, "kind": "Grep", "source": "purple", "content": "Color tokens unrelated to layout.", "chars": 2100, "keep": false}
+      ]
+    },
+    {
+      "id": "security_patch",
+      "goal": "Patch log injection while preserving forensic usefulness.",
+      "history": "User-controlled newlines can create fake log entries.",
+      "artifacts": [
+        {"id": "a1", "age": 10, "kind": "Read", "source": "logging/request_logger.go", "content": "Raw user-agent and request path are concatenated into a line-oriented audit log.", "chars": 5400, "keep": true},
+        {"id": "a2", "age": 8, "kind": "Bash", "source": "security reproduction", "content": "A request path containing newline creates a forged INFO entry.", "chars": 2600, "keep": true},
+        {"id": "a3", "age": 6, "kind": "Read", "source": "logging/colors.go", "content": "Terminal color mappings for development logs.", "chars": 1900, "keep": false},
+        {"id": "a4", "age": 3, "kind": "Read", "source": "compliance/audit.md", "content": "Audit records must preserve the original value in a structured escaped field.", "chars": 4700, "keep": true},
+        {"id": "a5", "age": 1, "kind": "Bash", "source": "go fmt", "content": "Formatting passed before patching.", "chars": 700, "keep": false}
+      ]
+    },
+    {
+      "id": "api_contract",
+      "goal": "Change pagination internals without breaking public API clients.",
+      "history": "The implementation may change, but response compatibility is required.",
+      "artifacts": [
+        {"id": "a1", "age": 13, "kind": "Read", "source": "openapi/public.yaml", "content": "Clients receive next_cursor as an opaque nullable string.", "chars": 8800, "keep": true},
+        {"id": "a2", "age": 10, "kind": "Read", "source": "pagination/legacy.ts", "content": "Legacy offset helper is no longer called.", "chars": 4300, "keep": false},
+        {"id": "a3", "age": 7, "kind": "Bash", "source": "contract tests", "content": "One client fixture expects next_cursor to be null on the final page.", "chars": 3500, "keep": true},
+        {"id": "a4", "age": 4, "kind": "Grep", "source": "next_cursor", "content": "Serializer, SDK fixtures and docs reference next_cursor.", "chars": 2400, "keep": true},
+        {"id": "a5", "age": 1, "kind": "Bash", "source": "unit tests", "content": "Unrelated cache tests passed.", "chars": 5400, "keep": false}
+      ]
+    },
+    {
+      "id": "later_dependency",
+      "goal": "Complete the export job and explain why filenames differ between environments.",
+      "history": "A late user message says staging uses a tenant-specific timezone configured earlier.",
+      "artifacts": [
+        {"id": "a1", "age": 14, "kind": "Read", "source": "tenant/settings.json", "content": "staging timezone is America/Los_Angeles; production is UTC.", "chars": 1100, "keep": true},
+        {"id": "a2", "age": 11, "kind": "Read", "source": "exports/naming.py", "content": "Filename dates use the tenant timezone when formatting completed_at.", "chars": 3900, "keep": true},
+        {"id": "a3", "age": 8, "kind": "Bash", "source": "old export run", "content": "A prior successful export generated report-2026-09-17.csv.", "chars": 760, "keep": false},
+        {"id": "a4", "age": 4, "kind": "Read", "source": "exports/compression.py", "content": "ZIP compression level is set to six.", "chars": 2700, "keep": false},
+        {"id": "a5", "age": 1, "kind": "Bash", "source": "current failure", "content": "Expected report-2026-09-18.csv but staging produced report-2026-09-17.csv.", "chars": 1800, "keep": true}
+      ]
+    }
+  ],
+  "semantic_pathfinding": [
+    {"id":"refresh_rotation","query":"Where is refresh-token rotation performed?","candidates":["src/identity/login.ts","src/security/session/renewal.ts","src/http/cookies.ts","src/users/profile.ts","tests/auth/reset.test.ts"],"target":"src/security/session/renewal.ts"},
+    {"id":"invoice_pdf","query":"Find the code that renders invoice PDFs.","candidates":["billing/documents/render_invoice.py","billing/payments/capture.py","media/pdf/parser.py","orders/receipt_email.py","templates/account.html"],"target":"billing/documents/render_invoice.py"},
+    {"id":"feature_flags","query":"Where are runtime feature flags evaluated?","candidates":["platform/experiments/gates.ts","config/environment.ts","ui/features/list.tsx","platform/metrics/events.ts","tests/config.test.ts"],"target":"platform/experiments/gates.ts"},
+    {"id":"reconnect_backoff","query":"Locate the WebSocket reconnect backoff policy.","candidates":["transport/realtime/retry_policy.ts","transport/http/client.ts","jobs/retry_queue.ts","ui/socket/status.tsx","config/timeouts.ts"],"target":"transport/realtime/retry_policy.ts"},
+    {"id":"secret_redaction","query":"Where are credentials removed before logs are written?","candidates":["observability/sanitizers/credentials.ts","security/vault/client.ts","logging/writers/file.ts","http/middleware/auth.ts","config/secrets.ts"],"target":"observability/sanitizers/credentials.ts"},
+    {"id":"deadlock_retry","query":"Find transaction retry handling for database deadlocks.","candidates":["persistence/resilience/transactions.py","database/schema/locks.sql","jobs/retry.py","api/errors.py","persistence/query_builder.py"],"target":"persistence/resilience/transactions.py"},
+    {"id":"recovery_email","query":"Where is the password-recovery email assembled?","candidates":["identity/notifications/recovery_mailer.ts","identity/password/reset.ts","notifications/smtp/client.ts","templates/welcome.html","users/email/change.ts"],"target":"identity/notifications/recovery_mailer.ts"},
+    {"id":"csv_validation","query":"Locate validation for individual rows during CSV import.","candidates":["ingestion/tabular/row_validator.ts","ingestion/csv/reader.ts","exports/csv/writer.ts","validation/forms.ts","jobs/import_worker.ts"],"target":"ingestion/tabular/row_validator.ts"},
+    {"id":"rate_limit","query":"Where does the API gateway enforce request quotas?","candidates":["gateway/traffic/quota_guard.ts","gateway/routes/index.ts","billing/usage/meter.ts","security/firewall/rules.ts","http/middleware/request_id.ts"],"target":"gateway/traffic/quota_guard.ts"},
+    {"id":"thumbnail","query":"Find the worker that creates image thumbnails.","candidates":["media/derivatives/preview_worker.py","media/uploads/store.py","images/editor/crop.py","jobs/video/transcode.py","ui/gallery/preview.tsx"],"target":"media/derivatives/preview_worker.py"},
+    {"id":"locale_fallback","query":"Where is the translation locale fallback chain selected?","candidates":["i18n/catalog/locale_chain.ts","i18n/translations/load.ts","config/languages.ts","ui/settings/language.tsx","http/headers/accept_language.ts"],"target":"i18n/catalog/locale_chain.ts"},
+    {"id":"tax_engine","query":"Locate shopping-cart tax calculation.","candidates":["commerce/pricing/tax_engine.ts","commerce/cart/items.ts","billing/invoices/tax_line.ts","checkout/address.ts","catalog/prices.ts"],"target":"commerce/pricing/tax_engine.ts"}
+  ],
+  "model_routing": [
+    {"id":"rename_local","task":"Rename a local variable in one function and update its two references.","route":"small_local"},
+    {"id":"extract_codes","task":"Extract all HTTP status codes from this short log into a JSON array.","route":"small_local"},
+    {"id":"format_config","task":"Sort the keys in a small JSON configuration file without changing values.","route":"small_local"},
+    {"id":"simple_test","task":"Write three table-driven tests for an existing pure string-normalization function.","route":"small_local"},
+    {"id":"doc_comment","task":"Add concise doc comments to five exported constants using their existing names and values.","route":"small_local"},
+    {"id":"known_endpoint","task":"Add a list endpoint following the adjacent controller, service, and test patterns.","route":"fast_general"},
+    {"id":"off_by_one","task":"Fix an off-by-one pagination bug with a reproducible failing test and a localized implementation.","route":"fast_general"},
+    {"id":"config_migration","task":"Replace a deprecated config key across four files and preserve backward compatibility for one release.","route":"fast_general"},
+    {"id":"component_state","task":"Fix a React form that loses validation state when one optional field is hidden.","route":"fast_general"},
+    {"id":"sdk_adapter","task":"Implement a typed adapter for a documented SDK call and cover success and error responses.","route":"fast_general"},
+    {"id":"distributed_deadlock","task":"Diagnose an intermittent deadlock across the job scheduler and database transaction retry loop; logs disagree about lock order.","route":"strong_reasoning"},
+    {"id":"auth_redesign","task":"Redesign refresh-token rotation across web and mobile clients while preserving active sessions and preventing replay attacks.","route":"strong_reasoning"},
+    {"id":"zero_downtime","task":"Plan and implement a zero-downtime migration that makes a dirty production column unique across multiple regions.","route":"strong_reasoning"},
+    {"id":"data_corruption","task":"Investigate possible silent data corruption where retries, partial writes, and cache invalidation interact across services.","route":"strong_reasoning"},
+    {"id":"permission_model","task":"Change a multi-tenant permission model with inherited roles, deny overrides, audit requirements, and backward compatibility.","route":"strong_reasoning"}
+  ]
+}

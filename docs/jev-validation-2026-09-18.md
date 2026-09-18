@@ -203,6 +203,57 @@ Category 使用官方 `confidence` 门控时：
 - Jev 在否定、紧急度、人工升级和情绪程度上表现更好，但测试规模不足。
 - 下一版必须加入无法靠单个关键词解决的最小对照、冲突证据和真实工单。
 
+## Agent 控制面三项小样本验证
+
+在首轮客服分类之后，又针对案例站中最值得继续验证的三个方向构造了独立小样本：上下文过滤、代码路径语义寻路和模型路由。固定使用 `jev-1.13.0`，三轮共完成 105 次 API 请求，其中 102 次首轮成功、3 次重试后成功，没有最终失败。
+
+### 结果摘要
+
+| 方向 | Jev 结果 | 对照结果 | 初步判断 |
+| --- | ---: | ---: | --- |
+| 上下文过滤 | 关键内容召回率 100%，危险误删 0；安全压缩率 6.3%–6.8% | 只保留最近两项的关键召回率 27.3%，危险误删 16 项 | 语义判断明显优于纯时间窗口，但当前更偏保守筛选 |
+| 语义寻路 | 三轮 Top-1 均为 100% | 词法重叠基线 75% | 在 5 个候选路径中选择第一跳有明显信号 |
+| 模型路由 | 三轮准确率均为 93.3%，错误降级率 6.7% | 数据适配后的关键词规则为 100% | 能区分明显难度，但没有胜过简单规则 |
+
+上下文数据包含 8 个编码场景和 40 个工具产物。标签下的理论最大安全压缩率只有 6.9%，因为三个仍需保留的截图占据了大部分字符；Jev 实际取得 6.3%–6.8%，三轮均完整保留所有关键内容。唯一发生重复运行翻转的是一个已经无人调用的旧分页实现，其保留概率为 `0.49`、`0.51`、`0.49`。这说明 `0.5` 附近不能作为不可逆删除依据，更适合进入可恢复存根或灰区队列。
+
+语义寻路包含 12 个任务，每个任务从 5 个候选路径中选择最应该先查看的文件。Jev 三轮均为 12/12，词法基线在 refresh token rotation、数据库 deadlock retry 和 CSV row validation 上失败。这个结果支持用 Jev 做候选重排，但候选数量很少、路径名称具有语义，尚不能外推到大型仓库的完整搜索。
+
+模型路由包含 15 个编码任务，目标是选择最低够用的 `small_local`、`fast_general` 或 `strong_reasoning`。Jev 三轮都把一个已有复现测试的局部 off-by-one 修复从 `fast_general` 降到 `small_local`，其他任务全部命中。该结果说明 Jev 能稳定区分明显的简单任务和高风险跨系统任务，但中间难度边界仍需通过下游模型真实执行来定义，不能只依赖人工标签。
+
+三轮累计输入 58,602 token、输出 6,354 token；所有请求平均端到端延迟约 1501ms，P50 约 1423ms，最大值约 5172ms。该延迟再次说明 Jev 适合按任务或批次做控制判断，不适合放在每个极细粒度同步步骤中。
+
+详细结果：
+
+- [`artifacts/agent-control-v1-2026-09-18.md`](../artifacts/agent-control-v1-2026-09-18.md)
+- [`artifacts/agent-control-v1-repeat-2-2026-09-18.md`](../artifacts/agent-control-v1-repeat-2-2026-09-18.md)
+- [`artifacts/agent-control-v1-repeat-3-2026-09-18.md`](../artifacts/agent-control-v1-repeat-3-2026-09-18.md)
+- [`artifacts/agent-control-v1-repeat-stability-2026-09-18.md`](../artifacts/agent-control-v1-repeat-stability-2026-09-18.md)
+
+### 当前结论
+
+- **最值得优先继续做的是语义寻路。** 当前信号最强，也最容易用真实仓库的已知文件定位任务扩大验证。
+- **上下文过滤必须采用可恢复设计。** 当前没有危险误删，但边界概率确实会翻转，不能把一次低于 `0.5` 当作永久删除许可。
+- **模型路由有用，但价值尚未成立。** 它稳定、便宜，却没有胜过针对本数据编写的规则；下一步必须实际调用不同等级模型并比较任务成功率与总成本。
+
+### 复现命令
+
+```sh
+python3 scripts/evaluate_agent_control.py
+
+python3 scripts/evaluate_agent_control.py \
+  --output artifacts/agent-control-v1-repeat-2-2026-09-18.json
+
+python3 scripts/evaluate_agent_control.py \
+  --output artifacts/agent-control-v1-repeat-3-2026-09-18.json
+
+python3 scripts/compare_agent_control_runs.py \
+  artifacts/agent-control-v1-2026-09-18.json \
+  artifacts/agent-control-v1-repeat-2-2026-09-18.json \
+  artifacts/agent-control-v1-repeat-3-2026-09-18.json \
+  --output artifacts/agent-control-v1-repeat-stability-2026-09-18.md
+```
+
 ## 当前能确认的价值
 
 ### 已得到支持
