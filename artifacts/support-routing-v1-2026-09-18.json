@@ -1,0 +1,2401 @@
+{
+  "dataset": "evals/support-routing-v1.jsonl",
+  "questions": "evals/support-routing-v1.questions.json",
+  "requested_model": "jev-latest",
+  "started_at": "2026-09-18T02:48:28.890555+00:00",
+  "results": [
+    {
+      "id": "network_meeting_01",
+      "group": "network_meeting",
+      "state": "The office Wi-Fi stopped working and I have a customer presentation in 20 minutes. Please help me get online.",
+      "expected": {
+        "category": "network",
+        "urgent": true,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "billing": 0.0,
+              "other": 0.0,
+              "product": 0.0,
+              "network": 1.0,
+              "account": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.33
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.79,
+            "confidence": 0.68,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.21,
+              "1": 0.79,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 974,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 2390.731,
+      "attempts": 1
+    },
+    {
+      "id": "network_meeting_02",
+      "group": "network_meeting",
+      "state": "My meeting starts shortly, but this laptop cannot connect to our wireless network. Other devices are connected.",
+      "expected": {
+        "category": "network",
+        "urgent": true,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "confidence": 1.0,
+            "probabilities": {
+              "account": 0.0,
+              "billing": 0.0,
+              "network": 1.0,
+              "security": 0.0,
+              "other": 0.0,
+              "product": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.76
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.23
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.6,
+            "confidence": 0.4,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.4,
+              "1": 0.6,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 970,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1427.773,
+      "attempts": 1
+    },
+    {
+      "id": "network_meeting_03",
+      "group": "network_meeting",
+      "state": "Not trying to rush you generally, but the Wi-Fi failure is blocking a live demo that begins at 3:00 PM today.",
+      "expected": {
+        "category": "network",
+        "urgent": true,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "billing": 0.0,
+              "account": 0.0,
+              "other": 0.0,
+              "product": 0.0,
+              "network": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.49
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.33
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.91,
+            "confidence": 0.86,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.09,
+              "1": 0.91,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 978,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1504.907,
+      "attempts": 1
+    },
+    {
+      "id": "vpn_vague_01",
+      "group": "vpn_vague",
+      "state": "VPN does not work.",
+      "expected": {
+        "category": "network",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "confidence": 1.0,
+            "probabilities": {
+              "other": 0.0,
+              "billing": 0.0,
+              "product": 0.0,
+              "network": 1.0,
+              "security": 0.0,
+              "account": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.18
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.69
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.09,
+            "confidence": 0.86,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.91,
+              "1": 0.09,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 955,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1455.115,
+      "attempts": 1
+    },
+    {
+      "id": "vpn_vague_02",
+      "group": "vpn_vague",
+      "state": "I cannot use the company VPN. That is all the information I have right now.",
+      "expected": {
+        "category": "network",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 0.0,
+              "network": 1.0,
+              "account": 0.0,
+              "billing": 0.0,
+              "security": 0.0,
+              "other": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.31
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.69
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.09,
+            "confidence": 0.86,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.91,
+              "1": 0.09,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 967,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1394.924,
+      "attempts": 1
+    },
+    {
+      "id": "vpn_vague_03",
+      "group": "vpn_vague",
+      "state": "The remote connection thing is broken, but I do not know the error, device, or when it started. This is not urgent.",
+      "expected": {
+        "category": "network",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "confidence": 0.95,
+            "probabilities": {
+              "product": 0.01,
+              "other": 0.03,
+              "network": 0.96,
+              "account": 0.0,
+              "billing": 0.0,
+              "security": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.23
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.81
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 1.0,
+              "1": 0.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 977,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1431.435,
+      "attempts": 1
+    },
+    {
+      "id": "password_reset_01",
+      "group": "password_reset",
+      "state": "My password reset link expired. Could you send me a new one?",
+      "expected": {
+        "category": "account",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 0.0,
+              "account": 1.0,
+              "security": 0.0,
+              "network": 0.0,
+              "other": 0.0,
+              "billing": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.21
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.29
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.01,
+            "confidence": 0.98,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.99,
+              "1": 0.01,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 964,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1424.649,
+      "attempts": 1
+    },
+    {
+      "id": "password_reset_02",
+      "group": "password_reset",
+      "state": "I requested a sign-in reset yesterday, but the link says it is no longer valid. Please issue another reset link.",
+      "expected": {
+        "category": "account",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 0.0,
+              "other": 0.0,
+              "network": 0.0,
+              "account": 1.0,
+              "billing": 0.0,
+              "security": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.26
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.3
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.15,
+            "confidence": 0.78,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.15,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 974,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1380.461,
+      "attempts": 1
+    },
+    {
+      "id": "password_reset_03",
+      "group": "password_reset",
+      "state": "This is not an emergency. I only need a fresh password-reset email because the previous one timed out.",
+      "expected": {
+        "category": "account",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "billing": 0.0,
+              "other": 0.0,
+              "product": 0.0,
+              "network": 0.0,
+              "account": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.2
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.01,
+            "confidence": 0.98,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.99,
+              "1": 0.01,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 971,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1865.611,
+      "attempts": 1
+    },
+    {
+      "id": "payroll_lockout_01",
+      "group": "payroll_lockout",
+      "state": "I am locked out of the payroll administrator account and payroll must be submitted in one hour.",
+      "expected": {
+        "category": "account",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 1.0,
+            "probabilities": {
+              "other": 0.0,
+              "network": 0.0,
+              "account": 1.0,
+              "security": 0.0,
+              "billing": 0.0,
+              "product": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.31
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.5,
+            "confidence": 0.25,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.5,
+              "1": 0.5,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 968,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1737.341,
+      "attempts": 1
+    },
+    {
+      "id": "payroll_lockout_02",
+      "group": "payroll_lockout",
+      "state": "The admin login is rejecting my verified credentials. If access is not restored before noon, employees will not be paid today.",
+      "expected": {
+        "category": "account",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 0.0,
+              "account": 1.0,
+              "other": 0.0,
+              "billing": 0.0,
+              "security": 0.0,
+              "network": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.3
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.97,
+            "confidence": 0.92,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.04,
+              "1": 0.95,
+              "2": 0.01
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 974,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1440.853,
+      "attempts": 1
+    },
+    {
+      "id": "payroll_lockout_03",
+      "group": "payroll_lockout",
+      "state": "Please escalate: our payroll owner cannot sign in, the deadline is today, and this blocks salary processing.",
+      "expected": {
+        "category": "account",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "network": 0.0,
+              "product": 0.0,
+              "other": 0.0,
+              "account": 1.0,
+              "billing": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.32
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.85,
+            "confidence": 0.77,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.15,
+              "1": 0.85,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 971,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1429.0,
+      "attempts": 1
+    },
+    {
+      "id": "duplicate_charge_01",
+      "group": "duplicate_charge",
+      "state": "I was charged twice for the same annual subscription. Please review the two posted transactions and refund the duplicate.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "other": 0.0,
+              "network": 0.0,
+              "account": 0.0,
+              "security": 0.0,
+              "product": 0.0,
+              "billing": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.81
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.32
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.05,
+            "confidence": 0.92,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.95,
+              "1": 0.05,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 971,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1505.989,
+      "attempts": 1
+    },
+    {
+      "id": "duplicate_charge_02",
+      "group": "duplicate_charge",
+      "state": "There are two completed card charges for one renewal. I need someone to verify my account and reverse the extra charge.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "other": 0.0,
+              "product": 0.0,
+              "network": 0.0,
+              "security": 0.0,
+              "billing": 1.0,
+              "account": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.32
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.07,
+            "confidence": 0.89,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.93,
+              "1": 0.07,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 973,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1541.253,
+      "attempts": 1
+    },
+    {
+      "id": "duplicate_charge_03",
+      "group": "duplicate_charge",
+      "state": "I am frustrated that the yearly plan billed me twice, but there is no immediate deadline. Please investigate the duplicate payment.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "network": 0.0,
+              "account": 0.0,
+              "other": 0.0,
+              "product": 0.0,
+              "billing": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.82
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.33
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.0,
+              "1": 1.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 974,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1397.397,
+      "attempts": 1
+    },
+    {
+      "id": "pricing_question_01",
+      "group": "pricing_question",
+      "state": "What is the price difference between the monthly Pro plan and the annual Pro plan?",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "other": 0.0,
+              "security": 0.0,
+              "product": 0.0,
+              "account": 0.0,
+              "network": 0.0,
+              "billing": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.36
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 1.0,
+              "1": 0.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 966,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1864.004,
+      "attempts": 1
+    },
+    {
+      "id": "pricing_question_02",
+      "group": "pricing_question",
+      "state": "Can you explain whether annual billing includes a discount compared with paying month to month?",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "other": 0.0,
+              "account": 0.0,
+              "product": 0.0,
+              "security": 0.0,
+              "network": 0.0,
+              "billing": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.3
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 1.0,
+              "1": 0.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 966,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1408.83,
+      "attempts": 1
+    },
+    {
+      "id": "pricing_question_03",
+      "group": "pricing_question",
+      "state": "I am only comparing subscription prices for next quarter; nothing is wrong with my current account.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "account": 0.0,
+              "other": 0.0,
+              "billing": 1.0,
+              "security": 0.0,
+              "product": 0.0,
+              "network": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.44
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.02,
+            "confidence": 0.97,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.98,
+              "1": 0.02,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 968,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1466.219,
+      "attempts": 1
+    },
+    {
+      "id": "account_takeover_01",
+      "group": "account_takeover",
+      "state": "Someone changed my recovery email and is actively sending messages from my account. Lock it now.",
+      "expected": {
+        "category": "security",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 0.0,
+              "other": 0.0,
+              "security": 1.0,
+              "billing": 0.0,
+              "account": 0.0,
+              "network": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.21
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.02,
+            "confidence": 0.91,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.94,
+              "2": 0.04
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 968,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1484.072,
+      "attempts": 1
+    },
+    {
+      "id": "account_takeover_02",
+      "group": "account_takeover",
+      "state": "This account appears compromised: an unknown person replaced the recovery address and is using it right now.",
+      "expected": {
+        "category": "security",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "confidence": 1.0,
+            "probabilities": {
+              "account": 0.0,
+              "security": 1.0,
+              "network": 0.0,
+              "billing": 0.0,
+              "other": 0.0,
+              "product": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.27
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.19,
+            "confidence": 0.72,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.81,
+              "1": 0.19,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 969,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1541.571,
+      "attempts": 1
+    },
+    {
+      "id": "account_takeover_03",
+      "group": "account_takeover",
+      "state": "Urgent security issue. The attacker still has access and is impersonating me; please suspend the account immediately.",
+      "expected": {
+        "category": "security",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 0.0,
+              "security": 1.0,
+              "account": 0.0,
+              "other": 0.0,
+              "billing": 0.0,
+              "network": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.33
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.86,
+            "confidence": 0.79,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.14,
+              "1": 0.86,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 974,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1442.561,
+      "attempts": 1
+    },
+    {
+      "id": "security_false_alarm_01",
+      "group": "security_false_alarm",
+      "state": "I received a login alert, but I checked the device and confirmed it was me. No action is needed; how can I disable these alerts?",
+      "expected": {
+        "category": "security",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 0.32,
+            "probabilities": {
+              "network": 0.0,
+              "other": 0.04,
+              "security": 0.22,
+              "billing": 0.0,
+              "product": 0.31,
+              "account": 0.43
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.25
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.02,
+            "confidence": 0.97,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.98,
+              "1": 0.02,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 979,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1452.44,
+      "attempts": 1
+    },
+    {
+      "id": "security_false_alarm_02",
+      "group": "security_false_alarm",
+      "state": "The suspicious sign-in was not an intruder after all. It was my new phone. Where are notification settings?",
+      "expected": {
+        "category": "security",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 0.66,
+            "probabilities": {
+              "billing": 0.0,
+              "account": 0.11,
+              "product": 0.71,
+              "security": 0.11,
+              "network": 0.0,
+              "other": 0.07
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.58
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.38,
+            "confidence": 0.43,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.62,
+              "1": 0.38,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 973,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1469.815,
+      "attempts": 1
+    },
+    {
+      "id": "security_false_alarm_03",
+      "group": "security_false_alarm",
+      "state": "Not hacked and not urgent: I recognized the login as my own, but I would like fewer security notification emails.",
+      "expected": {
+        "category": "security",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 0.33,
+            "probabilities": {
+              "billing": 0.0,
+              "other": 0.23,
+              "product": 0.44,
+              "account": 0.23,
+              "network": 0.0,
+              "security": 0.1
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.07,
+            "confidence": 0.9,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.93,
+              "1": 0.07,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 973,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1495.355,
+      "attempts": 1
+    },
+    {
+      "id": "csv_crash_01",
+      "group": "csv_crash",
+      "state": "Importing a CSV consistently crashes at 72%. The file has 8,000 rows and the UI shows error E-417.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 1.0,
+              "network": 0.0,
+              "account": 0.0,
+              "billing": 0.0,
+              "security": 0.0,
+              "other": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.03,
+            "confidence": 0.96,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.97,
+              "1": 0.03,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 983,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1450.385,
+      "attempts": 1
+    },
+    {
+      "id": "csv_crash_02",
+      "group": "csv_crash",
+      "state": "The data importer fails on the same file after processing roughly three quarters of it. Error code E-417 is displayed.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 1.0,
+              "account": 0.0,
+              "security": 0.0,
+              "billing": 0.0,
+              "network": 0.0,
+              "other": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.18
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.29
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 1.0,
+              "1": 0.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 976,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1495.728,
+      "attempts": 1
+    },
+    {
+      "id": "csv_crash_03",
+      "group": "csv_crash",
+      "state": "I am annoyed because CSV upload keeps dying at 72%, but this can wait until tomorrow. The file is 8,000 rows and reports E-417.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 1.0,
+            "probabilities": {
+              "billing": 0.0,
+              "other": 0.0,
+              "product": 1.0,
+              "account": 0.0,
+              "network": 0.0,
+              "security": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.23
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.0,
+              "1": 1.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 988,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1626.325,
+      "attempts": 1
+    },
+    {
+      "id": "feature_request_01",
+      "group": "feature_request",
+      "state": "Please add a dark mode option to the mobile application.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 1.0,
+            "probabilities": {
+              "billing": 0.0,
+              "other": 0.0,
+              "product": 1.0,
+              "account": 0.0,
+              "network": 0.0,
+              "security": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.24
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 1.0,
+              "1": 0.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 961,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1451.688,
+      "attempts": 1
+    },
+    {
+      "id": "feature_request_02",
+      "group": "feature_request",
+      "state": "Does the app support a dark theme? If not, I would like to request one for a future release.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "billing": 0.0,
+              "other": 0.0,
+              "product": 1.0,
+              "network": 0.0,
+              "account": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 1.0,
+              "1": 0.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 972,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1452.691,
+      "attempts": 1
+    },
+    {
+      "id": "feature_request_03",
+      "group": "feature_request",
+      "state": "No bug or deadline here. A night-friendly color theme would be a useful product improvement.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "confidence": 1.0,
+            "probabilities": {
+              "network": 0.0,
+              "security": 0.0,
+              "account": 0.0,
+              "billing": 0.0,
+              "other": 0.0,
+              "product": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.18
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 1.0,
+              "1": 0.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 968,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1441.433,
+      "attempts": 1
+    },
+    {
+      "id": "vague_failure_01",
+      "group": "vague_failure",
+      "state": "It is broken. Fix it.",
+      "expected": {
+        "category": "other",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "other",
+            "confidence": 0.77,
+            "probabilities": {
+              "security": 0.0,
+              "billing": 0.0,
+              "other": 0.81,
+              "product": 0.19,
+              "network": 0.0,
+              "account": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.24
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.13,
+            "confidence": 0.77,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.01,
+              "1": 0.85,
+              "2": 0.14
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 957,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1527.351,
+      "attempts": 1
+    },
+    {
+      "id": "vague_failure_02",
+      "group": "vague_failure",
+      "state": "Nothing works anymore and I am getting irritated.",
+      "expected": {
+        "category": "other",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "other",
+            "confidence": 0.89,
+            "probabilities": {
+              "billing": 0.0,
+              "account": 0.0,
+              "product": 0.09,
+              "network": 0.0,
+              "security": 0.0,
+              "other": 0.91
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.2
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.0,
+              "1": 1.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 959,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1386.981,
+      "attempts": 1
+    },
+    {
+      "id": "vague_failure_03",
+      "group": "vague_failure",
+      "state": "This is useless. It failed again. I will not provide any details.",
+      "expected": {
+        "category": "other",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 2
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "other",
+            "confidence": 0.97,
+            "probabilities": {
+              "product": 0.03,
+              "account": 0.0,
+              "billing": 0.0,
+              "network": 0.0,
+              "security": 0.0,
+              "other": 0.97
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.42
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.56,
+            "confidence": 0.34,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.0,
+              "1": 0.44,
+              "2": 0.56
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 965,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1527.56,
+      "attempts": 1
+    },
+    {
+      "id": "refund_deadline_01",
+      "group": "refund_deadline",
+      "state": "My refund has been pending for three weeks and I need the money for travel tomorrow. Please escalate it today.",
+      "expected": {
+        "category": "billing",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "network": 0.0,
+              "account": 0.0,
+              "other": 0.0,
+              "product": 0.0,
+              "billing": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.84
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.45
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.99,
+            "confidence": 0.99,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.01,
+              "1": 0.99,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 972,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1431.804,
+      "attempts": 1
+    },
+    {
+      "id": "refund_deadline_02",
+      "group": "refund_deadline",
+      "state": "The promised refund still has not arrived. My flight is tomorrow morning, so I need a specialist to trace it now.",
+      "expected": {
+        "category": "billing",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "product": 0.0,
+              "network": 0.0,
+              "account": 0.0,
+              "billing": 1.0,
+              "security": 0.0,
+              "other": 0.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.49
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "confidence": 0.99,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.0,
+              "1": 1.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 974,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1502.902,
+      "attempts": 1
+    },
+    {
+      "id": "refund_deadline_03",
+      "group": "refund_deadline",
+      "state": "I know refunds take time, but this one is already three weeks late and must reach me before tomorrow's trip.",
+      "expected": {
+        "category": "billing",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "response": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 1.0,
+            "probabilities": {
+              "security": 0.0,
+              "network": 0.0,
+              "account": 0.0,
+              "product": 0.0,
+              "other": 0.0,
+              "billing": 1.0
+            }
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.84
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.75
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.41
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "confidence": 1.0,
+            "legend": {
+              "0": "Calm, neutral, or purely informational",
+              "1": "Concerned or frustrated but civil",
+              "2": "Strongly angry, hostile, abusive, or threatening"
+            },
+            "probabilities": {
+              "0": 0.0,
+              "1": 1.0,
+              "2": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 973,
+          "output_tokens": 126
+        }
+      },
+      "latency_ms": 1514.1,
+      "attempts": 1
+    }
+  ],
+  "finished_at": "2026-09-18T02:49:29.253155+00:00",
+  "metrics": {
+    "completed": 36,
+    "errors": 0,
+    "models": {
+      "jev-1.13.0": 36
+    },
+    "category": {
+      "accuracy": 0.9166666666666666,
+      "macro_f1": 0.9078144078144078,
+      "mean_expected_probability": 0.9188888888888889,
+      "multiclass_brier": 0.09462222222222222,
+      "negative_log_likelihood": 0.1777861292112611,
+      "top_probability_ece": 0.05361111111111111,
+      "official_confidence_coverage": {
+        "0.50": {
+          "coverage": 0.9444444444444444,
+          "accuracy": 0.9705882352941176,
+          "count": 34
+        },
+        "0.70": {
+          "coverage": 0.9166666666666666,
+          "accuracy": 1.0,
+          "count": 33
+        },
+        "0.85": {
+          "coverage": 0.8888888888888888,
+          "accuracy": 1.0,
+          "count": 32
+        }
+      },
+      "group_consistency": 0.9166666666666666
+    },
+    "binary": {
+      "urgent": {
+        "accuracy": 1.0,
+        "brier": 0.009399999999999999,
+        "ece": 0.08000000000000002,
+        "coverage_accuracy": {
+          "0.60": {
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "count": 36
+          },
+          "0.75": {
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "count": 36
+          },
+          "0.90": {
+            "coverage": 0.75,
+            "accuracy": 1.0,
+            "count": 27
+          }
+        }
+      },
+      "needs_human": {
+        "accuracy": 1.0,
+        "brier": 0.032669444444444445,
+        "ece": 0.14694444444444446,
+        "coverage_accuracy": {
+          "0.60": {
+            "coverage": 0.9444444444444444,
+            "accuracy": 1.0,
+            "count": 34
+          },
+          "0.75": {
+            "coverage": 0.8888888888888888,
+            "accuracy": 1.0,
+            "count": 32
+          },
+          "0.90": {
+            "coverage": 0.4166666666666667,
+            "accuracy": 1.0,
+            "count": 15
+          }
+        }
+      },
+      "missing_info": {
+        "accuracy": 0.9722222222222222,
+        "brier": 0.09114166666666666,
+        "ece": 0.2469444444444445,
+        "coverage_accuracy": {
+          "0.60": {
+            "coverage": 0.8611111111111112,
+            "accuracy": 1.0,
+            "count": 31
+          },
+          "0.75": {
+            "coverage": 0.3888888888888889,
+            "accuracy": 1.0,
+            "count": 14
+          },
+          "0.90": {
+            "coverage": 0.08333333333333333,
+            "accuracy": 1.0,
+            "count": 3
+          }
+        }
+      }
+    },
+    "frustration": {
+      "mean_absolute_error": 0.21166666666666667,
+      "rounded_accuracy": 0.8333333333333334,
+      "multiclass_brier": 0.2931888888888889
+    },
+    "robustness": {
+      "category_group_consistency": 0.9166666666666666,
+      "binary_group_consistency": {
+        "urgent": 1.0,
+        "needs_human": 1.0,
+        "missing_info": 0.9166666666666666
+      }
+    },
+    "latency_ms": {
+      "mean": 1521.1459444444445,
+      "p50": 1460.667,
+      "p95": 1864.40575,
+      "max": 2390.731
+    },
+    "usage": {
+      "input_tokens": 34945,
+      "output_tokens": 4536
+    }
+  }
+}

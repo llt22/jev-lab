@@ -1,0 +1,2402 @@
+{
+  "dataset": "evals/support-routing-v1.jsonl",
+  "questions": "evals/support-routing-v1.questions.json",
+  "requested_model": "keyword-baseline-v1",
+  "started_at": "2026-09-18T02:58:18.013406+00:00",
+  "finished_at": "2026-09-18T02:58:18.013406+00:00",
+  "results": [
+    {
+      "id": "network_meeting_01",
+      "group": "network_meeting",
+      "state": "The office Wi-Fi stopped working and I have a customer presentation in 20 minutes. Please help me get online.",
+      "expected": {
+        "category": "network",
+        "urgent": true,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "probabilities": {
+              "network": 0.85,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "network_meeting_02",
+      "group": "network_meeting",
+      "state": "My meeting starts shortly, but this laptop cannot connect to our wireless network. Other devices are connected.",
+      "expected": {
+        "category": "network",
+        "urgent": true,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "probabilities": {
+              "network": 0.85,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "network_meeting_03",
+      "group": "network_meeting",
+      "state": "Not trying to rush you generally, but the Wi-Fi failure is blocking a live demo that begins at 3:00 PM today.",
+      "expected": {
+        "category": "network",
+        "urgent": true,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "probabilities": {
+              "network": 0.85,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "vpn_vague_01",
+      "group": "vpn_vague",
+      "state": "VPN does not work.",
+      "expected": {
+        "category": "network",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "probabilities": {
+              "network": 0.85,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "vpn_vague_02",
+      "group": "vpn_vague",
+      "state": "I cannot use the company VPN. That is all the information I have right now.",
+      "expected": {
+        "category": "network",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "probabilities": {
+              "network": 0.85,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "vpn_vague_03",
+      "group": "vpn_vague",
+      "state": "The remote connection thing is broken, but I do not know the error, device, or when it started. This is not urgent.",
+      "expected": {
+        "category": "network",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "network",
+            "probabilities": {
+              "network": 0.85,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "password_reset_01",
+      "group": "password_reset",
+      "state": "My password reset link expired. Could you send me a new one?",
+      "expected": {
+        "category": "account",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.85,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "password_reset_02",
+      "group": "password_reset",
+      "state": "I requested a sign-in reset yesterday, but the link says it is no longer valid. Please issue another reset link.",
+      "expected": {
+        "category": "account",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.85,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "password_reset_03",
+      "group": "password_reset",
+      "state": "This is not an emergency. I only need a fresh password-reset email because the previous one timed out.",
+      "expected": {
+        "category": "account",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.85,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "payroll_lockout_01",
+      "group": "payroll_lockout",
+      "state": "I am locked out of the payroll administrator account and payroll must be submitted in one hour.",
+      "expected": {
+        "category": "account",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.85,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "payroll_lockout_02",
+      "group": "payroll_lockout",
+      "state": "The admin login is rejecting my verified credentials. If access is not restored before noon, employees will not be paid today.",
+      "expected": {
+        "category": "account",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.85,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "payroll_lockout_03",
+      "group": "payroll_lockout",
+      "state": "Please escalate: our payroll owner cannot sign in, the deadline is today, and this blocks salary processing.",
+      "expected": {
+        "category": "account",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "account",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.85,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "probabilities": {
+              "0": 0.07500000000000001,
+              "1": 0.85,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "duplicate_charge_01",
+      "group": "duplicate_charge",
+      "state": "I was charged twice for the same annual subscription. Please review the two posted transactions and refund the duplicate.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "duplicate_charge_02",
+      "group": "duplicate_charge",
+      "state": "There are two completed card charges for one renewal. I need someone to verify my account and reverse the extra charge.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "duplicate_charge_03",
+      "group": "duplicate_charge",
+      "state": "I am frustrated that the yearly plan billed me twice, but there is no immediate deadline. Please investigate the duplicate payment.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "probabilities": {
+              "0": 0.07500000000000001,
+              "1": 0.85,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "pricing_question_01",
+      "group": "pricing_question",
+      "state": "What is the price difference between the monthly Pro plan and the annual Pro plan?",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.85
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "pricing_question_02",
+      "group": "pricing_question",
+      "state": "Can you explain whether annual billing includes a discount compared with paying month to month?",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "pricing_question_03",
+      "group": "pricing_question",
+      "state": "I am only comparing subscription prices for next quarter; nothing is wrong with my current account.",
+      "expected": {
+        "category": "billing",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "account_takeover_01",
+      "group": "account_takeover",
+      "state": "Someone changed my recovery email and is actively sending messages from my account. Lock it now.",
+      "expected": {
+        "category": "security",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.85,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "probabilities": {
+              "0": 0.07500000000000001,
+              "1": 0.85,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "account_takeover_02",
+      "group": "account_takeover",
+      "state": "This account appears compromised: an unknown person replaced the recovery address and is using it right now.",
+      "expected": {
+        "category": "security",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.85,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "account_takeover_03",
+      "group": "account_takeover",
+      "state": "Urgent security issue. The attacker still has access and is impersonating me; please suspend the account immediately.",
+      "expected": {
+        "category": "security",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.85,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "security_false_alarm_01",
+      "group": "security_false_alarm",
+      "state": "I received a login alert, but I checked the device and confirmed it was me. No action is needed; how can I disable these alerts?",
+      "expected": {
+        "category": "security",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.85,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "security_false_alarm_02",
+      "group": "security_false_alarm",
+      "state": "The suspicious sign-in was not an intruder after all. It was my new phone. Where are notification settings?",
+      "expected": {
+        "category": "security",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.85,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "security_false_alarm_03",
+      "group": "security_false_alarm",
+      "state": "Not hacked and not urgent: I recognized the login as my own, but I would like fewer security notification emails.",
+      "expected": {
+        "category": "security",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "security",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.85,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "csv_crash_01",
+      "group": "csv_crash",
+      "state": "Importing a CSV consistently crashes at 72%. The file has 8,000 rows and the UI shows error E-417.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.85,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "csv_crash_02",
+      "group": "csv_crash",
+      "state": "The data importer fails on the same file after processing roughly three quarters of it. Error code E-417 is displayed.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.85,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "csv_crash_03",
+      "group": "csv_crash",
+      "state": "I am annoyed because CSV upload keeps dying at 72%, but this can wait until tomorrow. The file is 8,000 rows and reports E-417.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.85,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "probabilities": {
+              "0": 0.07500000000000001,
+              "1": 0.85,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "feature_request_01",
+      "group": "feature_request",
+      "state": "Please add a dark mode option to the mobile application.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.85,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "feature_request_02",
+      "group": "feature_request",
+      "state": "Does the app support a dark theme? If not, I would like to request one for a future release.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.85,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "feature_request_03",
+      "group": "feature_request",
+      "state": "No bug or deadline here. A night-friendly color theme would be a useful product improvement.",
+      "expected": {
+        "category": "product",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": false,
+        "frustration": 0
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "product",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.85,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "vague_failure_01",
+      "group": "vague_failure",
+      "state": "It is broken. Fix it.",
+      "expected": {
+        "category": "other",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.85
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "vague_failure_02",
+      "group": "vague_failure",
+      "state": "Nothing works anymore and I am getting irritated.",
+      "expected": {
+        "category": "other",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.85
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "probabilities": {
+              "0": 0.07500000000000001,
+              "1": 0.85,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "vague_failure_03",
+      "group": "vague_failure",
+      "state": "This is useless. It failed again. I will not provide any details.",
+      "expected": {
+        "category": "other",
+        "urgent": false,
+        "needs_human": false,
+        "missing_info": true,
+        "frustration": 2
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.030000000000000006,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.85
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.775,
+            "probabilities": {
+              "0": 0.07500000000000001,
+              "1": 0.07500000000000001,
+              "2": 0.85
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "refund_deadline_01",
+      "group": "refund_deadline",
+      "state": "My refund has been pending for three weeks and I need the money for travel tomorrow. Please escalate it today.",
+      "expected": {
+        "category": "billing",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.0,
+            "probabilities": {
+              "0": 0.07500000000000001,
+              "1": 0.85,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "refund_deadline_02",
+      "group": "refund_deadline",
+      "state": "The promised refund still has not arrived. My flight is tomorrow morning, so I need a specialist to trace it now.",
+      "expected": {
+        "category": "billing",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "refund_deadline_03",
+      "group": "refund_deadline",
+      "state": "I know refunds take time, but this one is already three weeks late and must reach me before tomorrow's trip.",
+      "expected": {
+        "category": "billing",
+        "urgent": true,
+        "needs_human": true,
+        "missing_info": false,
+        "frustration": 1
+      },
+      "latency_ms": 0.0,
+      "attempts": 1,
+      "response": {
+        "model": "keyword-baseline-v1",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "network": 0.030000000000000006,
+              "account": 0.030000000000000006,
+              "billing": 0.85,
+              "security": 0.030000000000000006,
+              "product": 0.030000000000000006,
+              "other": 0.030000000000000006
+            },
+            "confidence": 0.85
+          },
+          "urgent": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "needs_human": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "missing_info": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.22500000000000003,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.07500000000000001,
+              "2": 0.07500000000000001
+            },
+            "confidence": 0.85,
+            "legend": {
+              "0": "calm",
+              "1": "frustrated",
+              "2": "angry"
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "completed": 36,
+    "errors": 0,
+    "models": {
+      "keyword-baseline-v1": 36
+    },
+    "category": {
+      "accuracy": 0.9722222222222222,
+      "macro_f1": 0.9663865546218487,
+      "mean_expected_probability": 0.8272222222222222,
+      "multiclass_brier": 0.07255555555555555,
+      "negative_log_likelihood": 0.2554089008261695,
+      "top_probability_ece": 0.12222222222222223,
+      "official_confidence_coverage": {
+        "0.50": {
+          "coverage": 1.0,
+          "accuracy": 0.9722222222222222,
+          "count": 36
+        },
+        "0.70": {
+          "coverage": 1.0,
+          "accuracy": 0.9722222222222222,
+          "count": 36
+        },
+        "0.85": {
+          "coverage": 1.0,
+          "accuracy": 0.9722222222222222,
+          "count": 36
+        }
+      },
+      "group_consistency": 0.9166666666666666
+    },
+    "binary": {
+      "urgent": {
+        "accuracy": 0.9444444444444444,
+        "brier": 0.06138888888888889,
+        "ece": 0.09444444444444444,
+        "coverage_accuracy": {
+          "0.60": {
+            "coverage": 1.0,
+            "accuracy": 0.9444444444444444,
+            "count": 36
+          },
+          "0.75": {
+            "coverage": 1.0,
+            "accuracy": 0.9444444444444444,
+            "count": 36
+          },
+          "0.90": {
+            "coverage": 0.0,
+            "accuracy": 0.0,
+            "count": 0
+          }
+        }
+      },
+      "needs_human": {
+        "accuracy": 0.9722222222222222,
+        "brier": 0.041944444444444444,
+        "ece": 0.12222222222222223,
+        "coverage_accuracy": {
+          "0.60": {
+            "coverage": 1.0,
+            "accuracy": 0.9722222222222222,
+            "count": 36
+          },
+          "0.75": {
+            "coverage": 1.0,
+            "accuracy": 0.9722222222222222,
+            "count": 36
+          },
+          "0.90": {
+            "coverage": 0.0,
+            "accuracy": 0.0,
+            "count": 0
+          }
+        }
+      },
+      "missing_info": {
+        "accuracy": 1.0,
+        "brier": 0.022500000000000003,
+        "ece": 0.15000000000000002,
+        "coverage_accuracy": {
+          "0.60": {
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "count": 36
+          },
+          "0.75": {
+            "coverage": 1.0,
+            "accuracy": 1.0,
+            "count": 36
+          },
+          "0.90": {
+            "coverage": 0.0,
+            "accuracy": 0.0,
+            "count": 0
+          }
+        }
+      }
+    },
+    "frustration": {
+      "mean_absolute_error": 0.40138888888888885,
+      "rounded_accuracy": 0.6111111111111112,
+      "multiclass_brier": 0.6365277777777778
+    },
+    "robustness": {
+      "category_group_consistency": 0.9166666666666666,
+      "binary_group_consistency": {
+        "urgent": 0.8333333333333334,
+        "needs_human": 0.9166666666666666,
+        "missing_info": 1.0
+      }
+    },
+    "latency_ms": {
+      "mean": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "warning": "This baseline was written after inspecting the task definition and is only a difficulty sanity check."
+}

@@ -1,0 +1,142 @@
+{
+  "created_at": "2026-09-18T02:56:41.933687+00:00",
+  "requested_model": "jev-1.13.0",
+  "input_price_per_million_usd": 0.042,
+  "repeats": 3,
+  "runs": [
+    {
+      "question_count": 1,
+      "repeat": 1,
+      "latency_ms": 2466.169,
+      "input_tokens": 371,
+      "output_tokens": 22,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 1,
+      "repeat": 2,
+      "latency_ms": 1340.136,
+      "input_tokens": 371,
+      "output_tokens": 22,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 1,
+      "repeat": 3,
+      "latency_ms": 1462.977,
+      "input_tokens": 371,
+      "output_tokens": 22,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 5,
+      "repeat": 1,
+      "latency_ms": 1346.219,
+      "input_tokens": 424,
+      "output_tokens": 94,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 5,
+      "repeat": 2,
+      "latency_ms": 1509.793,
+      "input_tokens": 424,
+      "output_tokens": 94,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 5,
+      "repeat": 3,
+      "latency_ms": 1417.656,
+      "input_tokens": 424,
+      "output_tokens": 94,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 10,
+      "repeat": 1,
+      "latency_ms": 1342.13,
+      "input_tokens": 493,
+      "output_tokens": 184,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 10,
+      "repeat": 2,
+      "latency_ms": 1383.723,
+      "input_tokens": 493,
+      "output_tokens": 184,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 10,
+      "repeat": 3,
+      "latency_ms": 1379.005,
+      "input_tokens": 493,
+      "output_tokens": 184,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 20,
+      "repeat": 1,
+      "latency_ms": 1387.194,
+      "input_tokens": 639,
+      "output_tokens": 364,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 20,
+      "repeat": 2,
+      "latency_ms": 1440.423,
+      "input_tokens": 639,
+      "output_tokens": 364,
+      "model": "jev-1.13.0"
+    },
+    {
+      "question_count": 20,
+      "repeat": 3,
+      "latency_ms": 1424.487,
+      "input_tokens": 639,
+      "output_tokens": 364,
+      "model": "jev-1.13.0"
+    }
+  ],
+  "summary": [
+    {
+      "question_count": 1,
+      "latency_mean_ms": 1756.4273333333333,
+      "latency_p50_ms": 1462.977,
+      "latency_max_ms": 2466.169,
+      "input_tokens_mean": 371.0,
+      "output_tokens_mean": 22.0,
+      "estimated_cost_usd_per_request": 1.5582e-05
+    },
+    {
+      "question_count": 5,
+      "latency_mean_ms": 1424.5559999999998,
+      "latency_p50_ms": 1417.656,
+      "latency_max_ms": 1509.793,
+      "input_tokens_mean": 424.0,
+      "output_tokens_mean": 94.0,
+      "estimated_cost_usd_per_request": 1.7808000000000003e-05
+    },
+    {
+      "question_count": 10,
+      "latency_mean_ms": 1368.286,
+      "latency_p50_ms": 1379.005,
+      "latency_max_ms": 1383.723,
+      "input_tokens_mean": 493.0,
+      "output_tokens_mean": 184.0,
+      "estimated_cost_usd_per_request": 2.0705999999999998e-05
+    },
+    {
+      "question_count": 20,
+      "latency_mean_ms": 1417.3680000000002,
+      "latency_p50_ms": 1424.487,
+      "latency_max_ms": 1440.423,
+      "input_tokens_mean": 639.0,
+      "output_tokens_mean": 364.0,
+      "estimated_cost_usd_per_request": 2.6838000000000003e-05
+    }
+  ]
+}

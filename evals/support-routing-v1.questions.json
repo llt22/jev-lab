@@ -1,0 +1,73 @@
+{
+  "category": {
+    "type": "choice",
+    "instructions": {
+      "task": "Choose the single primary support category for this customer message.",
+      "rules": [
+        "Classify the problem the customer needs handled, not incidental words.",
+        "Use security for suspected compromise, phishing, credential exposure, or unauthorized access.",
+        "Use other only when no listed category fits or the message is too vague to identify one."
+      ]
+    },
+    "criteria": {
+      "network": "Internet, Wi-Fi, VPN, DNS, latency, or connectivity problems",
+      "account": "Sign-in, passwords, permissions, account access, or account lifecycle",
+      "billing": "Charges, payments, invoices, subscriptions, cancellations, or refunds",
+      "security": "Suspicious access, phishing, exposed credentials, abuse, or data security",
+      "product": "Product behavior, bugs, features, integrations, imports, exports, or usage questions",
+      "other": "No listed category fits, or the issue is too vague to identify"
+    }
+  },
+  "urgent": {
+    "type": "noul",
+    "instructions": {
+      "question": "Does this message describe concrete time pressure or serious immediate business, safety, security, or financial impact?",
+      "rules": [
+        "Strong wording by itself is not urgency.",
+        "A stated deadline, active outage, ongoing compromise, blocked critical work, or immediate material loss is urgency.",
+        "Respect explicit negation such as 'not urgent'."
+      ]
+    },
+    "criteria": {
+      "true": "A delay could cause immediate material harm or miss a concrete near-term deadline",
+      "false": "Routine request, hypothetical concern, or no concrete time pressure"
+    }
+  },
+  "needs_human": {
+    "type": "noul",
+    "instructions": {
+      "question": "Should this message be escalated to a human specialist instead of being handled only by routine automated guidance?",
+      "rules": [
+        "Escalate suspected compromise, account-specific financial disputes, irreversible account actions, legal threats, or high-impact access failures.",
+        "Do not escalate ordinary how-to questions, feature requests, or routine troubleshooting when no sensitive action is required."
+      ]
+    },
+    "criteria": {
+      "true": "Human judgment, identity verification, sensitive action, or specialist investigation is required",
+      "false": "Routine automated guidance or standard troubleshooting is appropriate"
+    }
+  },
+  "missing_info": {
+    "type": "noul",
+    "instructions": {
+      "question": "Is the message too vague or missing essential diagnostic information needed to begin useful handling?",
+      "rules": [
+        "Do not require every possible detail.",
+        "Return yes when the affected feature, symptom, or request cannot be identified well enough to start routing or troubleshooting."
+      ]
+    },
+    "criteria": {
+      "true": "A clarifying question is required before useful handling can begin",
+      "false": "The primary issue and a useful next step can already be identified"
+    }
+  },
+  "frustration": {
+    "type": "score",
+    "instructions": "Rate the customer's expressed frustration or anger, not the objective severity of the issue.",
+    "criteria": [
+      "Calm, neutral, or purely informational",
+      "Concerned or frustrated but civil",
+      "Strongly angry, hostile, abusive, or threatening"
+    ]
+  }
+}
