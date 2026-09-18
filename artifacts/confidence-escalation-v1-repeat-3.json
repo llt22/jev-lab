@@ -1,0 +1,1188 @@
+{
+  "dataset": "evals/confidence-escalation-v1.json",
+  "requested_model": "jev-latest",
+  "started_at": "2026-09-18T09:11:56.327479+00:00",
+  "rows": [
+    {
+      "id": "clear-1",
+      "group": "clear",
+      "kind": "choice",
+      "pair": null,
+      "expected": "billing",
+      "signals": {
+        "kind": "choice",
+        "predicted": "billing",
+        "gate_primary": 1.0,
+        "gate_topprob": 1.0,
+        "gate_margin": 1.0,
+        "official_confidence": 1.0,
+        "probabilities": {
+          "account": 0.0,
+          "billing": 1.0,
+          "network": 0.0,
+          "product": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 1409.765,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 377,
+      "output_tokens": 45
+    },
+    {
+      "id": "clear-2",
+      "group": "clear",
+      "kind": "choice",
+      "pair": null,
+      "expected": "network",
+      "signals": {
+        "kind": "choice",
+        "predicted": "network",
+        "gate_primary": 0.98,
+        "gate_topprob": 0.99,
+        "gate_margin": 0.98,
+        "official_confidence": 0.98,
+        "probabilities": {
+          "network": 0.99,
+          "account": 0.0,
+          "product": 0.01,
+          "billing": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 5680.037,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 378,
+      "output_tokens": 45
+    },
+    {
+      "id": "clear-3",
+      "group": "clear",
+      "kind": "choice",
+      "pair": null,
+      "expected": "security",
+      "signals": {
+        "kind": "choice",
+        "predicted": "security",
+        "gate_primary": 0.99,
+        "gate_topprob": 0.99,
+        "gate_margin": 0.98,
+        "official_confidence": 0.99,
+        "probabilities": {
+          "security": 0.99,
+          "billing": 0.0,
+          "product": 0.0,
+          "account": 0.01
+        },
+        "correct": true
+      },
+      "latency_ms": 1408.452,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 381,
+      "output_tokens": 45
+    },
+    {
+      "id": "clear-4",
+      "group": "clear",
+      "kind": "choice",
+      "pair": null,
+      "expected": "product",
+      "signals": {
+        "kind": "choice",
+        "predicted": "product",
+        "gate_primary": 1.0,
+        "gate_topprob": 1.0,
+        "gate_margin": 1.0,
+        "official_confidence": 1.0,
+        "probabilities": {
+          "billing": 0.0,
+          "account": 0.0,
+          "product": 1.0,
+          "network": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 1405.906,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 381,
+      "output_tokens": 45
+    },
+    {
+      "id": "neg-1",
+      "group": "negation",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.83,
+        "gate_topprob": 0.83,
+        "probability": 0.83,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1374.197,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 289,
+      "output_tokens": 20
+    },
+    {
+      "id": "neg-2",
+      "group": "negation",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.93,
+        "gate_topprob": 0.93,
+        "probability": 0.93,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1348.961,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 292,
+      "output_tokens": 20
+    },
+    {
+      "id": "neg-3",
+      "group": "negation",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.94,
+        "gate_topprob": 0.94,
+        "probability": 0.94,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1378.347,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 286,
+      "output_tokens": 20
+    },
+    {
+      "id": "neg-4",
+      "group": "negation",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.9,
+        "gate_topprob": 0.9,
+        "probability": 0.9,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 2363.986,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 286,
+      "output_tokens": 20
+    },
+    {
+      "id": "ind-1",
+      "group": "indirection",
+      "kind": "noul",
+      "pair": null,
+      "expected": false,
+      "signals": {
+        "kind": "noul",
+        "predicted": false,
+        "gate_primary": 0.99,
+        "gate_topprob": 0.99,
+        "probability": 0.01,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1443.138,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 322,
+      "output_tokens": 20
+    },
+    {
+      "id": "ind-2",
+      "group": "indirection",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.93,
+        "gate_topprob": 0.93,
+        "probability": 0.93,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1434.431,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 317,
+      "output_tokens": 20
+    },
+    {
+      "id": "ind-3",
+      "group": "indirection",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.89,
+        "gate_topprob": 0.89,
+        "probability": 0.89,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1465.291,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 313,
+      "output_tokens": 20
+    },
+    {
+      "id": "ind-4",
+      "group": "indirection",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.96,
+        "gate_topprob": 0.96,
+        "probability": 0.96,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1446.364,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 305,
+      "output_tokens": 20
+    },
+    {
+      "id": "num-1",
+      "group": "numeric",
+      "kind": "score",
+      "pair": null,
+      "expected": "115",
+      "signals": {
+        "kind": "score",
+        "predicted": "115",
+        "raw_score": 2.0,
+        "gate_primary": 1.0,
+        "gate_topprob": 1.0,
+        "gate_margin": 1.0,
+        "official_confidence": 1.0,
+        "probabilities": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 1.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 3656.377,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 333,
+      "output_tokens": 17
+    },
+    {
+      "id": "num-2",
+      "group": "numeric",
+      "kind": "score",
+      "pair": null,
+      "expected": "42",
+      "signals": {
+        "kind": "score",
+        "predicted": "42",
+        "raw_score": 3.0,
+        "gate_primary": 0.99,
+        "gate_topprob": 1.0,
+        "gate_margin": 1.0,
+        "official_confidence": 0.99,
+        "probabilities": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 1.0,
+          "4": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 1448.784,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 342,
+      "output_tokens": 17
+    },
+    {
+      "id": "num-3",
+      "group": "numeric",
+      "kind": "score",
+      "pair": null,
+      "expected": "67",
+      "signals": {
+        "kind": "score",
+        "predicted": "67",
+        "raw_score": 2.99,
+        "gate_primary": 0.99,
+        "gate_topprob": 0.99,
+        "gate_margin": 0.98,
+        "official_confidence": 0.99,
+        "probabilities": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.01,
+          "3": 0.99,
+          "4": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 2107.665,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 340,
+      "output_tokens": 17
+    },
+    {
+      "id": "num-4",
+      "group": "numeric",
+      "kind": "score",
+      "pair": null,
+      "expected": "24",
+      "signals": {
+        "kind": "score",
+        "predicted": "24",
+        "raw_score": 2.01,
+        "gate_primary": 0.99,
+        "gate_topprob": 0.99,
+        "gate_margin": 0.98,
+        "official_confidence": 0.99,
+        "probabilities": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.99,
+          "3": 0.01,
+          "4": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 1452.842,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 329,
+      "output_tokens": 17
+    },
+    {
+      "id": "rot-1-clean",
+      "group": "context_rot",
+      "kind": "noul",
+      "pair": "rot-1",
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.98,
+        "gate_topprob": 0.98,
+        "probability": 0.98,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1344.577,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 284,
+      "output_tokens": 20
+    },
+    {
+      "id": "rot-1-padded",
+      "group": "context_rot",
+      "kind": "noul",
+      "pair": "rot-1",
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.96,
+        "gate_topprob": 0.96,
+        "probability": 0.96,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1364.571,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 636,
+      "output_tokens": 20
+    },
+    {
+      "id": "rot-2-clean",
+      "group": "context_rot",
+      "kind": "noul",
+      "pair": "rot-2",
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.98,
+        "gate_topprob": 0.98,
+        "probability": 0.98,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1347.567,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 291,
+      "output_tokens": 20
+    },
+    {
+      "id": "rot-2-padded",
+      "group": "context_rot",
+      "kind": "noul",
+      "pair": "rot-2",
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.96,
+        "gate_topprob": 0.96,
+        "probability": 0.96,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1382.895,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 537,
+      "output_tokens": 20
+    },
+    {
+      "id": "con-1",
+      "group": "contradictory",
+      "kind": "choice",
+      "pair": null,
+      "expected": "billing",
+      "signals": {
+        "kind": "choice",
+        "predicted": "network",
+        "gate_primary": 0.04,
+        "gate_topprob": 0.52,
+        "gate_margin": 0.040000000000000036,
+        "official_confidence": 0.04,
+        "probabilities": {
+          "billing": 0.48,
+          "network": 0.52
+        },
+        "correct": false
+      },
+      "latency_ms": 1404.271,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 390,
+      "output_tokens": 31
+    },
+    {
+      "id": "con-2",
+      "group": "contradictory",
+      "kind": "choice",
+      "pair": null,
+      "expected": "refund",
+      "signals": {
+        "kind": "choice",
+        "predicted": "refund",
+        "gate_primary": 0.85,
+        "gate_topprob": 0.9,
+        "gate_margin": 0.8,
+        "official_confidence": 0.85,
+        "probabilities": {
+          "credit": 0.0,
+          "refund": 0.9,
+          "billing_adjustment": 0.1
+        },
+        "correct": true
+      },
+      "latency_ms": 1326.64,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 365,
+      "output_tokens": 41
+    },
+    {
+      "id": "con-3",
+      "group": "contradictory",
+      "kind": "noul",
+      "pair": null,
+      "expected": false,
+      "signals": {
+        "kind": "noul",
+        "predicted": false,
+        "gate_primary": 0.92,
+        "gate_topprob": 0.92,
+        "probability": 0.08,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1386.827,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 332,
+      "output_tokens": 20
+    },
+    {
+      "id": "con-4",
+      "group": "contradictory",
+      "kind": "noul",
+      "pair": null,
+      "expected": false,
+      "signals": {
+        "kind": "noul",
+        "predicted": false,
+        "gate_primary": 0.97,
+        "gate_topprob": 0.97,
+        "probability": 0.03,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1421.08,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 307,
+      "output_tokens": 20
+    },
+    {
+      "id": "con-5",
+      "group": "contradictory",
+      "kind": "noul",
+      "pair": null,
+      "expected": false,
+      "signals": {
+        "kind": "noul",
+        "predicted": false,
+        "gate_primary": 0.5900000000000001,
+        "gate_topprob": 0.5900000000000001,
+        "probability": 0.41,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1327.767,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 319,
+      "output_tokens": 20
+    },
+    {
+      "id": "con-6",
+      "group": "contradictory",
+      "kind": "choice",
+      "pair": null,
+      "expected": "product",
+      "signals": {
+        "kind": "choice",
+        "predicted": "product",
+        "gate_primary": 0.9,
+        "gate_topprob": 0.95,
+        "gate_margin": 0.8999999999999999,
+        "official_confidence": 0.9,
+        "probabilities": {
+          "account": 0.05,
+          "product": 0.95
+        },
+        "correct": true
+      },
+      "latency_ms": 1309.143,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 360,
+      "output_tokens": 31
+    },
+    {
+      "id": "clear-5",
+      "group": "clear",
+      "kind": "choice",
+      "pair": null,
+      "expected": "product",
+      "signals": {
+        "kind": "choice",
+        "predicted": "product",
+        "gate_primary": 1.0,
+        "gate_topprob": 1.0,
+        "gate_margin": 1.0,
+        "official_confidence": 1.0,
+        "probabilities": {
+          "product": 1.0,
+          "network": 0.0,
+          "account": 0.0,
+          "billing": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 1384.075,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 378,
+      "output_tokens": 45
+    },
+    {
+      "id": "clear-6",
+      "group": "clear",
+      "kind": "choice",
+      "pair": null,
+      "expected": "billing",
+      "signals": {
+        "kind": "choice",
+        "predicted": "billing",
+        "gate_primary": 1.0,
+        "gate_topprob": 1.0,
+        "gate_margin": 1.0,
+        "official_confidence": 1.0,
+        "probabilities": {
+          "network": 0.0,
+          "billing": 1.0,
+          "product": 0.0,
+          "account": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 1456.776,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 377,
+      "output_tokens": 45
+    },
+    {
+      "id": "neg-5",
+      "group": "negation",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.93,
+        "gate_topprob": 0.93,
+        "probability": 0.93,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1413.463,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 296,
+      "output_tokens": 20
+    },
+    {
+      "id": "neg-6",
+      "group": "negation",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.93,
+        "gate_topprob": 0.93,
+        "probability": 0.93,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 4333.313,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 286,
+      "output_tokens": 20
+    },
+    {
+      "id": "ind-5",
+      "group": "indirection",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.95,
+        "gate_topprob": 0.95,
+        "probability": 0.95,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1467.521,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 327,
+      "output_tokens": 20
+    },
+    {
+      "id": "ind-6",
+      "group": "indirection",
+      "kind": "noul",
+      "pair": null,
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.94,
+        "gate_topprob": 0.94,
+        "probability": 0.94,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1628.336,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 313,
+      "output_tokens": 20
+    },
+    {
+      "id": "num-5",
+      "group": "numeric",
+      "kind": "score",
+      "pair": null,
+      "expected": "1008",
+      "signals": {
+        "kind": "score",
+        "predicted": "1008",
+        "raw_score": 2.01,
+        "gate_primary": 0.98,
+        "gate_topprob": 0.98,
+        "gate_margin": 0.96,
+        "official_confidence": 0.98,
+        "probabilities": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.98,
+          "3": 0.02,
+          "4": 0.0
+        },
+        "correct": true
+      },
+      "latency_ms": 1379.47,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 344,
+      "output_tokens": 17
+    },
+    {
+      "id": "num-6",
+      "group": "numeric",
+      "kind": "score",
+      "pair": null,
+      "expected": "59",
+      "signals": {
+        "kind": "score",
+        "predicted": "58",
+        "raw_score": 1.49,
+        "gate_primary": 0.55,
+        "gate_topprob": 0.61,
+        "gate_margin": 0.38,
+        "official_confidence": 0.55,
+        "probabilities": {
+          "0": 0.15,
+          "1": 0.23,
+          "2": 0.61,
+          "3": 0.01,
+          "4": 0.0
+        },
+        "correct": false
+      },
+      "latency_ms": 1402.679,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 346,
+      "output_tokens": 17
+    },
+    {
+      "id": "rot-3-clean",
+      "group": "context_rot",
+      "kind": "noul",
+      "pair": "rot-3",
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.97,
+        "gate_topprob": 0.97,
+        "probability": 0.97,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 1314.102,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 289,
+      "output_tokens": 20
+    },
+    {
+      "id": "rot-3-padded",
+      "group": "context_rot",
+      "kind": "noul",
+      "pair": "rot-3",
+      "expected": true,
+      "signals": {
+        "kind": "noul",
+        "predicted": true,
+        "gate_primary": 0.97,
+        "gate_topprob": 0.97,
+        "probability": 0.97,
+        "official_confidence": null,
+        "correct": true
+      },
+      "latency_ms": 2369.479,
+      "attempts": 1,
+      "model": "jev-1.13.0",
+      "input_tokens": 544,
+      "output_tokens": 20
+    }
+  ],
+  "decomposition": {
+    "usage": {
+      "input_tokens": 9074,
+      "output_tokens": 3761
+    },
+    "count": 6,
+    "argmax_accuracy": 1.0,
+    "mean_rank_of_expected": 1.0,
+    "rows": [
+      {
+        "id": "dec-1",
+        "expected": 115,
+        "argmax": 115,
+        "argmax_correct": true,
+        "probability_at_expected": 0.99,
+        "rank_of_expected": 1,
+        "candidates": 32
+      },
+      {
+        "id": "dec-2",
+        "expected": 42,
+        "argmax": 42,
+        "argmax_correct": true,
+        "probability_at_expected": 0.94,
+        "rank_of_expected": 1,
+        "candidates": 32
+      },
+      {
+        "id": "dec-3",
+        "expected": 67,
+        "argmax": 67,
+        "argmax_correct": true,
+        "probability_at_expected": 0.93,
+        "rank_of_expected": 1,
+        "candidates": 32
+      },
+      {
+        "id": "dec-4",
+        "expected": 24,
+        "argmax": 24,
+        "argmax_correct": true,
+        "probability_at_expected": 0.99,
+        "rank_of_expected": 1,
+        "candidates": 32
+      },
+      {
+        "id": "dec-5",
+        "expected": 1008,
+        "argmax": 1008,
+        "argmax_correct": true,
+        "probability_at_expected": 1.0,
+        "rank_of_expected": 1,
+        "candidates": 32
+      },
+      {
+        "id": "dec-6",
+        "expected": 59,
+        "argmax": 59,
+        "argmax_correct": true,
+        "probability_at_expected": 0.98,
+        "rank_of_expected": 1,
+        "candidates": 32
+      }
+    ]
+  },
+  "finished_at": "2026-09-18T09:13:13.905629+00:00",
+  "models": {
+    "jev-1.13.0": 1
+  },
+  "metrics": {
+    "completed": 36,
+    "errors": 0,
+    "accuracy": 0.9444444444444444,
+    "groups": {
+      "clear": {
+        "count": 6,
+        "accuracy": 1.0,
+        "mean_gate": 0.995,
+        "wrong": []
+      },
+      "negation": {
+        "count": 6,
+        "accuracy": 1.0,
+        "mean_gate": 0.91,
+        "wrong": []
+      },
+      "indirection": {
+        "count": 6,
+        "accuracy": 1.0,
+        "mean_gate": 0.9433333333333334,
+        "wrong": []
+      },
+      "numeric": {
+        "count": 6,
+        "accuracy": 0.8333333333333334,
+        "mean_gate": 0.9166666666666666,
+        "wrong": [
+          "num-6"
+        ]
+      },
+      "context_rot": {
+        "count": 6,
+        "accuracy": 1.0,
+        "mean_gate": 0.9700000000000001,
+        "wrong": []
+      },
+      "contradictory": {
+        "count": 6,
+        "accuracy": 0.8333333333333334,
+        "mean_gate": 0.7116666666666668,
+        "wrong": [
+          "con-1"
+        ]
+      }
+    },
+    "gates": {
+      "gate_primary": [
+        {
+          "threshold": 0.5,
+          "coverage": 0.9722222222222222,
+          "accepted_count": 35,
+          "accepted_accuracy": 0.9714285714285714,
+          "escalated_count": 1,
+          "escalated_wrong": 1,
+          "escalation_precision": 1.0,
+          "errors_caught": 1,
+          "error_catch_rate": 0.5,
+          "accepted_error_count": 1
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.9166666666666666,
+          "accepted_count": 33,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 3,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.6666666666666666,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.9166666666666666,
+          "accepted_count": 33,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 3,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.6666666666666666,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.9166666666666666,
+          "accepted_count": 33,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 3,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.6666666666666666,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.85,
+          "coverage": 0.8888888888888888,
+          "accepted_count": 32,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 4,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.5,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.8333333333333334,
+          "accepted_count": 30,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 6,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.3333333333333333,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.95,
+          "coverage": 0.5833333333333334,
+          "accepted_count": 21,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 15,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.13333333333333333,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        }
+      ],
+      "gate_topprob": [
+        {
+          "threshold": 0.5,
+          "coverage": 1.0,
+          "accepted_count": 36,
+          "accepted_accuracy": 0.9444444444444444,
+          "escalated_count": 0,
+          "escalated_wrong": 0,
+          "escalation_precision": null,
+          "errors_caught": 0,
+          "error_catch_rate": 0.0,
+          "accepted_error_count": 2
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.9444444444444444,
+          "accepted_count": 34,
+          "accepted_accuracy": 0.9705882352941176,
+          "escalated_count": 2,
+          "escalated_wrong": 1,
+          "escalation_precision": 0.5,
+          "errors_caught": 1,
+          "error_catch_rate": 0.5,
+          "accepted_error_count": 1
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.9166666666666666,
+          "accepted_count": 33,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 3,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.6666666666666666,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.9166666666666666,
+          "accepted_count": 33,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 3,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.6666666666666666,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.85,
+          "coverage": 0.8888888888888888,
+          "accepted_count": 32,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 4,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.5,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.8611111111111112,
+          "accepted_count": 31,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 5,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.4,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        },
+        {
+          "threshold": 0.95,
+          "coverage": 0.6111111111111112,
+          "accepted_count": 22,
+          "accepted_accuracy": 1.0,
+          "escalated_count": 14,
+          "escalated_wrong": 2,
+          "escalation_precision": 0.14285714285714285,
+          "errors_caught": 2,
+          "error_catch_rate": 1.0,
+          "accepted_error_count": 0
+        }
+      ]
+    },
+    "context_rot_pairs": [
+      {
+        "pair": "rot-1",
+        "clean_correct": true,
+        "padded_correct": true,
+        "clean_gate": 0.98,
+        "padded_gate": 0.96,
+        "gate_drop": 0.020000000000000018,
+        "degraded": false
+      },
+      {
+        "pair": "rot-2",
+        "clean_correct": true,
+        "padded_correct": true,
+        "clean_gate": 0.98,
+        "padded_gate": 0.96,
+        "gate_drop": 0.020000000000000018,
+        "degraded": false
+      },
+      {
+        "pair": "rot-3",
+        "clean_correct": true,
+        "padded_correct": true,
+        "clean_gate": 0.97,
+        "padded_gate": 0.97,
+        "gate_drop": 0.0,
+        "degraded": false
+      }
+    ],
+    "latency_ms": {
+      "mean": 1738.5859722222222,
+      "p50": 1409.1085,
+      "max": 5680.037
+    },
+    "usage": {
+      "input_tokens": 12592,
+      "output_tokens": 895
+    }
+  }
+}
