@@ -432,6 +432,23 @@ GitHub 上以 `jev typesafe` 搜索，在 2026 年 9 月 18 日已经出现数�
 
 README 中明确说明，7 秒航班 demo 只是一个任务、一个浏览器配置下的少量重复实验，不是通用可靠性基准。这种对证据边界的说明比单纯展示视频更可信。
 
+2026 年 9 月 18 日用仓库代码做了本地复测：离线测试 31/31 通过；在自带酒店页面上，依次选择 `Design`、勾选免费取消、打开 Casa Flora，连续 3/3 次通过独立页面核验，每次 3 个动作、4 次 Jev 判断，模型循环耗时 1.3–2.7 秒（不含初始页面观察）。但在 Wikipedia 首页做两项不同的链接导航，均未完成：一次判断为阻塞，另一次误点图片链接后阻塞。样本极少，不能估算总体成功率，却说明受控页面成功不等于真实网站可靠。当前只有 Jev 密钥，没有文本模型密钥，未复测需填写城市的航班任务。
+
+尝试让 `jev-ultrafast` 直接继续 X 调研时，其连接的 Chrome 会话被 X 重定向至登录页，Jev 返回 `BLOCKED`，没有读取帖子或执行账号操作。下面的新线索改由已有登录态的浏览器读取 X，再核对公开仓库；不把它们说成 `jev-ultrafast` 自主发现的结果。
+
+### 后续 X 线索：产品接入与本地替代
+
+以下项目均有实际代码，但仓库说明和评测数字仍主要来自作者，不能直接推断生产效果。
+
+| 项目 | 实际接入点 | 可核对的边界 |
+| --- | --- | --- |
+| [skill-router](https://github.com/lomeshdutta/skill-router) | 在 Claude Code 会话开始时，用 Jev 从已安装技能中选一个，或判断应查找新技能 | 作者报告已安装技能目标 9/10 命中；另一环境的复核发现运行缺陷并已修复，Jev 中位延迟约 5 秒，不能假定处处低于 1 秒。不会自行安装技能。[作者原帖](https://x.com/lomeshdutta/status/2100833655518367871) |
+| [Jev Search](https://github.com/superagents-lab/jev-search) | Jev 选择搜索来源、时间范围、查询词，并对 Search1API 返回的标题和摘要逐项评分 | 是搜索路由与结果排序，不是知识库，也不验证页面事实；页面明确提示相关性百分比不是准确率。搜索和评分分别消耗第三方 API。[作者原帖](https://x.com/fatwang2ai/status/2100653998378516518) |
+| [Verdict / OpenJev](https://github.com/Heman10x-NGU/Verdict-open-jev) | 基于 151M 参数 ModernBERT/GLiClass 的本地 Choice、Score、Noul 实现，提供权重、代码和评测报告 | 不是 TypeSafe Jev 的权重或等价复现。作者报告在一个 1000 例测试集上 95% 准确率，但 85% 置信门槛以上仍有 10 个错误；其报告中的温度校准反而令该集 ECE 从 0.0113 升至 0.0335、Brier 从 0.0756 升至 0.0785，不能称概率已普遍可靠。[作者原帖](https://x.com/heman10x/status/2100836659533336676) |
+| [Parallel Constrained Decoding](https://github.com/stephanj/parallelConstraintDecoding) | 使用 Java、llama.cpp 和本地 GGUF 模型，以并行约束解码填充多个布尔/枚举字段 | 作者给出与同一模型逐 token JSON 生成的延迟对照；这证明一种输出/解码策略可复现，不证明与 Jev 的跨任务判断质量相同。[社区转发](https://x.com/Devoxx/status/2100824445409427734) |
+
+这批项目提示两个更具体的验证方向：一是对“选择技能、来源、动作”的系统同时测候选召回和后续任务成功率；二是用相同样本和硬件对比 Jev、本地编码器、本地约束解码，重点看拒答后的错误率、校准和端到端成本，而不是只比较 JSON 形状或单次延迟。
+
 ### Fast Jev Compaction
 
 该项目没有让 Jev 重新生成摘要，而是保持用户和助手文本原样，只判断历史工具调用及其结果是否仍需保留。
