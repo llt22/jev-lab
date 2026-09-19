@@ -1,0 +1,87 @@
+{
+  "captured_at": "2026-09-19 11:10 CST（登录态浏览器，空间 Jev round4 X research 关闭后新开空间 7）",
+  "topic": "Theo 对 fast-jev-compaction 式上下文压缩策略的批评（用户转述后核实）",
+  "threads": [
+    {
+      "original_criticism": {
+        "by": "Theo - t3.gg @theo",
+        "time": "2026-09-17T21:13:04Z",
+        "link": "https://x.com/theo/status/2100762304862384257",
+        "full_text_en": "This is a bad compaction strategy that fundamentally misunderstands how compaction and context management work... 1. Compaction is not a filter... 2. Jev doesn't even know what it's deciding! ... 3. You completely give up reasoning ... 4. Models are tuned on their compaction process ... 5. Cache writes are more expensive than cache reads ... 6. This implementation is just garbage. 'Whatever is not preserved gets permanently deleted, but the assistant can always re-run a tool or re-read a file.' Good luck.",
+        "six_points": [
+          "压缩不是过滤器：应在上下文过长时谨慎使用，而不是持续删除保持简短",
+          "Jev 不知道自己在决定什么：32k 上下文模型对早期历史知之甚少；逐行/逐调用决策、甚至看不到工具调用结果，随机删除会让 agent 陷入'愚蠢循环'重犯错误",
+          "完全放弃推理过程：OpenAI/Anthropic/xAI/Google 前沿模型推理轨迹加密共享，Jev 看不到且常被丢弃；Anthropic 要求保留完整历史才能获得任何推理数据，Claude Code 中使用此策略'保证模型变得非常愚蠢'",
+          "模型在其压缩流程上被调优：前沿实验室已把压缩与长运行纳入训练，原生压缩优于临时方案",
+          "缓存写入比读取昂贵：cache write 常超 LLM 总支出 60%；历史前部变化导致后续全部缓存失效重写；删除中间项后必须重写后续所有项，比保留更贵",
+          "永久删除默认'可重新运行工具或重读文件'是危险的"
+        ],
+        "concession": "作者承认：'这是一个很酷的实验，我确实觉得它有趣。但如果你认为这种基于概率阈值的过滤是压缩策略，我强烈建议使用 Claude Code/Codex 默认设置，那样更不容易伤害自己。'"
+      }
+    },
+    {
+      "author_response": {
+        "by": "tamara @tamarajtran（fast-jev-compaction 作者）",
+        "time": "2026-09-18T02:09:07Z",
+        "link": "https://x.com/tamarajtran/status/2100769054789378301",
+        "text": "谢谢你的帖子！完全理解，但我在这些观点上不同意：状态在每次压缩请求中都被保留，工具请求和工具调用通过 ID 匹配，因此模型对实际相关/不相关的部分有上下文。"
+      }
+    },
+    {
+      "theo_counter": [
+        {
+          "by": "Theo @theo",
+          "time": "2026-09-18T02:13:49Z",
+          "link": "https://x.com/theo/status/2100770236329062518",
+          "text": "'工具调用通过 ID 匹配，因此模型对实际相关/不相关的内容有上下文'——遗憾的是，对于 Anthropic 模型来说这不再是事实，而且其他实验室很可能也会发生变化。",
+          "ref": "https://support.claude.com/en/articles/16761192-preserved-thinking-changing-how-the-messages-api-handles-thinking-blocks-to-protect-against-distillation"
+        },
+        {
+          "by": "Theo @theo",
+          "time": "2026-09-18T02:23:50Z",
+          "link": "https://x.com/theo/status/2100772756040430029",
+          "text": "无论是运行压缩的模型还是压缩后运行的模型都无法再访问推理功能了 🙃"
+        },
+        {
+          "by": "Theo @theo",
+          "time": "2026-09-18T01:44:10Z",
+          "link": "https://x.com/theo/status/2100762775668805960",
+          "text": "这里真正有趣的想法不是'更好的压缩'。更好的问题是'如果 LLM 从来不需要考虑 KV 缓存会怎样？'这就是 Diogo 在回复中暗示的。不确定会不会有进展，但至少有趣。"
+        },
+        {
+          "by": "Theo @theo",
+          "time": "2026-09-18T02:38:27Z",
+          "link": "https://x.com/theo/status/2100776434210058570",
+          "text": "我的帖子中没有任何内容与 Jev 有关。这只是关于代理和压缩是如何工作的。"
+        }
+      ]
+    },
+    {
+      "second_hand": [
+        {
+          "by": "Stephen Brouhard @ssbrouhard",
+          "time": "2026-09-19T00:39:09Z",
+          "link": "https://x.com/ssbrouhard/status/2101108801470410923",
+          "text": "Excellent explanation of why NOT to implement this viral compaction strategy with @typesafeai Jev by @theo. Maybe some form of it can be implemented in the future but this isnt it."
+        },
+        {
+          "by": "asksurf.ai/pulse（20 hours ago）",
+          "link": "https://asksurf.ai/pulse/zh/coding-agent-context-compression-vs-trimming",
+          "text": "按概率剪 tool call 容易漏掉关键细节让 agent 反复转圈；模型自己压缩能留住完整尝试、结果和推理链；大改历史会破坏 prompt caching，长跑 agent 成本容易失控。"
+        }
+      ]
+    },
+    {
+      "implementation": {
+        "repo": "https://github.com/tamaratran/fast-jev-compaction",
+        "stars_at_capture": "3.3k（yibie 09-18 生态帖记录 3,169 → 09-19 抓取 3.3k）",
+        "how_it_works": [
+          "每个 tool_use 通过 tool_use_id 与 tool_result 配对；首条消息或最新 preserveRecentMessages 内的调用被固定永不触碰",
+          "发送给 Jev 的状态是完整对话（最旧在前），每个工具结果替换为短注记（如 ok, 4213 chars (omitted)）；工具输入保留、文本保留、不做任何摘要",
+          "状态拟合进 maxStateTokens（默认 25k），分阶段应用，仅当……（概率阈值的阶段判定）",
+          "只删除 Jev 判定不再需要的工具调用与结果；用户与助手文本原样保留顺序。也作为 npm 库可用"
+        ]
+      }
+    }
+  ]
+}
