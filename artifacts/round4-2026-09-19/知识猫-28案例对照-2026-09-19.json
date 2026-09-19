@@ -1,0 +1,54 @@
+{
+  "captured_at": "2026-09-19 13:30 CST（ego-browser 登录态抓取）",
+  "source_thread": {
+    "by": "知识猫AI实验室 @GeekCatX",
+    "origin_post": "https://x.com/GeekCatX/status/2100956459580395585（28 种玩法清单，2026-09-18 14:33 UTC）",
+    "summary_post": "https://x.com/GeekCatX/status/2101007181823045930（归成 8 个方向，2026-09-18 17:55 UTC）"
+  },
+  "eight_directions": {
+    "text": "28 个 Jev 应用 case 归成 8 个方向：",
+    "directions": [
+      {"d": "Agent 调度", "note": "选择模型、工具和 Skill，判断直接处理/交更强模型/转人工；价值在减少无效调用和等待"},
+      {"d": "记忆与上下文管理", "note": "筛选历史记录、重排检索结果、判断哪些材料适合当前任务；区分'内容相似'和'此刻适用'"},
+      {"d": "代码与软件质量检查", "note": "PR 审查、代码评分、QA 测试；更实用形态是找出值得追加检查的地方再让测试/编码模型/人类确认"},
+      {"d": "浏览器与电脑操作", "note": "Browser Use、iOS 模拟器、鼠标绘图；把当前状态转成有限动作候选再选下一步；效果仍依赖感知/规划/执行组件"},
+      {"d": "业务分流与内容审核", "note": "客服工单、用户意图识别、社区审核、人工复核排序；调用频繁、流程明确、结果易检查——商业落地最扎实的一类"},
+      {"d": "搜索与数据处理", "note": "自然语言筛选、实体匹配、图提取、SQL 条件扩展；适合难以穷举成关键词规则但能用具体案例说明的条件"},
+      {"d": "实时交互辅助", "note": "会议观察、即时建议、自动补全、预测启动器、Emoji 候选；核心是判断'现在需要提供什么帮助'，成败取决于误打扰率"},
+      {"d": "游戏与复杂控制实验", "note": "Minecraft、自动驾驶、交易演示；展示探索空间，但演示成功距离长期可靠运行还有很长验证过程"}
+    ],
+    "prediction": "最先规模化的会是 Agent 调度、业务分流、记忆筛选和质量检查——共同点：判断高频发生、候选范围有限、需要理解语境、错误可发现可补救。",
+    "philosophy": "后期维特根斯坦：理解语言要看它在具体活动中的使用。同一个'紧急'在客服/会议/代码故障里对应不同处理方式。Jev 的机会是让软件处理更多依赖语境的小判断，产品积累会是业务标准、边界案例与持续纠错能力。"
+  },
+  "twenty_eight_cases": [
+    {"n": 1, "name": "模型路由", "by": "mdlahfir/KissonL/eve", "covered_in_jev_lab": "是（agent-control 模型路由实验、LangChain ModelRouterMiddleware、Antonio Leiva 缓存实测）"},
+    {"n": 2, "name": "实时控制浏览器", "by": "moritzkremb", "covered_in_jev_lab": "是（round4 补充 §9 语音控制家族）"},
+    {"n": 3, "name": "记忆路由", "by": "moritzkremb/status/2100566009312940457", "covered_in_jev_lab": "否（新核实）", "detail": "用 Jev 改进自定义记忆系统：令牌减少 94%，记忆检索快 2–3 倍（快速测试）"},
+    {"n": 4, "name": "PR 审查", "by": "redp314", "covered_in_jev_lab": "是（round5 §一.5，14 检查约 $0.00007/0.5s）"},
+    {"n": 5, "name": "Discord 审核", "by": "brainstormity/status/2100471987860553931", "covered_in_jev_lab": "否（新核实）", "detail": "Jev-Moderation-Bot（开源）：四阶段渐进升级（警告私信→10 分钟超时→1 小时超时）、双重审计日志（服务器+日志频道）、管理员两步确认、一键赦免即时学习"},
+    {"n": 6, "name": "Browser Use", "by": "VladTerin", "covered_in_jev_lab": "是（Cline jev-browser、BrowseGPT）"},
+    {"n": 7, "name": "任意语言语法高亮", "by": "imarikchakma/status/2100587614927741435", "covered_in_jev_lab": "否（新核实）", "detail": "终极语法高亮器：可高亮任何语言，甚至自造语言"},
+    {"n": 8, "name": "AI 文本检测", "by": "Totzenberger/status/2100575503061004579", "covered_in_jev_lab": "否（新核实）", "detail": "AI 文本检测器：比 pangram 便宜 6000 倍，性能相当且快得多"},
+    {"n": 9, "name": "货币和股票交易", "by": "BrendanPlayford", "covered_in_jev_lab": "部分（jev-trader、Jarrod Watts trading agent 在 round4 主报告；该帖未单独核实）"},
+    {"n": 10, "name": "超快 Computer Use", "by": "milindlabs/trycua/awlevin", "covered_in_jev_lab": "是（round4 主报告 §3 CUA-S1）"},
+    {"n": 11, "name": "实时 AI 建议", "by": "ctnicholasdev/status/2100611346203353110", "covered_in_jev_lab": "否（新核实）", "detail": "表格编辑时每次单元格变更跑 20+ 智能检查即时警告，无需 LLM"},
+    {"n": 12, "name": "自动补全", "by": "miiura/status/2100615772053877164", "covered_in_jev_lab": "否（新核实）", "detail": "无需等回车：Jev 输入时理解意图和参数，就绪即提前执行函数调用"},
+    {"n": 13, "name": "代码质量打分", "by": "niazmorshed_/status/2100465662867218857", "covered_in_jev_lab": "否（新核实）", "detail": "jev-review：本地优先 MCP 插件，编码代理工作时调用 Jev 获得跨指标评分→改进→循环"},
+    {"n": 14, "name": "QA 测试", "by": "krzysztof_moch/status/2100513641556549700", "covered_in_jev_lab": "否（新核实）", "detail": "用 Jev 当 QA 测试员"},
+    {"n": 15, "name": "玩《我的世界》", "by": "JustLingonberry/status/2100081351508767003", "covered_in_jev_lab": "否（新核实）", "detail": "1 美分玩 2 分钟（150k tokens），自动知道夜幕降临时躲僵尸，无需提示"},
+    {"n": 16, "name": "iOS 模拟器控制", "by": "camsoft2000", "covered_in_jev_lab": "否（未单独核实；电脑操作类目）"},
+    {"n": 17, "name": "图提取", "by": "yoheinakajima/status/2100674306405814568", "covered_in_jev_lab": "否（新核实）", "detail": "babyAGI 作者 Yohei Nakajima：语义重要性逐词打分（1–5）+ 相关词 ID 标签 → 高分词唯一列表 → 知识图"},
+    {"n": 18, "name": "胡说八道禁言麦克风", "by": "Sybuilds/status/2100417692096459074", "covered_in_jev_lab": "否（新核实）", "detail": "Jev 启用的麦克风：胡说八道时自动静音（演示）"},
+    {"n": 19, "name": "上下文即时压缩", "by": "tamarajtran", "covered_in_jev_lab": "是（round4 补充 §7 Theo 批评专题）"},
+    {"n": 20, "name": "预测启动器", "by": "dabit3", "covered_in_jev_lab": "是（round5 §二 jev-launcher）"},
+    {"n": 21, "name": "自然语言 PQ 搜索", "by": "iam_zachi/status/2100679300756435135", "covered_in_jev_lab": "否（新核实）", "detail": "jev()：PostgreSQL 扩展，自然语言搜全库，无索引无嵌入；129 行约 1 秒 $0.0009，二次运行 6ms 缓存"},
+    {"n": 22, "name": "基于 Jev 的编程语言", "by": "southpolesteve/status/2100767781868150938", "covered_in_jev_lab": "否（新核实）", "detail": "Probably 语言：Jev 嵌入语言中——feels 提出问题、match 在描述间路由、while 持续直到'不再感觉正确'；Jev 决策 + LLM 写作 + 代码拼接（明确自称玩具）"},
+    {"n": 23, "name": "Excalidraw 鼠标绘图", "by": "VladTerin", "covered_in_jev_lab": "否（帖子无正文可抓）"},
+    {"n": 24, "name": "Emoji 候选", "by": "riku720720/status/2100705558512963602", "covered_in_jev_lab": "否（新核实）", "detail": "实时 Emoji 候选 100–200ms 响应；选项 3 种或 200 种响应速度不变——fan-out 并行性的又一佐证"},
+    {"n": 25, "name": "机筛简历（官方案例）", "by": "docs.typesafe.ai/patterns/composite-scoring", "covered_in_jev_lab": "部分（Composite Scoring 模式已记录；官方案例细节未展开）"},
+    {"n": 26, "name": "实时会议观察", "by": "tsuyoshi_osiire/status/2100734646824902713", "covered_in_jev_lab": "否（新核实）", "detail": "会议传感器：每次发言更新 探索↔收束、解消↔未决、未合意↔合意 三维度，可视化会议状况；可用于用户访谈实时解析"},
+    {"n": 27, "name": "特斯拉自动驾驶", "by": "jpschroeder/status/2100347770867458384", "covered_in_jev_lab": "否（新核实）", "detail": "'我和 Jev 一小时内重建特斯拉 FSD'（概念 demo 级）"},
+    {"n": 28, "name": "筛选 SQL 扩展", "by": "iam_zachi/status/2100700176444731780", "covered_in_jev_lab": "否（新核实）", "detail": "SQL 扩展：普通英语转 WHERE 子句，逐行判断，无索引无嵌入"}
+  ],
+  "gap_summary": "对照两份 jev-lab 报告，28 条中约 13 条明确未覆盖（n=3,5,7,8,11,12,13,14,15,17,18,21,22,24,26,27,28 及 16/23 未核实），按知识猫 8 方向归类：漏得最集中的是'实时交互辅助'（会议观察/即时建议/自动补全/Emoji 全漏）与'搜索与数据处理'（图提取/PQ 搜索/SQL 扩展全漏），'代码与软件质量检查'（代码打分/QA 漏），'游戏与复杂控制实验'（Minecraft/自动驾驶漏）。已覆盖的主要集中在 Agent 调度、浏览器与电脑操作、压缩、业务分流。"
+}

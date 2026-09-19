@@ -37,6 +37,7 @@ curl --fail-with-body --silent --show-error \
 | [第四轮调研](docs/jev-round4-2026-09-19.md) | 三家独立第三方实测、TechCrunch 主流报道、开源 System One 家族 CUA-S1、生态同名组织风险 |
 | [第四轮·补充](docs/jev-round4-supplement-2026-09-19.md) | 官方文档增量（Language support / PATTERNS / evals 表）、$40M 融资事实、Vercel / LangChain / OpenRouter 平台化接入、Vercel 13% 采纳数据纠偏 |
 | [第五轮调研](docs/jev-round5-2026-09-19.md) | 别人正在拿 Jev 干什么：医疗/DevOps/ERP/内容评分/PR/语音控制等一手使用案例与聚合站 |
+| [第五轮·补充](docs/jev-round5-supplement-2026-09-19.md) | 知识猫 28 案例逐条对照审计：实时交互辅助、搜索/数据处理、代码质量等约 14 个漏网案例核实 |
 
 原始产物在 `artifacts/`，数据集在 `evals/`，评测脚本在 `scripts/`，单元测试在 `tests/`。
 
