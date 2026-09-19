@@ -1,0 +1,32 @@
+{
+  "captured_at": "2026-09-19 12:00 CST（ego-browser 直接抓取）",
+  "url": "https://www.spritefusion.com/blog/generating-game-level-in-real-time-with-jev",
+  "author": "Hugo Duprez（Sprite Fusion），2026-09-18",
+  "hn": "Show HN: Using Jev to generate game levels in real time (item 49754951)，发布 12 小时后 4 分 1 评论",
+  "one_liner": "把'下一块地形'变成选择题：快照游戏状态 + 示例地形发给 Jev，一次请求并行回答 4 个 Choice 问题，代码按答案摆放方块。",
+  "mechanism": {
+    "state": "玩家位置/速度/着地/冲刺状态 JSON + 当前地形块布局 + 示例关卡（few-shot）",
+    "questions": [
+      {"q": "表面类型", "options": ["Solid roof（实心屋顶）", "One-way ledge（单向浮台）"]},
+      {"q": "宽度", "options": ["2", "3", "5", "块"]},
+      {"q": "前方间隔", "options": ["0", "1", "2", "块"]},
+      {"q": "高度", "options": ["第 4–9 行"]}
+    ],
+    "example_response": [
+      {"surface": 1, "type": "Ledge", "width": "2 blocks", "gap": "None", "height": "Row 5"},
+      {"surface": 2, "type": "Ledge", "width": "3 blocks", "gap": "1 block", "height": "Row 6"},
+      {"surface": 3, "type": "Ledge", "width": "5 blocks", "gap": "2 blocks", "height": "Row 5"},
+      {"surface": 4, "type": "Solid roof", "width": "2 blocks", "gap": "None", "height": "Row 4"}
+    ],
+    "execution": "代码按答案摆放方块与间隔；Jev 只做决策，生成器做摆放；候选集由开发者预定义（表达空间受限，换可控性/实时性/成本）"
+  },
+  "measurements": {
+    "requests": 5,
+    "jev_api_latency": "319–375 ms",
+    "est_cost_per_request": "$0.00057",
+    "est_total_demo_cost": "$0.00286",
+    "author_note": "'It's not sub-100ms latency nor free but interesting enough to pay attention for games.'；作者实测延迟稳定"
+  },
+  "tech_stack": "Sprite Fusion 像素美术渲染 + PhaserJS + Codex（Astra）写代码",
+  "relation": "与官方 Doom demo 同模式：Jev 每 tick 收到结构化状态、选择动作，内容生成器负责执行；官方 use-case map 把 Gaming 列入 Real-time applications（150ms 口径），作者实测 319–375ms 全请求（比官方模型侧口径差一个量级，符合'端到端 vs 模型侧'之分）"
+}

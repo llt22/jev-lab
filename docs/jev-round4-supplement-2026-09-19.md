@@ -149,6 +149,18 @@ COOKBOOKS（Self-consistency、Batching、Extraction、Classification）与 Demo
 - [@ckaraca](https://x.com/ckaraca/status/2101120780696174712)（09-19）：Composio、vercel/ai、rig、Phoenix 均已上线 Jev 集成，"列表超过 100，每周按 star 重排"（作者自报，未逐项核验）。
 - 民间渠道已领先官方：多位用户指出可直接走 OpenRouter / Vercel AI Gateway 绕过 waitlist；waitlist 通过后**自动获得 $5 额度**（[@takashimaya_dev](https://x.com/takashimaya_dev/status/2101131314313470397)、[@gosrum](https://x.com/gosrum/status/2101131109245632784) 实测）。结合 TechCrunch 的"API 一度不可用"，**更合理的解释是容量受限而非准入控制**。
 
+### 3.4 Cline 官方 jev-browser 插件（首个 Jev 驱动的开源浏览器 harness）
+
+[cline/plugins → plugins/jev-browser](https://github.com/cline/plugins/tree/main/plugins/jev-browser)（2026-09-19 合并，PR #230，作者 abeatrix；原始抓取见 [`cline-jev-browser-插件-2026-09-19.json`](../artifacts/round4-2026-09-19/cline-jev-browser-插件-2026-09-19.json)）。这是 Cline（知名开源编码代理）官方插件仓库里的浏览器自动化插件，**操作循环完全由 Jev 通过 Vercel AI Gateway 决策**：
+
+- **决策循环**：`jev_run` 用 AI SDK 7 的 `experimental_evaluate` + `typesafe-ai/jev`，一次 evaluate **选出"操作+目标"组合**，把每个可用动作直接与滚动/等待/停止对比（choice 语义）；Jev 只看**结构化 DOM 观察**（索引化可见目标 ≤200、表单选项 ≤50、视口上下控件摘要、可见文本 ≤6000 字符），**不看截图**——截图供 Cline 主 agent 独立验证。
+- **Jev 不能生成文本的补位**：当选中 `TYPE_TEXT` 时，用 `google/gemini-2.5-flash-lite` 生成字段值（可配置），双模型共用同一 Gateway key——与官方 use-case map 的"Jev 决策 + LLM 生成"模板一致。
+- **状态与预算**：`done_unverified / blocked / needs_review / uncertain / step_limit / evaluation_limit / interrupted`；默认 20 步（上限 60）、100 秒期限、三次无进展动作即停；可选 `minProbability` 门控（与 provider confidence 区分）——**"done_unverified 是模型声称，主 agent 必须看截图独立核实"**，这与本仓库"单次概率不能当准确率"的结论一致。
+- **安全边界（README 明示）**：隔离 Chromium 进程（无 host 环境、屏蔽下载/扩展/文件系统）、导航 allowlist、注入提示注入安全规则；**"REVIEW 指令是模型指引，不是确定性安全边界"**，认证/金融等高风险流程要求保留 Cline 工具审批。
+- **诚实声明**："Actual end-to-end speed and live-model reliability have not been benchmarked"——尚无实测数据；自称 browser harness 而非桌面控制，接口为将来换 VM/容器后端预留。
+
+这条的归档价值：**它是"Jev 驱动 agent 循环"的首个主流编码代理官方实现**，且设计上把"决策层（Jev）与执行层（浏览器 harness）"解耦、把验证责任显式交给主 agent——与官方 Harness Engineering 类目、TechCrunch 里 Ronacher 的"把幻觉问题委托给用户"判断互为印证。
+
 ## 4. Vercel 采纳数据：13% 与它的星号
 
 Vercel 官方[发帖](https://x.com/vercel/status/2101077346203971900)（09-18）：
@@ -225,6 +237,16 @@ Vercel 官方[发帖](https://x.com/vercel/status/2101077346203971900)（09-18�
 | 永久删除风险 | 原结论已要求"可恢复存根或灰区队列" | Theo 认为"可重跑工具/重读文件"的默认太乐观 |
 
 **结论：批评站得住的部分是"概率阈值过滤＝压缩"是过度简化**——永久删除、缓存失效、丢失推理链的代价真实存在；它不否定"用 Jev 做选择性保留判断"的方向（tamara 的实现确有可取之处），而是要求**可恢复设计 + 只删低风险项 + 用任务完成率而非删除率评估**——与本仓库实验结论方向一致，并把"必须可恢复"从建议升级为必要条件。
+
+## 8. 社区案例归档：实时关卡生成（Sprite Fusion）
+
+> 用户点题后核实，2026-09-19；原始抓取见 [`sprite-fusion-实时关卡生成-2026-09-19.json`](../artifacts/round4-2026-09-19/sprite-fusion-实时关卡生成-2026-09-19.json)。
+
+[Sprite Fusion（Hugo Duprez）《Generating levels in real time with the Jev model》](https://www.spritefusion.com/blog/generating-game-level-in-real-time-with-jev)（09-18，亦上 [Show HN](https://news.ycombinator.com/item?id=49754951)）。原理一句话：**把"下一块地形"变成一道选择题，代码按答案摆放方块。**
+
+- **流程**：快照游戏状态（玩家位置/速度/着地/冲刺 JSON）+ 当前地形 + 示例关卡，一次请求并行问 4 个 Choice（表面类型 Solid roof/Ledge、宽度 2/3/5 块、前方间隔 0/1/2 块、高度第 4–9 行），Jev 一次返回全部选择（带概率），代码摆放。
+- **实测**：5 次请求，API 延迟 319–375ms，成本约 $0.00057/请求、整个 demo ≈ $0.00286。作者自述："不是亚秒下的 100ms 级别，也不免费，但对游戏来说足够"——延迟稳定。
+- **本质**：候选集由开发者预定义（不能发明 6.5 块宽的平台），换可控性/实时性/成本；与官方 Doom demo 同模式（结构化状态 → 决策流 → 生成器执行），官方 use-case map 将 Gaming 列入 Real-time applications（150ms 口径——作者实测 319–375ms 再次印证"官方模型侧 vs 端到端"之分）。
 
 ## 复现说明
 

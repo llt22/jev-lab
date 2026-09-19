@@ -1,0 +1,28 @@
+{
+  "captured_at": "2026-09-19 12:00 CST（ego-browser 直接抓取）",
+  "url": "https://github.com/cline/plugins/tree/main/plugins/jev-browser",
+  "repo": "cline/plugins，plugins/jev-browser",
+  "commit": "96bde66 'Add Jev Browser plugin (#230)'，作者 abeatrix",
+  "one_liner": "给 Cline agent 一个隔离的 Playwright Chromium 浏览器，浏览器操作循环由 Jev 通过 Vercel AI Gateway 决策（AI SDK 7 experimental_evaluate + typesafe-ai/jev）。",
+  "design": {
+    "decision_loop": "每次 evaluate 从动作集里选一个'操作+目标'组合，把每个可用动作与滚动/等待/停止直接比较；Jev 不生成指令文本，只从预定义动作集选择",
+    "jev_input": "结构化 DOM 观察：索引化可见动作目标（上限 200）、表单选项（含屏外选择，最多 50）、视口上下控件摘要（各 50）、可见文本 ≤6000 字符；不含截图，不含密码/文件字段（敏感内容不做自动脱敏）",
+    "text_generation_escape": "Jev 选 TYPE_TEXT 时由 google/gemini-2.5-flash-lite 生成字段值（可 JEV_TEXT_MODEL 覆盖）；双模型共用同一 Gateway key",
+    "supported_actions": "click、replace text、原生下拉选择、页面滚动、短等待；另有 manual 动作（dblclick/scroll/type/keypress/drag/move/navigate/back/forward/reload/screenshot）",
+    "statuses": "done_unverified, blocked, needs_review, uncertain, step_limit, evaluation_limit, interrupted",
+    "budgets": "默认 20 步，最大 60 步；100 秒取消期限；三次无观测进展的非等待动作即停；过期决策在 2×maxSteps 预算内重评；无默认概率截断，可选 minProbability 门控（与 provider confidence 区分）",
+    "state": "跨 run 保留最近 10 个动作、已输入文本与观测进度（内存，不写 trace）；重复文本不重试；浏览器变异不重试"
+  },
+  "safety": {
+    "isolation": "隔离 Chromium：无 host 环境、屏蔽下载/服务 worker/扩展/浏览器文件系统访问；macOS sandbox 不支持 headless 时自动回退可见浏览器",
+    "allowlist": "默认允许全部 HTTP(S) 源；可配置 allowedOrigins 白名单（含通配符），README 建议认证/敏感工作流收窄",
+    "caveats": "'REVIEW 指令是模型指引，不是确定性安全边界'；'done_unverified 是模型声称，主 agent 必须看截图独立核实'；要求保留 Cline 工具审批，不自动批准认证/金融/医疗等高风险流程",
+    "injection": "注入 Cline 安全规则（提示注入、敏感数据、后果性动作）"
+  },
+  "notes": [
+    "自称 'a browser harness, not unrestricted control of the host macOS desktop'；公共接口为将来加 VM/容器后端预留",
+    "README 自述：'Actual end-to-end speed and live-model reliability have not been benchmarked'——尚无实测数据",
+    "测试用本地 HTML + mock 模型响应（含真实 AI SDK Gateway 适配器 + 假 HTTP），不产生付费调用",
+    "凭据：gateway.apiKey 在 ~/.cline/plugins/cline-jev-browser.config.json 或 AI_GATEWAY_API_KEY 环境变量；配置在安装包外部，升级不丢"
+  ]
+}
