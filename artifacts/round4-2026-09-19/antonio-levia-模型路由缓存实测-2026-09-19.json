@@ -1,0 +1,48 @@
+{
+  "captured_at": "2026-09-19 12:45 CST（ego-browser 登录态抓取）",
+  "person": {
+    "handle": "@antonioleivag",
+    "name": "Antonio Leiva",
+    "location": "Madrid (Spain)",
+    "bio": "Construyo software y productos con agentes de IA. Comparto qué funciona, qué falla y cómo lo hago. Founder @devexpert_io（dev.expert，Kotlin/MCP 讲师，Sirviendo Código Awards 提名）",
+    "join": "2015年12月"
+  },
+  "jev_related_posts": [
+    {
+      "time": "2026-09-18T14:57:31Z",
+      "link": "https://x.com/antonioleivag/status/2100962426439000484",
+      "title": "我的 Jev 首次使用：Codex 模型路由器",
+      "text": "Jev 承诺在模型路由上有用，所以我安装了 Codex Router（codex-router.com），一个允许轻松将任何模型路由到 Codex 的工具。"
+    },
+    {
+      "time": "2026-09-18T23:09:18Z",
+      "link": "https://x.com/antonioleivag/status/2101086190363455551",
+      "title": "🚨 我不建议使用这个——缓存破坏实测",
+      "text_full": "我一直在做测量。一个功能是用路由器做的，另一个是用模型做的，从未改变过。第一个情况的缓存命中率为 32%，第二个情况为 99.35%。因此这个机制确实会破坏缓存，而且破坏得很严重。为什么这很重要？因为当我们向推理 API 发送新请求时，所有那些与上次重复的令牌（每次总是发送整个对话）都会以低得多的成本收费，大约便宜 10-15 倍。它能弥补这个损失吗？如果最终它能避免很多对昂贵模型的调用，可能是的，但很难衡量。另一个值得研究的途径：当用一个模型开始任务时，计算中加入缓存损失的惩罚值，这样只有当真的非常值得时才会切换模型。例如我正在用 Astra，然后要用 Luna 做几个任务，Luna 几乎是免费的。但没有好的基准测试和大量令牌来消耗，这不是容易调优的东西。所以，如果您不太清楚自己在做什么，我建议避免使用它。",
+      "key_numbers": {"cache_hit_with_router": "32%", "cache_hit_same_model": "99.35%", "cache_discount": "约 10-15x 便宜"}
+    },
+    {
+      "time": "2026-09-18T23:10:07Z",
+      "link": "https://x.com/antonioleivag/status/2101086395226013831",
+      "text": "Importante 👇👇（指向上面那条实测的转发）"
+    }
+  ],
+  "replies_of_interest": [
+    {
+      "by": "Hussein Lababidi Murcia @husseincak",
+      "time": "2026-09-19T00:27:25Z",
+      "text": "如果我们改变思路呢？与其改变模型，不如改变努力程度（effort）。在 Claude 中，似乎在改变努力程度时不再使缓存失效，那里可能非常有用。"
+    },
+    {
+      "by": "Erick @ErickSky",
+      "time": "2026-09-19T00:40:39Z",
+      "text": "谢谢你的贡献！给这个 Jev 找个用途似乎是最难的部分。"
+    }
+  ],
+  "relation_to_jev_lab": [
+    "独立一手实测：'Jev 模型路由切换模型会破坏 prompt cache'——缓存命中率从 99.35% 掉到 32%",
+    "与 Theo 对 fast-jev-compaction 的第五点批评（缓存写入比读取贵）同构：任何改变对话前缀/历史内容的机制都会使缓存失效",
+    "本仓库 agent-control 的模型路由实验只验证了路由准确率（93.3%），未测缓存成本——此帖补上了真实世界里最重要的成本维度的反面证据",
+    "他的建议（把缓存损失惩罚值计入切换决策）与官方 use-case map 的 Confidence-Gated Routing 可以组合：路由收益必须大于缓存惩罚"
+  ]
+}
