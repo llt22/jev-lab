@@ -1,0 +1,47 @@
+{
+  "captured_at": "2026-09-19 16:30 CST（ego-browser 直接抓取 benchmarkheaven.com/jev-models）",
+  "event": "JevBench v1.2 发布（首个 Jev 类模型基准，上线于 2026-09-19）",
+  "announce": {
+    "by": "Florian S @airesearch12 + @benchmarkheaven",
+    "post": "https://x.com/airesearch12/status/2101311769113178270",
+    "quote": "Introducing JevBench. The first benchmark for Jev class models. Original Jev by @typesafeai in the lead at 75.3. SemIf #2 at 74.6.",
+    "emphasis": "no Jev grading Jev（官方 Jev 不给自己评分）；JevBench results are in. Jev still in the lead, but it's close."
+  },
+  "protocol": "jevbench::v1.2 · 2026-09-19 计分 · 15 系统 × 534 决策（72 easy / 96 standard / 146 judge / 220 hard）· 德国服务器单请求串行 · harness/任务/评分规则 MIT 开源 · 结果 JSON sha256 d2b9d6fe88eb…· 自建非转抄",
+  "score_formula": "JevBench Score = (Intelligence × Calibration × Speed × Cost)^(1/4)，四轴各 25%，几何平均（弱轴拖垮总分）；Intelligence = 加权准确率（hard 30% / easy 14% / standard 28% / judge 28%）；Calibration 在 hard tier 测（'80% 确信'是否 80% 兑现 + 概率项分布匹配）；Speed = p50/p95 延迟；Cost = $/千决策",
+  "leaderboard": [
+    {"rank": 1, "name": "Jev 1.13.0", "by": "TypeSafe AI", "score": 75.3, "i": 90.4, "c": 82.7, "s": 83.3, "k": 51.7, "tiers": "100/99.0/94.5/74.1", "lat": "0.65s raw (p95 0.72)", "cost": "$0.041", "endpoint": "生产 API"},
+    {"rank": 2, "name": "SemIf（前 OpenJev）", "by": "TheoLeeCJ (Qwen3.5-4B)", "score": 74.6, "i": 85.9, "c": 72.6, "s": 83.7, "k": 59.2, "tiers": "100/97.9/95.2/59.5", "lat": "0.20s→0.55s adj", "cost": "~$0.023 est.", "note": "与 Jev 仅差 0.7 分——开源复刻只差不到 1 分"},
+    {"rank": 3, "name": "open-alternative-jev", "by": "IkerMoel (Qwen3.5-4B)", "score": 69.8, "i": 75.6, "c": 63.2, "s": 83.5, "k": 59.6, "tiers": "100/84.4/74.7/56.8", "cost": "~$0.022 est.", "note": "选项顺序翻转 21% vs 72%——小模型对选项顺序极敏感"},
+    {"rank": 4, "name": "system-one-open", "by": "mithalouni (Gemma 4 E2B LoRA)", "score": 68.7, "i": 79.5, "c": 56.7, "s": 77.0, "k": 64.1, "cost": "~$0.016 est."},
+    {"rank": 5, "name": "OpenJev", "by": "razorback16/Codiv (DiffusionGemma 26B-A4B)", "score": 67.6, "i": 86.0, "c": 64.8, "s": 83.2, "k": 45.2, "cost": "~$0.067 est."},
+    {"rank": 6, "name": "openjev-sglang", "by": "ekzhang (Qwen3.6-35B-A3B)", "score": 66.2, "i": 88.9, "c": 77.4, "s": 77.1, "k": 36.1, "cost": "~$0.135 est."},
+    {"rank": 7, "name": "GPT-5.6 Luna (low)", "by": "OpenAI", "score": 66.0, "i": 96.8, "c": 89.8, "s": 77.5, "k": 28.2, "tiers": "100/97.9/96.6/94.5", "lat": "0.97s (p95 1.82)", "cost": "$0.247", "note": "Intelligence 全场最高却被几何均值压到第 7——准确率买不回成本"},
+    {"rank": 8, "name": "open-jev-deberta-v3-large", "by": "Kotoba Labs (本地 CPU)", "score": 64.4, "i": 53.6, "c": 66.4, "s": 66.0, "k": 73.3, "cost": "~$0.0077 est."},
+    {"rank": 9, "name": "Bespoke Nimble 9B", "by": "Bespoke Labs", "score": 63.5, "i": 78.6, "c": 64.5, "s": 82.5, "k": 38.9, "cost": "~$0.109 est."},
+    {"rank": 10, "name": "Gemini 3.1 Flash-Lite", "by": "Google", "score": 60.8, "i": 90.3, "c": 68.1, "s": 81.8, "k": 27.1, "cost": "$0.268"},
+    {"rank": 11, "name": "DeepSeek V4.1 Flash", "by": "DeepSeek (thinking 默认)", "score": 58.1, "i": 96.1, "c": 96.7, "s": 71.6, "k": 17.1, "lat": "1.42s (p95 4.89)", "cost": "$0.579", "note": "Calibration 全场最高 96.7 仍排 11——成本分 17 拖垮"},
+    {"rank": 12, "name": "system-one", "by": "Sean Goedecke (Qwen3-8B)", "score": 56.5, "i": 80.1, "c": 36.8, "s": 84.4, "k": 41.2, "cost": "~$0.092 est."},
+    {"rank": "partial", "name": "Qwen3.8 27B", "score": 25.5, "cost": "~$2.711 est.", "note": "未完成全 tier（Chutes TEE）"},
+    {"rank": "partial", "name": "Needle 3 options-as-tools", "score": 19.1, "cost": "~$0.016 est.", "note": "标签-only 系统无校准"},
+    {"rank": "partial", "name": "Needle 3", "score": 16.7, "cost": "~$0.025 est."}
+  ],
+  "key_findings": [
+    "Jev 夺冠但开源复刻 SemIf（Qwen3.5-4B）只差 0.7 分（74.6 vs 75.3）——'close' 是 Florian 自己的原话；对'护城河在权重/模型能力'的判断是重击",
+    "GPT-5.6 Luna Intelligence 96.8 全场最高，但几何均值将成本分 28.2（$0.247/千决策）放大，排第 7——'准确率买不回成本'是该基准的设计哲学",
+    "DeepSeek V4.1 Flash Calibration 96.7 全场最高，但成本 $0.579/千排第 11——校准好也不代表整体赢",
+    "open-alternative-jev 选项顺序翻转（A.no/B.yes → A.yes/B.no）同一模型从 72% 掉到 21%——小模型对选项顺序极端敏感，方法论要点（对 JevBench 及所有复刻评测都适用）",
+    "Jev 四轴均衡（90.4/82.7/83.3/51.7）但 Calibration 82.7 并非第一（Luna 89.8 / DeepSeek 96.7 更高）——与我们此前'Jev 校准真实优势'的表述需要细化：优势相对轻量 LLM 成立，相对强模型不成立",
+    "官方 Jev 未给自己评分（'no Jev grading Jev'）——与 TypeSafe 自家 eval 的模型互评标签形成对照",
+    "成本口径：Jev $0.041/千决策 vs SemIf ~$0.023 est. vs Luna $0.247 vs DeepSeek $0.579",
+    "自托管/演示端点延迟 ×2 调整（+0.15s）为假设非测量；est. 价格为按同规模大厂推理托管估算",
+    "534 决策/系统、硬档占 30%（220 题）——样本量远高于社区此前所有对比",
+    "发布时机与 ToS 争议交织：官方已声明'禁止基准测试'条款为 outdated（@mathfax），JevBench 随后上线（此前 Florian 曾表示被条款阻碍）"
+  ],
+  "relation_to_jev_lab": [
+    "直接回应 round5 §五'复刻潮'：基准证实复刻不是玩笑——SemIf 74.6 vs Jev 75.3",
+    "选项顺序敏感性（72%→21%）是新的方法论启示：Choice 选项顺序应固定/随机化并报告，我们的评测脚本（support-routing 等）未做顺序鲁棒性测试——待办",
+    "'LLM 校准自报不可信'（supa Lab）在此获得反向样本：DeepSeek/Luna 校准分高（96.7/89.8）——说明强 LLM 在'硬题'上比轻量 LLM 更诚实",
+    "几何均值设计值得借鉴进我们自己的复合评分（若有）"
+  ]
+}

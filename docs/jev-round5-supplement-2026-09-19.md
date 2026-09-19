@@ -202,3 +202,32 @@
 **④ SQL 注入分类实测**（[@codkobytov](https://x.com/codkobytov/status/2101276458396131480)）：1000 条 SQLi 分类 86.6%、3 美分（Kaggle 数据集）——可核对任务实例；86.6% 对安全闸门偏低，若用于拦截需更高阈值（与"概率不是生产准确率"一致）。
 
 **⑤ 其他**：Vyacheslav 的安全边界金句（"类型安全防止畸形输出，不防止错误判断"——与我们的 schema 合规记录一致）；SEO 全站健康检查 37 秒；React 国际象棋 + Jev 落子建议；医疗救助匹配伦理视角（@pbaxm）；白名单一天通过（官网申请，与"容量受限非准入控制"判断互证）。
+
+### 10. 🚨 JevBench v1.2 上线——首个 Jev 类模型基准（2026-09-19 当天发布）
+
+> 原始抓取见 [`artifacts/round4-2026-09-19/jevbench-v1.2-榜单-2026-09-19.json`](../artifacts/round4-2026-09-19/jevbench-v1.2-榜单-2026-09-19.json)。
+
+[@benchmarkheaven（Florian S）](https://x.com/airesearch12/status/2101311769113178270) 在今天（9-19）发布了 **JevBench v1.2**——"第一个 Jev 类模型基准"：15 系统 × **534 决策**（72 easy / 96 standard / 146 judge / 220 hard），德国服务器串行、单请求；harness/规则 MIT 开源、结果带 sha256 校验。**官方 Jev 不给自己评分（"no Jev grading Jev"）**——与 TypeSafe 自家 eval 的模型互评标签形成对照。
+
+**综合分 = (Intelligence × Calibration × Speed × Cost)^(1/4)，四轴 25% 几何均值（弱轴拖垮总分）：**
+
+| 名次 | 系统 | 综合 | I | C | S | K | $/千决策 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | **Jev 1.13.0** | **75.3** | 90.4 | 82.7 | 83.3 | 51.7 | $0.041 |
+| 2 | **SemIf（Qwen3.5-4B 开源复刻）** | **74.6** | 85.9 | 72.6 | 83.7 | 59.2 | ~$0.023 |
+| 3 | open-alternative-jev | 69.8 | 75.6 | 63.2 | 83.5 | 59.6 | ~$0.022 |
+| 7 | GPT-5.6 Luna (low) | 66.0 | **96.8** | 89.8 | 77.5 | 28.2 | $0.247 |
+| 11 | DeepSeek V4.1 Flash | 58.1 | 96.1 | **96.7** | 71.6 | 17.1 | $0.579 |
+
+**六条关键结论：**
+
+1. **开源复刻只差 0.7 分**：SemIf（启动 4 天内的 Qwen3.5-4B 复刻）74.6 vs Jev 75.3——"Jev still in the lead, but it's close"（作者原话）。对"护城河在模型能力"是重击，支持"护城河在分发/数据配方"（round4 判断再获一个独立数据点）。
+2. **Luna Intelligence 全场最高（96.8）却排第 7**：几何均值让 $0.247/千决策的成本分 28.2 把准确率买不回来——这个基准的设计哲学就是"成本与校准和智力同等重要"。
+3. **DeepSeek V4.1 Flash Calibration 96.7 全场最高仍排 11**：校准好不意味着整体赢。
+4. **选项顺序敏感性（方法论要点）**：open-alternative-jev 把选项从 (A.no, B.yes) 翻成 (A.yes, B.no)，同一模型从 **72% 掉到 21%**——小模型对选项顺序极端敏感。**对我们自己的评测是待办：support-routing 等脚本的 Choice 选项顺序没有做鲁棒性测试。**
+5. **Jev 校准分 82.7 不是最高**（Luna 89.8 / DeepSeek 96.7 更高）——我们的"Jev 校准真实优势"表述需要细化：相对轻量 LLM 成立（supa Lab 证据），相对强 LLM 不成立（JevBench 证据）。
+6. **发布与 ToS 争议交织**：官方声明"禁止基准测试"条款是 outdated（@mathfax）后，JevBench 当天上线——事件链完整：conjfrnk 发现 → langstonnashold 指控 → mathfax 承认修复 → Florian 发布。
+
+同步补录：**NanoGPT 上线 Jev 1.13 Decisions API**（[@NanoGPTcom](https://x.com/NanoGPTcom/status/2101305559064494226)：/v1/decisions，API-only——又一个平台通道）；**Hashly 生产案例**（[@hashly_h](https://x.com/hashly_h/status/2101312857463783934)：Jev 去除重事件——SIBOS 2026 重复提交 93% 相似即拒、语义搜索、Hedera 新闻过滤、mindshare 统计——已上线产品，非 demo）。
+
+**下一轮待办（新增）**：① 我们的评测脚本补"选项顺序鲁棒性"；② 用 JevBench 的硬档题目（MIT 开源）跑一遍我们自己的校准实验作交叉验证；③ 跟踪 SemIf 后续（复刻逼近会持续发生）。
