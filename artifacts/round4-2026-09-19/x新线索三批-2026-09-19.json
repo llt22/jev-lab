@@ -1,0 +1,87 @@
+{
+  "captured_at": "2026-09-19 16:00 CST（ego-browser 登录态抓取，第三批）",
+  "leads": [
+    {
+      "type": "产品清单",
+      "title": "Greg Isenberg：10 个 Jev 原生产品（按决策对产品的改变程度排名）",
+      "by": "@gregisenberg（LateCheckout 代理机构创始人）",
+      "post": "https://x.com/gregisenberg/status/2101284640828915995",
+      "products": [
+        {"n": 1, "name": "代理支出防火墙", "desc": "购买前 Jev 返回批准/审核/拒绝 + 基于价格、供应商、用户规则、购买历史的置信度分数"},
+        {"n": 2, "name": "自愈工具调用", "desc": "API 错误后 Jev 选重试/等待/改参数/切提供商/升级——毫秒级恢复而非重启工作流"},
+        {"n": 3, "name": "不可逆行动检测器", "desc": "发邮件/删文件/转移资金/改权限前，Jev 按可逆性对每步打分——安全行动激进自动化、重大后果行动人工批准"},
+        {"n": 4, "name": "动态权限引擎", "desc": "不给代理永久权限，Jev 为每个任务决定工具/数据/支出限额——任务级临时权限"},
+        {"n": 5, "name": "代理分支修剪", "desc": "代理生成 20 个下一步，Jev 并行评分，昂贵推理前杀死弱分支——低成本更深规划"},
+        {"n": 6, "name": "生产事故控制器", "desc": "读日志/部署历史/受影响客户/服务健康，选忽略/回滚/重启/分页/调查——'像 PagerDuty 这样的人应该构建这个'"},
+        {"n": 7, "name": "实时谈判策略", "desc": "销售/采购/收款对话中 Jev 决定打折/反报价/坚持/给条款/升级"},
+        {"n": 8, "name": "自主退款台", "desc": "评估订单历史/客户价值/欺诈信号/物品成本/政策，返回批准/拒绝/审核"},
+        {"n": 9, "name": "实时市场调度", "desc": "每个请求按位置/价格/质量/可用性/取消风险/偏好选提供商——市场持续重新匹配供应"},
+        {"n": 10, "name": "基于置信度的人工队列", "desc": "Jev 对每个代理决策评分，只把不确定/昂贵/不可逆的送人——一个人监督数千自主工作流"}
+      ],
+      "closing": "LLM 生成可能性。Jev 决定下一步发生什么。下一代软件将两者兼备。",
+      "relation": "产品 10（置信度人工队列）即我们置信度闸门的产品化形态；产品 3/4/6 都是'动作前否决位'；产品 5 是 fan-out 分支修剪"
+    },
+    {
+      "type": "实测",
+      "title": "SQL 注入分类：1000 条 86.6% 精度、3 美分",
+      "by": "@codkobytov",
+      "post": "https://x.com/codkobytov/status/2101276458396131480",
+      "detail": "jev classifying 1000 SQL injection queries with 86.6% accuracy for 3 cents；数据集 Kaggle sajid576/sql-injection-dataset（随机 1k）；用 @antigravity 和 @claudeai 构建",
+      "relation": "可核对任务（SQLi 是/否）+ 成本极低的又一实例；86.6% 对安全闸门偏低的观察值得注意（若用于拦截需更高阈值）"
+    },
+    {
+      "type": "中文项目盘点",
+      "title": "G哥：能找到的 Jev 项目全部盘点（10 个，带仓库）",
+      "by": "@goan999999（govin.eth）",
+      "post": "https://x.com/goan999999/status/2101284406359179732",
+      "projects": [
+        {"name": "jev-ultrafast", "url": "github.com/browser-use/jev-ultrafast", "desc": "Browser Use 高速 Agent，Jev 每步判断，Google Flights 完整搜索约 7.1 秒"},
+        {"name": "jev-desktop", "url": "github.com/yikangy873-gif/jev-desktop", "desc": "桌面自动化决策层，判断点哪个控件/下一步"},
+        {"name": "Jev Review", "url": "github.com/devagrawal09/jev-review", "desc": "先筛选 correctness/security/reliability 风险，再交强模型——两段式"},
+        {"name": "Jev Codex Router", "url": "github.com/0xNatoshi/jev-codex-router", "desc": "先判任务难度再选便宜/强模型；作者回放 237 个真实 Turn，成本约降 60%（有成本数字的模型路由实测）"},
+        {"name": "Prism", "url": "github.com/irfndi/prism-liquidity-agent", "desc": "Jev 判断 Toxic Flow/市场压力/均值回归/流动性分布（金融）"},
+        {"name": "jev-mcp", "url": "github.com/jkudish/jev-mcp", "desc": "MCP 封装：事实核验、Prompt Injection 检测、语义排序"},
+        {"name": "neo4jev", "url": "github.com/jexp/neo4jev", "desc": "知识图谱候选路径打概率 + Beam Search——Neo4j 创始人 jexp 出品"},
+        {"name": "Blink", "url": "github.com/ellipsis-dev/blink", "desc": "大代码库搜索先让 Jev 判断最相关目录/文件，减少无效扫描"},
+        {"name": "Winnow", "url": "github.com/GhalebDweikat/winnow", "desc": "过滤 Read/Bash/Grep 垃圾输出，只留有用信息进上下文（上下文筛子）"},
+        {"name": "typesafe-mcp", "url": "github.com/itsmostafa/typesafe-mcp", "desc": "把 Jev 接入 Codex/Claude Code，负责 Choice/Score/分类/路由"}
+      ],
+      "extra": "白名单：官网直接申请，填邮箱，约一天审核通过",
+      "notes": [
+        "0xNatoshi 的 237 turn 成本 -60% 与 Antonio Leiva 的缓存破坏实测（99.35%→32%）并存——两个不同视角的路由成本结论，引用时需并列并在自己的数据上验证",
+        "jexp = Michael Hunger（Neo4j 联合创始人）——大厂/知名人物入场信号",
+        "Jev Review（devagrawal09）与 niazmorshed_ 的 jev-review 是不同仓库，两者都被收录"
+      ]
+    },
+    {
+      "type": "观点",
+      "title": "Vyacheslav：schema 安全边界",
+      "by": "@SlavaOPs",
+      "post": "https://x.com/SlavaOPs/status/2101281122587910625",
+      "text": "整篇最有用的句子埋在结尾：'Jev cannot break the declared output schema, but it can still be wrong.' 这才是值得内化的安全边界——类型安全防止畸形输出，不防止错误判断。一个 schema 合法但错误的……",
+      "relation": "与我们'零幻觉 = schema 合规，不是答案全对'的记录一致"
+    },
+    {
+      "type": "应用",
+      "title": "SEO 全站健康检查 37 秒",
+      "by": "@Immortalai365",
+      "post": "https://x.com/Immortalai365/status/2101270353536508216",
+      "detail": "nqzai Free Website SEO Health Check by Jev：全站而非单页，37 秒内完成——'比原来扫一页还快'"
+    },
+    {
+      "type": "应用",
+      "title": "React 国际象棋 + Jev 落子建议",
+      "by": "Aslam Doctor @aslammdoctor",
+      "post": "https://x.com/aslammdoctor/status/2101296272808530401",
+      "detail": "克隆 react-chess-game 加 #JEV 后能建议下一步落子"
+    },
+    {
+      "type": "社会视角",
+      "title": "Jev 用于关键救助匹配",
+      "by": "@pbaxm",
+      "post": "https://x.com/pbaxm/status/2101282530297045360",
+      "text": "Jev 不止改善软件工作流；谨慎使用可以帮助成千上万人在危急情况下更快匹配到住房、食物、家庭或健康支持——这才值得构建的 AI 工具",
+      "relation": "医疗/救助方向的伦理应用视角；与'幻觉致命领域'讨论呼应（@mkoushikbhargav：jev 在幻觉致命领域如医学有巨大应用）"
+    }
+  ]
+}

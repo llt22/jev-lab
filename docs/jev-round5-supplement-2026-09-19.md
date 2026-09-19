@@ -188,3 +188,17 @@
 - **@osanpochuudayo**："校准是硬部分。谁验证过那个概率是 decision-grade？你的代码可以按输出分支，Jev 能证明分支该触发吗？"——与本仓库核心立场完全一致
 - **Jev Model Router mod for Claude Code**（@shipfrontierai）：非对称置信度条 0.3/0.6 控制花费，主模型路由默认关
 - **Codex 重置审判**（@NFT_Chen）：社区用 Jev 做"关键词初筛 → Jev 结构化审计"判 Tibo 会不会按重置按钮——玩梗，但管线形态是标准两段式
+
+### 9. 第三批追挖：产品形态、中文盘点与 SQLi 实测
+
+> 原始抓取见 [`artifacts/round4-2026-09-19/x新线索三批-2026-09-19.json`](../artifacts/round4-2026-09-19/x新线索三批-2026-09-19.json)。
+
+**① Greg Isenberg 的 10 个 Jev 原生产品**（[@gregisenberg](https://x.com/gregisenberg/status/2101284640828915995)，LateCheckout 创始人）：按"快速低成本决策对产品的改变程度"排名——代理支出防火墙、自愈工具调用、不可逆行动检测器、动态权限引擎、**代理分支修剪**（Jev 并行评分杀死弱分支）、生产事故控制器、实时谈判策略、自主退款台、实时市场调度、**基于置信度的人工队列**（"一个人监督数千自主工作流"）。收尾："LLM 生成可能性。Jev 决定下一步发生什么。"——**这套清单几乎是官方 use-case map 的产品化演绎**：防火墙/检测器/事故控制器都是"动作前否决位"、分支修剪是 fan-out、置信度队列就是我们闸门实验的产品形态。
+
+**② G哥的中文项目盘点**（[@goan999999](https://x.com/goan999999/status/2101284406359179732)）：一次给出 10 个新仓库——jev-ultrafast（Browser Use 高速版，Google Flights 搜索 7.1 秒）、**jev-desktop**（桌面自动化决策层，与 Jev-cu 同向）、**Jev Codex Router**（0xNatoshi：回放 237 个真实 turn，成本约降 60%）、**neo4jev**（Neo4j 创始人 jexp 出品：知识图谱候选路径打概率 + Beam Search）、Blink（大代码库先判相关目录）、Winnow（上下文垃圾输出筛子）、jev-mcp、typesafe-mcp、Prism（流动性 agent）、Jev Review（devagrawal09 版）。
+
+**③ 两个路由成本结论并存**：0xNatoshi 成本 -60% vs Antonio Leiva 缓存命中 99.35%→32%——同是"Jev 做模型路由"的实测，方向相反；**引用时必须并列，在自己的数据上验证**（差异可能在实现细节：是否按对话复用模型、是否算缓存惩罚）。
+
+**④ SQL 注入分类实测**（[@codkobytov](https://x.com/codkobytov/status/2101276458396131480)）：1000 条 SQLi 分类 86.6%、3 美分（Kaggle 数据集）——可核对任务实例；86.6% 对安全闸门偏低，若用于拦截需更高阈值（与"概率不是生产准确率"一致）。
+
+**⑤ 其他**：Vyacheslav 的安全边界金句（"类型安全防止畸形输出，不防止错误判断"——与我们的 schema 合规记录一致）；SEO 全站健康检查 37 秒；React 国际象棋 + Jev 落子建议；医疗救助匹配伦理视角（@pbaxm）；白名单一天通过（官网申请，与"容量受限非准入控制"判断互证）。
