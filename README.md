@@ -1,22 +1,38 @@
-# Jev API 测试工作区
+# Jev Lab — TypeSafe System One Model Research & Benchmarks
 
-这是一个独立的 TypeSafe **Jev（System One）API** 实验目录，用来测试 Noul、Choice、Score 等结构化判断能力，并评估业务场景（例如客服工单分流）。它不属于 `ekc-ai-rebuild` 项目；评测脚本只用 Python 标准库，没有第三方依赖或 SDK，可直接运行。
+> **A hands-on research lab for [Jev](https://typesafe.ai) (TypeSafe's System One model)** — structured decisions, not text. We test Noul / Choice / Score primitives on real business problems (support-ticket routing, agent control, confidence gates), verify community claims with reproducible experiments, and track the ecosystem day by day.
 
-## 准备
+[![Tests](https://img.shields.io/badge/tests-38%20passed-brightgreen)](tests/)
+[![Python](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/)
+[![Model](https://img.shields.io/badge/model-jev--1.13.0-blueviolet)](https://docs.typesafe.ai/models)
+[![Zero deps](https://img.shields.io/badge/deps-stdlib%20only-orange)](scripts/)
 
-1. 在本目录的 `.env` 中填写 `TYPESAFE_API_KEY=你的密钥`。不要把密钥写入脚本、提交到 Git 或贴到聊天中。
-2. `.gitignore` 已忽略 `.env`；`.env.example` 只提供变量名模板。
-3. 单元测试不需要密钥，可离线运行：`python3 -m unittest discover -s tests`。
+---
 
-## 直接调用 API
+## TL;DR — what we found
 
-在本目录的终端执行（需安装 `curl`）：
+Jev is a **System One model**: you send a `state` + typed questions, it returns typed answers with probabilities (Noul = yes/no, Choice = pick from options, Score = ordered rubric). No text generation — which makes it **cheap, fast, and non-hallucinating by construction** (schematically, not semantically).
+
+Our measured highlights (all reproducible in this repo):
+
+| Claim | Our data | Evidence |
+| --- | --- | --- |
+| Multi-question fan-out is free | 1 → 20 Noul questions: **P50 ≈ 1.4s, no latency growth** | [`docs/jev-validation-2026-09-18.md`](docs/jev-validation-2026-09-18.md) |
+| Cost is tiny | 108 requests ≈ **$0.0044** total | same report |
+| Decisions are repeatable | 3 runs × 36 tickets: **100% decision agreement** | [`artifacts/`](artifacts/) |
+| `confidence` beats argmax for gating | On failures: confidence 0.04–0.16 vs top-1 prob 0.58 — **use confidence, not argmax** | [`docs/jev-round3-2026-09-18.md`](docs/jev-round3-2026-09-18.md) |
+| Keyword baseline beat Jev on our pilot data | 97.2% vs 91.7% — **pilot data was too easy; don't over-trust vendor evals** | validation report |
+| End-to-end latency ≈1.5s, not <100ms | Official claim vs our full-path (network + gateway) measurement | validation report |
+
+**Caveat we keep repeating:** probabilities are NOT production accuracy. Calibrate on your own data, pin `jev-1.13.0`, and treat any single Noul below ~0.5 as "unknown", not "no".
+
+## Quick start
+
+1. Copy `.env.example` → `.env` and fill in `TYPESAFE_API_KEY`.
+2. Try one call (needs `curl`):
 
 ```sh
-set -a
-. ./.env
-set +a
-
+set -a; . ./.env; set +a
 curl --fail-with-body --silent --show-error \
   https://api.typesafe.ai/v1/systemone \
   -H "Authorization: Bearer $TYPESAFE_API_KEY" \
@@ -24,23 +40,68 @@ curl --fail-with-body --silent --show-error \
   -d '{"model":"jev-latest","state":"The customer cannot connect to Wi-Fi before a meeting today.","questions":{"urgent":{"type":"noul","instructions":"Does this message express urgency?"}}}'
 ```
 
-成功时返回 `answers.urgent.noul`（0–1）以及实际模型版本和 token 用量。API 接口和更多问题类型见 [TypeSafe Quick Start](https://docs.typesafe.ai/introduction/quickstart) 与 [API Reference](https://docs.typesafe.ai/api)。
+3. Run the offline unit tests (no key needed):
 
-## 调研与实测记录
+```sh
+python3 -m unittest discover -s tests   # 38 tests, stdlib only
+```
 
-| 文档 | 内容 |
-| --- | --- |
-| [社区应用调研](docs/jev-x-use-cases-2026-09-18.md) | X / GitHub 上的用法、案例索引、风险与选型判断 |
-| [首轮验证报告](docs/jev-validation-2026-09-18.md) | 客服路由基准、fan-out、成本、重复稳定性、关键词基线、Agent 控制面三项 |
-| [流式思考监督](docs/jev-thinking-supervision-2026-09-18.md) | 通过第三方网关观察思考窗口并尝试打断（机制实验，未成功缩短作答） |
-| [第三轮调研](docs/jev-round3-2026-09-18.md) | 官方口径核实、生态索引质量、置信度升级闸门三轮实测 |
-| [第四轮调研](docs/jev-round4-2026-09-19.md) | 三家独立第三方实测、TechCrunch 主流报道、开源 System One 家族 CUA-S1、生态同名组织风险 |
-| [第四轮·补充](docs/jev-round4-supplement-2026-09-19.md) | 官方文档增量（Language support / PATTERNS / evals 表）、$40M 融资事实、Vercel / LangChain / OpenRouter 平台化接入、Vercel 13% 采纳数据纠偏 |
-| [第五轮调研](docs/jev-round5-2026-09-19.md) | 别人正在拿 Jev 干什么：医疗/DevOps/ERP/内容评分/PR/语音控制等一手使用案例与聚合站 |
-| [第五轮·补充](docs/jev-round5-supplement-2026-09-19.md) | 知识猫 28 案例逐条对照审计：实时交互辅助、搜索/数据处理、代码质量等约 14 个漏网案例核实 |
+## What's inside
 
-原始产物在 `artifacts/`，数据集在 `evals/`，评测脚本在 `scripts/`，单元测试在 `tests/`。
+```
+docs/       6 research rounds — validation, ecosystem, official-claim audit, community cases
+evals/      6 datasets — support routing, agent control, confidence escalation, thinking supervision
+scripts/    9 reproducible eval & compare scripts (pure stdlib, no SDK)
+artifacts/  raw JSON + generated reports, incl. repeat-stability across runs
+tests/      38 unit tests, runnable offline
+```
 
-## 接下来
+## Research log — highlights
 
-在此目录加入可重复的真实业务样例，比较 Jev 对不同表述的路由、优先级和置信度；不要把单次概率直接当作生产准确率或自动执行权限。
+| Doc | Round | Content |
+| --- | --- | --- |
+| [**Validation**](docs/jev-validation-2026-09-18.md) | 1st | Support-ticket routing benchmark (108 calls), fan-out latency, cost, repeat-stability, keyword baseline, agent-control (context filtering / pathfinding / model routing) |
+| [**Thinking supervision**](docs/jev-thinking-supervision-2026-09-18.md) | 2nd | Observing + interrupting the reasoning window via a third-party gateway (mechanism experiment — did not shorten answers) |
+| [**Round 3**](docs/jev-round3-2026-09-18.md) | 3rd | Official-claim verification, ecosystem index quality, **confidence-escalation gate** (3 runs × 36 probes, 0.6–0.7 threshold passes 91.7% with 100% error capture) |
+| [**Round 4**](docs/jev-round4-2026-09-19.md) | 4th | Independent third-party benchmarks, TechCrunch coverage, open-source System One (CUA-S1), ecosystem risks |
+| [**Round 4 · supplement**](docs/jev-round4-supplement-2026-09-19.md) | 4th | Official doc deltas (Language support / Patterns / evals table), $40M funding facts, Vercel / LangChain / OpenRouter integration, the "13% adoption" asterisk, Jev-driven browser cases, Theo's context-compaction criticism |
+| [**Round 5**](docs/jev-round5-2026-09-19.md) | 5th | Who is actually using Jev: medical screening, DevOps, ERP, content scoring, PR review, voice control — and the honest gap: "everyone ran it once, nobody has been on duty for 30 days" |
+| [**Round 5 · supplement**](docs/jev-round5-supplement-2026-09-19.md) | 5th | 28-case community audit against GeekCat's list — 14 missed cases recovered (realtime assistance, SQL/vector search, code quality gates) |
+| [**Community survey**](docs/jev-x-use-cases-2026-09-18.md) | survey | X / GitHub usage index, risks, selection criteria |
+
+Raw data → `artifacts/`, datasets → `evals/`, scripts → `scripts/`.
+
+## Reproduce the benchmarks
+
+```sh
+# support-routing benchmark (3 rounds) + keyword baseline
+python3 scripts/evaluate_support.py --run-name support-routing-v1
+python3 scripts/evaluate_keyword_baseline.py
+
+# fan-out latency (1→20 parallel questions)
+python3 scripts/benchmark_fanout.py
+
+# confidence escalation gate (needs API key)
+python3 scripts/evaluate_confidence_escalation.py
+```
+
+## Key lessons (so you don't have to learn them)
+
+1. **Fan-out is the killer feature** — ask many questions per request; latency barely moves, cost stays in the sub-cent range.
+2. **`confidence` ≠ argmax probability** — on our failing cases they differed by an order of magnitude. Gate on `confidence`.
+3. **Pin the version** — aliases move; log the `model` field from every response (`jev-1.13.0` as of 2026-09-19).
+4. **CJK is officially weaker** — "handled but not equally well"; test Chinese before trusting it.
+5. **Vendor evals are self-evaluations** — labels generated by other models (GPT-6 Astra + Claude Fable 5.1), no human labeling. Our "facts-checkable" probes are the contrast.
+6. **Compaction / routing that rewrites context breaks LLM prompt caches** (community-measured: 99.35% → 32% hit rate) — keep deletions recoverable, keep numbers in code.
+
+## Roadmap / next
+
+- [ ] Chinese & mixed CN-EN ticket probes (official docs flag CJK as weaker)
+- [ ] Latency breakdown (DNS/TLS/gateway vs model) to explain the 1.5s vs 176ms gap
+- [ ] Re-run with official SDK instead of raw `urllib`
+- [ ] Escalation cascade: Jev first pass → strong model only when uncertain
+- [ ] Watch post-Sept-25 pricing / retention on Vercel AI Gateway
+
+## License & disclaimer
+
+Repo is research material: **do not treat single-run probabilities as production accuracy or as permission to auto-execute.** API pricing/versions are from official docs at capture time (2026-09-19). See each report for its evidence level (verified structure / vendor-reported / author-reported).
