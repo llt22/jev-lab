@@ -48,7 +48,27 @@
 
 COOKBOOKS（Self-consistency、Batching、Extraction、Classification）与 Demos（Smart home assistant）也是此前几轮未收录的内容。**官方把这些模式写进文档，说明我们的实验方向与官方推荐一致——但官方只给模式，不给阈值校准方法，校准仍需业务数据。**
 
-### 1.3 官方 evals 表与"三套口径并存"问题
+### 1.3 官方用例地图（use-case map，此前未收录）
+
+[Example use cases 页](https://docs.typesafe.ai/concepts/use-case-map)（位于文档站 "TYPESAFE FOUNDATIONS" 下）是官方给 Jev 的用例定位总表，第三/四轮均未记录，本轮补齐。原始抓取见 [`官方用例地图-use-case-map-2026-09-19.json`](../artifacts/round4-2026-09-19/官方用例地图-use-case-map-2026-09-19.json)。
+
+**五大用例类别**（官方定位原文要点）：
+
+| 类别 | 官方定位 | 与本仓库/生态的对应 |
+| --- | --- | --- |
+| AI Automation Software | 代码拥有控制流，TypeSafe 处理语义决策；可无人陪伴跑一百万次 | support-routing 客服分流 |
+| Real-time applications | 前沿智能 at 150ms；可用于打游戏或嵌入 UI | 官方 Doom demo 与 Sprite Fusion 实时关卡生成（150ms 口径 vs 我们实测端到端 1.4s，再次印证"模型侧 vs 全链路"之分） |
+| AI Map Reduce over Big Data | 便宜 100 倍 → 巨量语料检索、agent 轨迹分类、特征提取 | 生态仓库（jev-curate 等批量筛选） |
+| Universal Verification | **验证任何其他 AI**：输入提示、抽取、推理轨迹、工具调用；检测 jailbreak、引用错误、幻觉 | 官方把"验证其他 AI"列为正式类别，与 agent-control 护栏方向一致 |
+| Harness Engineering | 模型路由、语义上下文检索、LLM 错误检测与护栏、推理轨迹分类 | 官方明确收录我们已实测的模型路由/护栏方向 |
+
+**19 个自动化用例**：搜索检索、科学发现、模型路由、LLM 护栏、语义代码 lint、特征提取、招聘、线索生成、客服、保险理赔、金融犯罪、法律合规、电商、信任安全审核、广告、**游戏**、风险评估、需求预测、知识图谱。
+
+**10 种任务形态表**（官方对"哪种情况该用哪种问题"的系统化）：Classification / Detection / Scoring / Routing / Search / Retrieval / Ranking / Verification / ML Feature Extraction / Structured Data Extraction。
+
+这页的两个增量价值：**① 官方正式化了一批此前只见于社区实践的用例**（Universal Verification、Harness Engineering、游戏、语义代码 lint）；**② 形态表暴露了本仓库尚未实测的形态**——Search、Retrieval、Ranking、Verification、ML Feature Extraction 在我们四个实验里都没有覆盖，只有 Semantic Pathfinding 沾了 Retrieval 的边。官方给出形态定义反而让"下一轮测什么"有了现成清单。
+
+### 1.4 官方 evals 表与"三套口径并存"问题
 
 [dev.to 对官方 evals 的转述](https://dev.to/gabrielanhaia/jev-beat-gpt-luna-by-1-point-gpt-6-and-claude-wrote-the-answer-key-314k)（Gabriel Anhaia，09-17）：
 
@@ -68,7 +88,7 @@ COOKBOOKS（Self-consistency、Batching、Extraction、Classification）与 Demo
 
 同一场发布并存**三套速度倍数口径**（[agentpedia claim-by-claim](https://agentpedia.codes/blog/jev-system-one-models)）：launch tweet 20–200x / 40–400x、[首页 193.6x / 444.6x](https://typesafe.ai)（脚注 "Based On Workflows For System One Tasks"）、官方 PR "up to 100x"。官方自己承认首页数字属于 "higher end of real world gains"。**这也解释了第三轮记录的社区传播失真：失真源头之一是官方自己的三套口径。**
 
-### 1.4 官方姿态："we love skeptics" 与关键让步
+### 1.5 官方姿态："we love skeptics" 与关键让步
 
 [agentpedia](https://agentpedia.codes/blog/jev-system-one-models) 整理了官方发布的配套物：
 
@@ -167,6 +187,7 @@ Vercel 官方[发帖](https://x.com/vercel/status/2101077346203971900)（09-18�
 4. **9 月 25 日 Vercel 免费期结束**后，记录价格与留存数据——"13% 星号"的验证点。
 5. **复跑 clay_shentrup 四发现**（注入、23k token、排序器、64 并发）+ 复现 CUA-S1（主报告第 2、4 条）——两者都可直接用本仓库脚本框架低成本实现。
 6. **在双通道（官方 API vs Vercel Gateway vs OpenRouter）各跑一轮同一数据集**，顺带回答社区"gateway 会不会更慢"的疑问。
+7. **按官方形态表补测未覆盖形态**（本轮新增依据，§1.3）：Search / Retrieval / Ranking / Verification / ML Feature Extraction 五个形态本仓库尚未实验，官方已给出定义与示例，直接据此构造可核对事实的探针（例如 Ranking 做候选重排、Verification 做引用支持度检查）。
 
 ## 7. 附录：Theo 对"Jev 上下文压缩"策略的批评（用户转述后核实）
 

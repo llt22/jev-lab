@@ -1,0 +1,47 @@
+{
+  "captured_at": "2026-09-19 11:30 CST（ego-browser 直接抓取）",
+  "url": "https://docs.typesafe.ai/concepts/use-case-map",
+  "title": "Example use cases - TypeSafe AI",
+  "page_note": "官方文档站 'TYPESAFE FOUNDATIONS > Example use cases' 页面；此前第三/四轮调研均未收录该页面，属文档增量。",
+  "use_case_categories": [
+    {
+      "name": "AI Automation Software",
+      "positioning": "Interleave AI with reliable software... run it a million times in the background without a human co-pilot. Code owns control flow (not markdown files) while TypeSafe handles the semantic decisions and language understanding."
+    },
+    {
+      "name": "Real-time applications",
+      "positioning": "Frontier intelligence at real-time speeds (150ms) means AI can make decisions faster than human perception. Fast and smart enough to be programmed to play games or embedded into a UI."
+    },
+    {
+      "name": "AI Map Reduce over Big Data",
+      "positioning": "100x cheaper means you can process giant datasets. Search for relevant information over giant corpuses, classify giant agent traces, and extract features to make predictions."
+    },
+    {
+      "name": "Universal Verification",
+      "positioning": "Verify the input prompt, extractions, reasoning traces, tool calls, or inputs of any other AI. Detect jailbreaks, citation errors, hallucinations, mistakes, or other error-modes that other AIs or LLMs make at a fraction of the cost for the actual LLM call."
+    },
+    {
+      "name": "Harness Engineering",
+      "positioning": "Use Jev queries to make your harness smarter - model routing, semantic context retrieval, LLM error detection and guardrails, reasoning trace classification at lightspeed and a fraction of the cost."
+    }
+  ],
+  "automation_use_cases": [
+    "Search and retrieval", "Scientific discovery", "Model routing", "LLM guardrails",
+    "Semantic code linting", "Feature extraction for predictive modeling", "Recruiting",
+    "Lead generation", "Customer support", "Insurance claims", "Financial crime",
+    "Legal and compliance", "E-commerce marketplaces", "Moderation and trust and safety",
+    "Advertising", "Gaming", "Risk assessment", "Demand forecasting", "Graphs and knowledge graphs"
+  ],
+  "task_shapes": [
+    {"shape": "Classification", "reach_for": "One known category should win", "examples": "Intent, topic, department, risk type, entity type"},
+    {"shape": "Detection", "reach_for": "You need a probability that one property is present", "examples": "Spam, fraud, urgency, jailbreaks, sensitive data"},
+    {"shape": "Scoring", "reach_for": "The answer belongs on an ordered rubric", "examples": "Severity, relevance, quality, frustration, suitability"},
+    {"shape": "Routing", "reach_for": "A category selects the next code path", "examples": "Tool use, escalation, model routing, support queues"},
+    {"shape": "Search", "reach_for": "You need to find items that match a natural-language query", "examples": "Semantic search, document discovery, candidate generation"},
+    {"shape": "Retrieval", "reach_for": "A workflow needs the most relevant context or records", "examples": "RAG context, evidence retrieval, knowledge lookup"},
+    {"shape": "Ranking", "reach_for": "Items need to be ordered by semantic relevance or quality", "examples": "Search results, recommendations, candidate prioritization"},
+    {"shape": "Verification", "reach_for": "An artifact must be checked for specific failure modes", "examples": "Citation support, policy violations, tool-call errors, response quality"},
+    {"shape": "ML Feature Extraction", "reach_for": "A downstream classical ML model needs semantic signals", "examples": "Purchase intent, product interest, competitive pressure, churn signals"},
+    {"shape": "Structured Data Extraction", "reach_for": "Known fields must be recovered from unstructured input", "examples": "Candidate attributes, order fields, document labels"}
+  ]
+}
