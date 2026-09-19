@@ -248,6 +248,23 @@ Vercel 官方[发帖](https://x.com/vercel/status/2101077346203971900)（09-18�
 - **实测**：5 次请求，API 延迟 319–375ms，成本约 $0.00057/请求、整个 demo ≈ $0.00286。作者自述："不是亚秒下的 100ms 级别，也不免费，但对游戏来说足够"——延迟稳定。
 - **本质**：候选集由开发者预定义（不能发明 6.5 块宽的平台），换可控性/实时性/成本；与官方 Doom demo 同模式（结构化状态 → 决策流 → 生成器执行），官方 use-case map 将 Gaming 列入 Real-time applications（150ms 口径——作者实测 319–375ms 再次印证"官方模型侧 vs 端到端"之分）。
 
+## 9. 社区案例归档：语音控制 Mac / 浏览器（jev-voice-browser 家族）
+
+> 用户点题后核实，2026-09-19；原始抓取见 [`jev-语音控制案例-2026-09-19.json`](../artifacts/round4-2026-09-19/jev-语音控制案例-2026-09-19.json)。
+
+用户搜索 `jev-mac-voice` 得到的一组语音控制项目，源头是 **moritzkremb/jev-voice-browser**（★80、JavaScript、[仓库](https://github.com/moritzkremb/jev-voice-browser)），衍生出 **brudarko/jev-mac-voice**（★0，React+Electron+OpenAI Realtime 全双工语音 + 原生 Accessibility 控制 Mac，README 明示 Based on Moritz Kremb's Jev Voice Browser）；同族的还有 `chris-wozniczek/jev-voice-control`（Swift 菜单栏 app：Speech → Jev typed decisions → macOS actions）、`sgaabdu4/capture`（语音日记：本地 Parakeet 转写 + Jev 分类 + Notion）与 `serejaris/voice-browser`（Chrome MV3 + 本地 AI Gateway 桥）。
+
+**源头架构（从 DEMO.md 还原，细节最有价值的部分）：**
+
+- **语音流式决策**：每次说话即向 Jev 发一次请求，**并行回答 11 个 yes/no + Choice 问题**——`is_command`（"这是不是给我的命令"）、intent（做什么）、目标元素、目标站点、**文本跨度**（要键入的内容）、"句子说完了吗"、"是否破坏性"、滚动量（3 级 Score）。旁白会被 `is_command` 0.02 直接 IGNORE。
+- **未说完就能行动**：'search for' 单独评分 0.03（等待），'search for Alan Turing' 0.97（立即执行）——`act@word < total`，浏览器常在句子结束前已行动。首条 ~700ms 预热、后续 ~300ms/词；整个 demo 约 1 美分。
+- **Jev 只做判断，代码做算术**：要键入的文本不是模型生成的——代码从转写里切出候选跨度，Jev 只选一个；歧义时目标置信度 <0.45 → 页面出现编号徽标，用户说数字，**正则解析数字，不再调模型**（"Jev answers judgment, code answers arithmetic"）。
+- **破坏性门控**：下单/删除类动作需要口述 CONFIRM，可 CANCEL；门控表实时显示各阈值。
+- **版本 pin 与阈值即策略**：`MODEL = "jev-1.13.0"`——仓库明写 "aliases move and thresholds are tuned per version"（与官方建议、本仓库版本漂移监控完全一致）；`src/policy.js` 是 if statements over probabilities——"改数字，不改提示词"；INTENT_CRITERIA 每个选项 `{what, not_for, examples}`（对比式描述让 Choice 更 sharp）。
+- **测试**：27/27 real-API 集成用例（latency avg ≈ 330 ms）+ 16 条口述命令 headless 复演。
+
+**归档价值：**这是"Jev 判断 + 代码执行"范式在**实时人机交互**上的最佳实例——语音流式输入下的决策延迟（~300ms/词）证明该范式可以进入"用户说完之前就行动"的交互循环；且它是**自实现（未用官方 SDK/网关，直连 api.typesafe.ai）**，与 Cline jev-browser（DOM 观察驱动、经 Vercel Gateway）形成"两条完全不同的工程路径"的对照。官方 use-case map 的 Real-time applications 类目在这里获得真实实现样本。
+
 ## 复现说明
 
 本报告所有 X 检索在登录态浏览器（空间 `Jev round4 X research`）完成，原始抓取见 `artifacts/round4-2026-09-19/`；官方/媒体页面均为直接抓取，文中 URL 即证据。第三方转述（dev.to、agentpedia、creativeainews）已标注其性质；所有官方数字均未独立复现，引用时应注明口径与日期（2026-09-19 10:30 CST）。

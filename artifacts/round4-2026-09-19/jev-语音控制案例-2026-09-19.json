@@ -1,0 +1,66 @@
+{
+  "captured_at": "2026-09-19 12:30 CST（ego-browser 直接抓取）",
+  "search": "github.com/search?q=jev-mac-voice 与 q=jev+voice-browser",
+  "results": [
+    {
+      "repo": "brudarko/jev-mac-voice",
+      "title": "English full-duplex voice control for macOS with OpenAI Realtime, native Accessibility, and Jev.",
+      "stars": 0,
+      "lang": "JavaScript 81.6% / HTML / CSS / Swift 4.3%",
+      "updated": "1 小时前（2026-09-19 抓取时刻）",
+      "created_by": "Bruno Gabriel Alves dos Santos（LinkedIn/GitHub 链接置顶）",
+      "based_on": "Moritz Kremb 的 Jev Voice Browser（fork 改造，README 明示）",
+      "stack": "React + Electron + OpenAI Realtime（全双工语音）+ macOS Accessibility + 可选 Jev 浏览器自动化",
+      "run": "macOS 14+、Node 22.9+、Xcode CLT、OpenAI API key；npm ci && npm run build:native && npm run desktop",
+      "notes": [
+        "本地 POC；'Audio and requested screen context go to your API providers'；'Actions require approval by default'",
+        "仓库内含 .agents/skills/typesafe-ai、AGENTS.md、run.sh、skills-lock.json（agent 技能化开发）",
+        ".env.example: 'Use direct TypeSafe API for Jev decisions'（非经网关）"
+      ]
+    },
+    {
+      "repo": "moritzkremb/jev-voice-browser",
+      "title": "Control a real browser by voice. Jev (TypeSafe System One) decides intent + target in ~300 ms per spoken word; Playwright acts — often before the sentence ends.",
+      "stars": 80,
+      "lang": "JavaScript",
+      "updated": "yesterday（2026-09-19 抓取时刻）",
+      "role": "源头项目；jev-mac-voice 基于其改造（DEMO.md 保留 voice-browser 文案）",
+      "architecture": {
+        "decision": "语音转写流 → 一次请求并行回答 11 个 yes/no + choice 问题（is_command、intent、目标元素、站点、文本跨度、'句子是否说完'、'是否破坏性'、滚动量、搜索文本跨度等）",
+        "speed": "首条 ~700 ms 预热，后续 ~300 ms；'act@word < total'——句子没说完浏览器就已行动",
+        "cost": "$0.042/M 输入，输出免费；整个 demo 约 1 美分",
+        "execution": "Playwright 执行；'That wasn't an LLM writing a plan. A model answered eleven yes/no and multiple-choice questions in three hundred milliseconds, and code did the rest.'",
+        "text_span": "键入文本不是生成的——代码从转写中切出候选跨度，Jev 只选一个",
+        "elements": "约 100 个可交互元素快照（viewport 优先，每个 ≤60 字符），作为 state 发送",
+        "ambiguity": "目标置信度 <0.45 → 页面编号蓝色徽标，用户说数字——'No model call for the number — that's a regex. Jev answers judgment, code answers arithmetic.'",
+        "gates": "is_command <0.5 忽略（旁白 IGNORE）；破坏性动作需 CONFIRM 口述确认；门控表显示各阈值",
+        "pinning": "MODEL = 'jev-1.13.0' — pinned, because aliases move and thresholds are tuned per version（与官方建议一致）",
+        "prompting": "INTENT_CRITERIA 每个选项 {what, not_for, examples}——对比式描述让 Choice 更 sharp",
+        "policy": "src/policy.js 是 if statements over probabilities——'Change a number, not a prompt'",
+        "tests": "npm run test:integration 27/27 real-API 用例，latency avg ≈ 330 ms；demo:ci 16 条口述命令 headless 断言 URL"
+      }
+    },
+    {
+      "repo": "chris-wozniczek/jev-voice-control",
+      "title": "Control your Mac by voice. Speech → Jev (TypeSafe AI System One model) typed decisions → macOS actions. Menu-bar Swift app.",
+      "stars": 0,
+      "lang": "Swift",
+      "updated": "6 小时前"
+    },
+    {
+      "repo": "sgaabdu4/capture",
+      "title": "Private Mac voice diary: local Parakeet transcription, Jev sorting, Notion library",
+      "stars": 1,
+      "lang": "Dart + JavaScript",
+      "updated": "10 小时前"
+    },
+    {
+      "repo": "serejaris/voice-browser",
+      "title": "Voice and text browser control with Jev, Chrome MV3 and a local AI Gateway bridge",
+      "stars": 1,
+      "lang": "JavaScript",
+      "updated": "yesterday"
+    }
+  ],
+  "relation_to_official": "官方 use-case map 的 Real-time applications（150ms 口径）：本案例实测 ~300 ms/词决策；与 Cline jev-browser（DOM 观察驱动）不同，本案例是语音/用户界面驱动 + 浏览器动作由 Playwright 执行，Jev 只负责判断"
+}
