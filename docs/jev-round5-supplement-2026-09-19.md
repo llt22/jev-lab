@@ -75,3 +75,22 @@
 ## 复现说明
 
 全部帖子在登录态浏览器逐条抓取（空间 `geekcat 28 cases verify`）；28 案例的来源清单见知识猫原帖，逐条核实结果与原文摘要见 `artifacts/round4-2026-09-19/知识猫-28案例对照-2026-09-19.json`。
+
+## 五、补录：Jev-cu——把 Computer Use 的"下一步点哪里"交给 Jev
+
+> 用户点题后核实，2026-09-19；原始抓取见 [`artifacts/round4-2026-09-19/jev-cu-项目-2026-09-19.json`](../artifacts/round4-2026-09-19/jev-cu-项目-2026-09-19.json)。
+
+[Sac-Y/Jev-cu](https://github.com/Sac-Y/Jev-cu)（★12，JavaScript，12 小时前更新）：**Jev 从界面文字候选中选元素/动作/完成度/风险，Codex Computer Use 负责读取界面与执行，本地策略门槛拦截敏感操作。只传文字，不传截图。**
+
+与 Cline jev-browser 同范式（决策/执行分离、纯文字输入、代码门槛），但执行层是**桌面级**（Codex 桌面 App 的 cua_repl 运行时）而非浏览器：
+
+- **四问标准循环**：`decide()` 每次发 target / action / done / risk 四个问题的 systemone 请求；`sanitizeLabel` 清洗 URL 噪声并截断 120 字符控 token
+- **策略门槛 `policy.mjs`**（纯函数、可单测）是本项目最有价值的部分：
+  - 敏感标签模式表（中英）：delete / send / payment / auth / share / install / settings → 一律 confirm
+  - 五档阈值：done ≥0.9 结束；风险 ≥0.2 停下确认；目标置信度 <0.3 直接停、<0.5 升级（重试/看图/问人）；低风险 App（计算器/日历/文本编辑/Figma）放宽到 0.4
+  - App 白名单（新增 App 必须显式修改）；verdict 五态 proceed/done/confirm/escalate/stop
+- **安全**：默认 dry-run；界面文字只作数据不作指令；不绕过登录/付费墙/验证码；删除/发送/支付类停在 confirm
+- **评测**：`p0-eval.mjs` AX 快照选元素准确率（离线、需 key）；`npm test` 单测不调用 API
+- **模型口径**：`DEFAULT_MODEL = "jev-latest"`（未 pin 版本——与 jev-lab"固定 jev-1.13.0"建议不一致，注意）
+
+归档价值：与 trycua CUA-S1（70 万参数复现 Jev 契约）正交——CUA-S1 是"用开源替代 Jev"，Jev-cu 是"用 Jev 驱动桌面 Computer Use"，把第三轮 agent-control 的"上下文过滤/语义寻路"范式扩展到桌面操作层；且其 policy.mjs 的阈值分档设计（低风险 App 放宽 + 敏感词 confirm）是把 Jev 概率接到真实安全边界的教科书式写法，值得 jev-lab 下一轮"阈值即策略"实验参考。

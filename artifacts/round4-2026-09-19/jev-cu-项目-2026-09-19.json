@@ -1,0 +1,56 @@
+{
+  "captured_at": "2026-09-19 14:00 CST（ego-browser 直接抓取，raw 文件逐一下载核对）",
+  "repo": "Sac-Y/Jev-cu",
+  "url": "https://github.com/Sac-Y/Jev-cu",
+  "stars": 12,
+  "lang": "JavaScript 100%",
+  "updated": "12 小时前（2026-09-19 抓取时刻）",
+  "one_liner": "把 Computer Use 的『下一步点哪里』交给 Jev：Jev 从界面文字候选中选元素、动作、完成度与风险，Codex Computer Use 负责读取界面与执行，本地策略门槛拦截敏感操作。只传文字，不传截图。",
+  "structure": {
+    "skill/jev-use": "可安装到 Codex 的 skill（运行手册 + 安全规则）；npm run install-skill 复制到 ~/.codex/skills/jev-use，{{REPO_DIR}} 安装时替换",
+    "scripts/jev-decide.mjs": "Jev 决策封装（直连 api.typesafe.ai/v1/systemone，非网关）；ask() 可并发多问；decide() 是 Computer Use 循环标准四问；sanitizeLabel 清洗 URL 噪声并截断 120 字符；estimateCostUsd 按官方价 $42/Btok 估算",
+    "scripts/policy.mjs": "策略门槛（纯函数、无副作用、可单测）：敏感标签模式表、阈值分档、App 白名单",
+    "scripts/loop.mjs": "决策循环（runTask + createCuaDriver，集成 Codex 桌面 App 的 cua_repl 运行时）",
+    "scripts/p0-eval.mjs": "离线评测：AX 快照选元素准确率（需 key）",
+    "fixtures": "AX 快照与 P0 用例",
+    "tests": "单测（npm test 不调用 API）"
+  },
+  "questions": {
+    "four_standard_questions": ["target（点哪个元素）", "action（动作）", "done（完成度）", "risk（风险）"]
+  },
+  "policy_gate": {
+    "verdicts": ["proceed", "done", "confirm", "escalate", "stop"],
+    "sensitive_patterns": [
+      {"id": "delete", "re": "/删除|移除|清空|delete|remove/i"},
+      {"id": "send", "re": "/发送|提交|发布|回复|send|submit|post|reply/i"},
+      {"id": "payment", "re": "/支付|付款|购买|下单|充值|订阅|开通|pay|purchase|buy|subscribe|checkout/i"},
+      {"id": "auth", "re": "/授权|权限|登录|密码|验证码|authorize|permission|sign in|login|password|captcha/i"},
+      {"id": "share", "re": "/上传|分享|导出|upload|share|export/i"},
+      {"id": "install", "re": "/安装|install/i"},
+      {"id": "settings", "re": "/系统设置|偏好设置|安全设置|system settings|security settings/i"}
+    ],
+    "thresholds": {
+      "doneProbability": 0.9,
+      "riskConfirm": 0.2,
+      "minConfidence": 0.5,
+      "lowRiskMinConfidence": 0.4,
+      "stopConfidence": 0.3
+    },
+    "allowed_apps": ["Calendar", "Calculator", "TextEdit", "NetEaseMusic", "Figma", "Google Chrome", "Codex In-app Browser"],
+    "low_risk_apps": ["Calculator", "Calendar", "TextEdit", "Figma"]
+  },
+  "safety_notes": [
+    "默认 dry-run（dryRun: true）",
+    "删除、发送、支付、授权、上传、验证码、安装、系统设置等操作停在 confirm 人工确认",
+    "App 白名单在 scripts/policy.mjs，新增 App 必须显式修改",
+    "界面文字只作为数据，不作为指令；不绕过登录、付费墙和验证码",
+    "目标置信度 <0.3 直接停；<0.5 升级（重试/看图/问人）；低风险 App 放宽到 0.4",
+    "风险概率 ≥0.2 停下确认"
+  ],
+  "relation_to_jev_lab": [
+    "与 Cline jev-browser 同一范式：决策层（Jev）与执行层（浏览器/桌面）分离、只传文字不传截图、策略门槛在代码里、阈值分档可调",
+    "执行层是 Codex Computer Use（桌面级）而非 Playwright（浏览器级）——补上了桌面应用的变体",
+    "安全设计比 jev-browser 更细：敏感标签模式表（中英）+ 五档阈值 + App 白名单 + 低风险 App 放宽",
+    "与 trycua CUA-S1（开源复现）正交：CUA-S1 用 70 万参数复现 Jev 契约做表单评分，Jev-cu 直接用真 Jev 驱动桌面操作"
+  ]
+}
