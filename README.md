@@ -1,115 +1,149 @@
-# Jev Lab — TypeSafe System One Model Research & Benchmarks
+# Awesome Jev Lab
 
-> **A hands-on research lab for [Jev](https://typesafe.ai) (TypeSafe's System One model)** — structured decisions, not text. We test Noul / Choice / Score primitives on real business problems (support-ticket routing, agent control, confidence gates), verify community claims with reproducible experiments, and track the ecosystem day by day.
+> A curated map of **Jev / TypeSafe System One** resources, real-world use cases, and reproducible benchmarks.
+
+**Independent community project. Not affiliated with or endorsed by TypeSafe.**
 
 **English** | [简体中文](README.zh-CN.md)
 
 [![Tests](https://img.shields.io/badge/tests-38%20passed-brightgreen)](tests/)
 [![Python](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/)
-[![Model](https://img.shields.io/badge/model-jev--1.13.0-blueviolet)](https://docs.typesafe.ai/models)
-[![Zero deps](https://img.shields.io/badge/deps-stdlib%20only-orange)](scripts/)
+[![Model](https://img.shields.io/badge/tested-jev--1.13.0-blueviolet)](https://docs.typesafe.ai/models)
+[![Zero deps](https://img.shields.io/badge/lab-stdlib%20only-orange)](scripts/)
 
----
+Jev turns natural-language state into typed decisions: **Noul** for yes/no, **Choice** for selecting an option, and **Score** for ordered ratings. This repository combines an ecosystem guide with independent tests, raw artifacts, and the scripts needed to reproduce them.
 
-## TL;DR — what we found
+## Contents
 
-Jev is a **System One model**: you send a `state` + typed questions, it returns typed answers with probabilities (Noul = yes/no, Choice = pick from options, Score = ordered rubric). No text generation — which makes it **cheap, fast, and non-hallucinating by construction** (schematically, not semantically).
+- [Start here](#start-here)
+- [Official resources](#official-resources)
+- [SDKs and integrations](#sdks-and-integrations)
+- [Curated use cases](#curated-use-cases)
+- [Reproducible benchmarks](#reproducible-benchmarks)
+- [Run the lab](#run-the-lab)
+- [Research archive](#research-archive)
+- [Contributing](#contributing)
 
-Our measured highlights (all reproducible in this repo):
+## Start here
 
-| Claim | Our data | Evidence |
+| Goal | Best entry point |
+| --- | --- |
+| Understand Jev in five minutes | [TypeSafe Quick Start](https://docs.typesafe.ai/introduction/quickstart) |
+| Choose an architecture pattern | [Official patterns](https://docs.typesafe.ai/patterns) |
+| See where people are using it | [Curated use cases](#curated-use-cases) |
+| Check claims against measurements | [Jev Lab validation report](docs/jev-validation-2026-09-18.md) |
+| Reproduce the results | [Run the lab](#run-the-lab) |
+
+## Official resources
+
+- [TypeSafe](https://typesafe.ai) - product overview and access.
+- [Documentation](https://docs.typesafe.ai/) - API concepts, guides, and reference.
+- [Models](https://docs.typesafe.ai/models) - aliases, versioned model IDs, and pricing.
+- [Patterns](https://docs.typesafe.ai/patterns) - fan-out, confidence-gated routing, composite scoring, and intent routing.
+- [Use-case map](https://docs.typesafe.ai/concepts/use-case-map) - official task and application taxonomy.
+- [TypeSafe GitHub organization](https://github.com/orgs/typesafe-ai/repositories) - official SDKs, skills, and adapters. Beware similarly named, unrelated organizations.
+
+## SDKs and integrations
+
+| Project | What it provides | Source |
 | --- | --- | --- |
-| Fan-out stayed flat in our pilot | 1 → 20 Noul questions: **P50 ≈ 1.4s, no observed latency growth** | [`docs/jev-validation-2026-09-18.md`](docs/jev-validation-2026-09-18.md) |
-| Cost is tiny | 108 requests ≈ **$0.0044** total | same report |
-| Decisions are repeatable | 3 runs × 36 tickets: **100% decision agreement** | [`artifacts/`](artifacts/) |
-| `confidence` beats argmax for gating | On failures: confidence 0.04–0.16 vs top-1 prob 0.58 — **use confidence, not argmax** | [`docs/jev-round3-2026-09-18.md`](docs/jev-round3-2026-09-18.md) |
-| Keyword baseline beat Jev on our pilot data | 97.2% vs 91.7% — **pilot data was too easy; don't over-trust vendor evals** | validation report |
-| End-to-end latency ≈1.5s, not <100ms | Official claim vs our full-path (network + gateway) measurement | validation report |
+| Python SDK | Official TypeSafe API client for Python | [typesafe-ai/typesafe-sdk-python](https://github.com/typesafe-ai/typesafe-sdk-python) |
+| JavaScript SDK | Official TypeSafe API client for JavaScript and TypeScript | [typesafe-ai/typesafe-sdk-js](https://github.com/typesafe-ai/typesafe-sdk-js) |
+| Agent skills | Official skills for building with the System One API | [typesafe-ai/skills](https://github.com/typesafe-ai/skills) |
+| System One adapter | Run the TypeSafe client contract against other LLM APIs | [typesafe-ai/system-one-adapter-python](https://github.com/typesafe-ai/system-one-adapter-python) |
+| Vercel AI Gateway | `typesafe-ai/jev` through AI SDK's evaluation API | [Vercel announcement](https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway) |
+| LangChain | Python and JS integration, model routing, and tool-risk middleware | [Integration guide](https://blog.langchain.com/building-a-harness-with-jev/) |
+| OpenRouter | Hosted access to `typesafe-ai/jev` | [Model page](https://openrouter.ai/typesafe-ai/jev) |
+| Cline browser harness | Jev-driven browser actions over structured DOM observations | [cline/plugins/jev-browser](https://github.com/cline/plugins/tree/main/plugins/jev-browser) |
 
-**Caveat we keep repeating:** probabilities are NOT production accuracy. Calibrate on your own data, pin `jev-1.13.0`, and treat any single Noul below ~0.5 as "unknown", not "no".
+## Curated use cases
 
-## Quick start
+These are representative projects and first-hand reports, not endorsements. Evidence labels distinguish inspectable implementations from author-reported results. See the [full 28-case audit](docs/jev-round5-supplement-2026-09-19.md) for broader coverage and caveats.
 
-1. Copy `.env.example` → `.env` and fill in `TYPESAFE_API_KEY`.
-2. Try one call (needs `curl`):
+### Agents and interfaces
 
-```sh
-set -a; . ./.env; set +a
-curl --fail-with-body --silent --show-error \
-  https://api.typesafe.ai/v1/systemone \
-  -H "Authorization: Bearer $TYPESAFE_API_KEY" \
-  -H 'Content-Type: application/json' \
-  -d '{"model":"jev-latest","state":"The customer cannot connect to Wi-Fi before a meeting today.","questions":{"urgent":{"type":"noul","instructions":"Does this message express urgency?"}}}'
-```
+- [Cline Jev Browser](https://github.com/cline/plugins/tree/main/plugins/jev-browser) - browser action selection with a bounded loop and explicit review states. **Open source.**
+- [Jev Voice Browser](https://github.com/moritzkremb/jev-voice-browser) - voice intent and browser target selection while speech is still streaming. **Open source demo.**
+- [jev-experiments](https://github.com/dabit3/jev-experiments) - a collection of predictive UI, routing, and decision experiments. **Open source experiments.**
 
-3. Run the offline unit tests (no key needed):
+### Search, screening, and routing
 
-```sh
-python3 -m unittest discover -s tests   # 38 tests, stdlib only
-```
+- [TypeSafe Screening MCP](https://github.com/masa-med-ai/typesafe-screening-mcp) - screens PubMed titles and abstracts against clinical criteria. **Open source; first-hand run reported.**
+- [ERP, knowledge-base, and mail search](https://x.com/bigfarmer666/status/2101114327722008829) - parallel retrieval with Jev reranking and disambiguation. **Author-reported production use.**
+- [Edge k3s decision pipeline](https://x.com/maro_kt/status/2101130758635258226) - separates deterministic code, typed decisions, and general LLM reasoning. **Author-reported field test.**
 
-## What's inside
+### Quality gates and real-time control
 
-```
-docs/       8 reports across 5 rounds — validation, ecosystem, claim audits, community cases
-evals/      6 datasets — support routing, agent control, confidence escalation, thinking supervision
-scripts/    9 reproducible eval & compare scripts (pure stdlib, no SDK)
-artifacts/  raw JSON + generated reports, incl. repeat-stability across runs
-tests/      38 unit tests, runnable offline
-```
+- [AI content scoring](https://x.com/noahxops/status/2101135688217538790) - scores generated variants before publishing. **Author-reported experiment.**
+- [Sprite Fusion level generation](https://www.spritefusion.com/blog/generating-game-level-in-real-time-with-jev) - chooses the next terrain segment from bounded candidates. **Published demo with timings.**
 
-## Research log — highlights
+### More directories
 
-| Doc | Round | Content |
+- [awesome-jev](https://github.com/ckaraca/awesome-jev) - a broader project and integration list.
+- [outjev.lol](https://outjev.lol) - community projects labeled as products, demos, or experiments.
+- [Jev Lab community survey](docs/jev-x-use-cases-2026-09-18.md) - source-audited index with risks and selection criteria.
+
+## Reproducible benchmarks
+
+All numbers below come from this repository's pilot datasets. They are observations, not production guarantees.
+
+| Question | Result | Evidence |
 | --- | --- | --- |
-| [**Validation**](docs/jev-validation-2026-09-18.md) | 1st | Support-ticket routing benchmark (108 calls), fan-out latency, cost, repeat-stability, keyword baseline, agent-control (context filtering / pathfinding / model routing) |
-| [**Thinking supervision**](docs/jev-thinking-supervision-2026-09-18.md) | 2nd | Observing + interrupting the reasoning window via a third-party gateway (mechanism experiment — did not shorten answers) |
-| [**Round 3**](docs/jev-round3-2026-09-18.md) | 3rd | Official-claim verification, ecosystem index quality, **confidence-escalation gate** (3 runs × 36 probes, 0.6–0.7 threshold passes 91.7% with 100% error capture) |
-| [**Round 4**](docs/jev-round4-2026-09-19.md) | 4th | Independent third-party benchmarks, TechCrunch coverage, open-source System One (CUA-S1), ecosystem risks |
-| [**Round 4 · supplement**](docs/jev-round4-supplement-2026-09-19.md) | 4th | Official doc deltas (Language support / Patterns / evals table), $40M funding facts, Vercel / LangChain / OpenRouter integration, the "13% adoption" asterisk, Jev-driven browser cases, Theo's context-compaction criticism |
-| [**Round 5**](docs/jev-round5-2026-09-19.md) | 5th | Who is actually using Jev: medical screening, DevOps, ERP, content scoring, PR review, voice control — and the honest gap: "everyone ran it once, nobody has been on duty for 30 days" |
-| [**Round 5 · supplement**](docs/jev-round5-supplement-2026-09-19.md) | 5th | 28-case community audit against GeekCat's list — 14 missed cases recovered (realtime assistance, SQL/vector search, code quality gates) |
-| [**Community survey**](docs/jev-x-use-cases-2026-09-18.md) | survey | X / GitHub usage index, risks, selection criteria |
+| Does 1 to 20-question fan-out add latency? | No growth observed; P50 stayed around **1.4 s** | [Report](docs/jev-validation-2026-09-18.md) / [raw artifact](artifacts/fanout-jev-1.13.0-2026-09-18.json) |
+| What did 108 requests cost? | Approximately **$0.0044** | [Validation report](docs/jev-validation-2026-09-18.md) |
+| Were decisions repeatable? | **100% decision agreement** across 3 x 36 support cases | [Stability report](artifacts/support-routing-v1-repeat-stability-2026-09-18.md) |
+| Did Jev beat a simple baseline? | No; keyword rules scored **97.2% vs 91.7%** on an easy pilot set | [Baseline](artifacts/support-routing-v1-keyword-baseline.md) |
+| Is top-1 probability enough for a safety gate? | No; failed cases had confidence 0.04-0.16 while top-1 probability reached 0.58 | [Confidence study](docs/jev-round3-2026-09-18.md) |
+| Did full-path latency match sub-100 ms claims? | No; this environment measured roughly **1.5 s end to end** | [Validation report](docs/jev-validation-2026-09-18.md) |
 
-Raw data → `artifacts/`, datasets → `evals/`, scripts → `scripts/`.
+Practical takeaways:
 
-## Reproduce the benchmarks
+1. Pin the versioned model ID after tuning thresholds; aliases can move.
+2. Gate on the API's `confidence`, not only the largest answer probability.
+3. Treat probabilities near 0.5 as uncertainty, not an automatic "no".
+4. Test CJK workloads separately; official documentation says English performs best.
+5. Keep raw inputs, outputs, errors, and retries so a result can be audited.
+
+## Run the lab
+
+The test suite and comparison scripts use only the Python standard library. API benchmarks require a TypeSafe key.
 
 ```sh
-# support-routing benchmark (3 rounds) + keyword baseline
+cp .env.example .env
+python3 -m unittest discover -s tests
+
+# Support routing and a deterministic keyword baseline
 python3 scripts/evaluate_support.py --run-name support-routing-v1
 python3 scripts/evaluate_keyword_baseline.py
 
-# fan-out latency (1→20 parallel questions)
+# Fan-out latency and confidence-gated escalation
 python3 scripts/benchmark_fanout.py
-
-# confidence escalation gate (needs API key)
 python3 scripts/evaluate_confidence_escalation.py
 ```
 
-## Key lessons (so you don't have to learn them)
+Repository layout:
 
-1. **Fan-out is the feature to test first** — in our pilot, asking more questions per request barely changed latency and kept cost in the sub-cent range.
-2. **`confidence` ≠ argmax probability** — on our failing cases they differed by an order of magnitude. Gate on `confidence`.
-3. **Pin the version** — aliases move; log the `model` field from every response (`jev-1.13.0` as of 2026-09-19).
-4. **CJK is officially weaker** — "handled but not equally well"; test Chinese before trusting it.
-5. **Vendor evals are self-evaluations** — labels generated by other models (GPT-6 Astra + Claude Fable 5.1), no human labeling. Our "facts-checkable" probes are the contrast.
-6. **Compaction / routing that rewrites context breaks LLM prompt caches** (community-measured: 99.35% → 32% hit rate) — keep deletions recoverable, keep numbers in code.
+```text
+docs/       Source-audited reports and research notes
+evals/      Versioned benchmark datasets
+scripts/    Reproducible evaluators and comparison tools
+artifacts/  Raw JSON outputs and generated reports
+tests/      Offline unit tests
+```
 
-## Roadmap / next
+## Research archive
 
-- [ ] Chinese & mixed CN-EN ticket probes (official docs flag CJK as weaker)
-- [ ] Latency breakdown (DNS/TLS/gateway vs model) to explain the 1.5s vs 176ms gap
-- [ ] Re-run with official SDK instead of raw `urllib`
-- [ ] Escalation cascade: Jev first pass → strong model only when uncertain
-- [ ] Watch post-Sept-25 pricing / retention on Vercel AI Gateway
+| Topic | Reports |
+| --- | --- |
+| Benchmarks and calibration | [Initial validation](docs/jev-validation-2026-09-18.md) · [Confidence gates](docs/jev-round3-2026-09-18.md) |
+| Agent control and reasoning supervision | [Thinking supervision](docs/jev-thinking-supervision-2026-09-18.md) · [Ecosystem cross-check](docs/jev-round4-2026-09-19.md) |
+| Official claims and integrations | [Official/platform audit](docs/jev-round4-supplement-2026-09-19.md) |
+| Community adoption | [First-hand use cases](docs/jev-round5-2026-09-19.md) · [28-case audit](docs/jev-round5-supplement-2026-09-19.md) · [Community survey](docs/jev-x-use-cases-2026-09-18.md) |
 
 ## Contributing
 
-Independent replications, counterexamples, and new datasets are especially useful. Read [CONTRIBUTING.md](CONTRIBUTING.md), or [submit a benchmark result](https://github.com/llt22/jev-lab/issues/new?template=benchmark-result.yml) without changing code.
+Independent replications, counterexamples, and new datasets are especially valuable. Read [CONTRIBUTING.md](CONTRIBUTING.md), [suggest a resource](https://github.com/llt22/jev-lab/issues/new?template=resource-suggestion.yml), or [share a benchmark result](https://github.com/llt22/jev-lab/issues/new?template=benchmark-result.yml) without changing code.
 
-## Usage & disclaimer
-
-Repo is research material: **do not treat single-run probabilities as production accuracy or as permission to auto-execute.** API pricing/versions are from official docs at capture time (2026-09-19). See each report for its evidence level (verified structure / vendor-reported / author-reported).
+This repository is research material. Do not treat a single-run probability as production accuracy or permission to execute an action. Prices, versions, and ecosystem status reflect the capture dates in each report.
 
 No open-source license has been declared yet. Until one is added, standard copyright restrictions apply.

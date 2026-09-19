@@ -1,0 +1,68 @@
+name: Suggest a Jev resource
+description: Propose a project, integration, use case, or primary source for the curated map.
+title: "[Resource]: "
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Resource name
+      placeholder: TypeSafe Screening MCP
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Primary URL
+      description: Link to the original repository, documentation, or author report rather than an aggregator.
+      placeholder: https://github.com/owner/project
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Official resource
+        - SDK or integration
+        - Agent or interface
+        - Search, screening, or routing
+        - Quality gate or real-time control
+        - Benchmark or research
+        - Community directory
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence level
+      options:
+        - Official resource
+        - Open-source implementation
+        - Published benchmark
+        - Author-reported use
+        - Unverified experiment
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Why it belongs
+      description: Describe what it does, who it helps, and the specific evidence available.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I linked the primary source and searched the current README for duplicates.
+          required: true
+        - label: I disclosed my relationship to this resource below, including if I created it.
+          required: true
+  - type: textarea
+    id: relationship
+    attributes:
+      label: Relationship to the resource
+      placeholder: I am the author / I use it / No affiliation
+    validations:
+      required: true

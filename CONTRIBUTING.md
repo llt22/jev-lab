@@ -4,11 +4,20 @@ Independent replications, counterexamples, and datasets make this repository mor
 
 ## Ways to contribute
 
+- Suggest a project, integration, or first-hand use case through the [resource form](https://github.com/llt22/jev-lab/issues/new?template=resource-suggestion.yml).
 - Share a Jev benchmark through the [benchmark result form](https://github.com/llt22/jev-lab/issues/new?template=benchmark-result.yml).
 - Add cases to an existing dataset under `evals/` with a clear expected result.
 - Add a reproducible evaluator or comparison under `scripts/`.
 - Correct a report with a primary source or raw artifact.
 - Report an API behavior change, including the exact model version and observation date.
+
+## Resource curation
+
+A suggested resource should be directly related to Jev or the TypeSafe System One API, publicly inspectable, and useful beyond a social post announcing that it exists. Prefer the original repository, documentation, or author report over an aggregator.
+
+Include a one-sentence description and identify the evidence level: official resource, open-source implementation, published benchmark, author-reported use, or unverified experiment. Do not copy star counts or performance claims without a capture date and primary source.
+
+Entries may be declined when they duplicate an existing resource, contain no inspectable implementation or evidence, misrepresent affiliation, or are primarily promotional.
 
 ## Reproducing the current work
 
