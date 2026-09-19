@@ -94,3 +94,22 @@
 - **模型口径**：`DEFAULT_MODEL = "jev-latest"`（未 pin 版本——与 jev-lab"固定 jev-1.13.0"建议不一致，注意）
 
 归档价值：与 trycua CUA-S1（70 万参数复现 Jev 契约）正交——CUA-S1 是"用开源替代 Jev"，Jev-cu 是"用 Jev 驱动桌面 Computer Use"，把第三轮 agent-control 的"上下文过滤/语义寻路"范式扩展到桌面操作层；且其 policy.mjs 的阈值分档设计（低风险 App 放宽 + 敏感词 confirm）是把 Jev 概率接到真实安全边界的教科书式写法，值得 jev-lab 下一轮"阈值即策略"实验参考。
+
+## 六、补录：yibie（@yibie）——awesome-jev 生态巡检员
+
+> 用户点题后核实，2026-09-19；原始抓取见 [`artifacts/round4-2026-09-19/yibie-awesome-jev巡检-2026-09-19.json`](../artifacts/round4-2026-09-19/yibie-awesome-jev巡检-2026-09-19.json)。
+
+[yibie](https://x.com/yibie)（**awesome-jev 索引维护者**，github.com/yibie/awesome-jev，巡检帖提及 ★454）——round4 主报告已记录他的索引（★182，"已取代此前记录的最高星索引"），本轮补的是他作为"巡检员"的三条长帖（46→61→100→108→130→160 条的生态增长过程），**这些帖子本身是生态数据源**：
+
+**他给出的最有价值的新数据（此前未收录）：**
+
+1. **fast-jev-compaction 正面实测**（我们此前只有 Theo 批评侧）：Claude Code **156,000→62,000 tokens，上下文使用率 78%→31%，16 条里 10 条原文保留**——作者方数据，与 Theo 批评并存，正反两面的证据现在齐了；Theo 反对帖 2,276 赞。
+2. **平台级接入新增大户**：**vercel-labs/json-render ★16,439**（生成式 UI 框架，compose 路径用 Jev 挑组件和动作——按星数算目前最大的 Jev 生产集成）、vercel-labs/fx ★3,057（Zig coding agent，内置 `typesafe_permission_reviewer`，即 TechCrunch fx 命令审查器的实现本体）、vercel-labs/ai-python ★183。
+3. **创意新形态**：**jevinci**——让 Jev **并行预测每个像素的颜色**来作画，置信度决定笔触宽度（像素级 fan-out）。
+4. **数据层**：jev() PostgreSQL 扩展（与知识猫清单 #21 同源）+ **DuckDB 扩展**（任意 CSV/Parquet 逐行分类，1000 行约 10 秒）。
+5. **开源复刻全家桶**（CUA-S1 之外的第二波）：jaredpalmer/kev ★125（Qwen2.5-0.5B，MacBook 可训练）、NanoJev ★165（0.6B，完整概率分布、零 token 解码）、中文社区五款（Laya 421M / Decider-2B / NanoJev / Reflex / System-One 4B）、Qwen3.6-35B-A3B 兼容 API、"把任意 HF 模型 Jev 化"库——**接口契约的复刻已经从"可能"变成"泛滥"**。
+6. **成本对照三组**：724 条广告拆解 9 分钱；3M 回放事件→$2.17（132 次暴怒点击、213 个修复 PR）；384 条新闻→$0.19（同期 Opus 5 只跑 4 条花 $0.77）。
+7. **反方观点（新）**：@jiayuan_jy"更快的通用分类器，LLM 完全可以做到"；**@anderslie"快的关键是并行解码推理技术，任何开源权重模型改推理引擎都能暴露类似接口"**；@iwashi86 约 1 万次 API 调用反推内部结构；@0xBOYD"X 热火朝天但 Reddit 只有 3 条帖子（2 条还是自发）——渠道不同结论不同"。
+8. **收录治理规则**（与第三轮"生态索引不可轻信"互证）：同一作者滚动 7 天 3 条上限、共同发布日期视为风险信号、明说"160 条里有大量 0 星一天写完的仓库，README 数字不一定有出处，采用前自己跑一遍"。
+
+**归档价值**：① fast-jev-compaction 的正反两面证据齐了（作者 156k→62k vs Theo 六点批评），引用该插件时必须两方并述；② json-render 是第一个 ★万级 的 Jev 生产集成，说明"Jev 挑 UI 组件"已进入主流框架；③ 复刻潮从"能否"进入"泛滥"，进一步支持 round4"产品形态不是壁垒、护城河在数据配方"的判断；④ @anderslie 的"并行解码"观点值得记入"为什么快"的假说清单（与官方架构不公开并置）。

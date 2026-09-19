@@ -1,0 +1,70 @@
+{
+  "captured_at": "2026-09-19 14:20 CST（ego-browser 登录态抓取）",
+  "person": {
+    "handle": "@yibie",
+    "name": "yibie（壹本）",
+    "site": "gtdstudy.com",
+    "join": "2008年11月加入 X",
+    "role": "awesome-jev 索引维护者 + 生态周期巡检员（github.com/yibie/awesome-jev，讨论帖提及 ★454）",
+    "working_style": "每 12–24 小时发一条 'awesome-jev 周期巡检' 长帖：新增条目数（46→61→100→108→130→160）、亮点、平台接入、新分类、争议与反对意见；明确声明 '清单不背书任何项目'"
+  },
+  "inspection_posts": [
+    {
+      "time": "2026-09-18T23:46Z",
+      "link": "https://x.com/yibie/status/2101095525793616162",
+      "title": "Jev 生态 72 小时：从 46 条到 160 条",
+      "key_data": [
+        "fast-jev-compaction ★3,169（最大 Jev 项目）：Claude Code 156,000→62,000 tokens，使用率 78%→31%，16 条里 10 条原文保留；已有 Codex 移植版和 Pi 移植版",
+        "Theo 反对帖拿到 2,276 赞（'压缩是重建不是过滤'）——与本仓库归档的 Theo 批评为同一事件，此处补上了赞数",
+        "平台级：vercel-labs/json-render ★16,439（生成式 UI 框架，compose 路径用 Jev 挑组件和动作）；vercel-labs/fx ★3,057（Zig 写的类 Unix coding agent，内置 typesafe_permission_reviewer——即 TechCrunch 的 fx 命令安全审查器）；vercel-labs/ai-python ★183；cline/plugins jev-browser；Atomic ★805（Jev 做成一级 structured-output provider）",
+        "收录原则：'我拒掉 Coder 和 Mastra——它们只出现在价格表和模型能力目录里，那是认得这个模型，不是用它做决策'",
+        "金融交易新分类：Monad 链上交易机器人（Jev 看价格喂价决定买卖，每个 300ms 区块下一笔真实订单）；Jevinik（行情+Valyu 证据判断 30 天涨跌）；jev_stock（港股短期方向预测+首交易日回测）",
+        "数据库：jev() PostgreSQL 扩展（WHERE jev(people,'could work from home')，无索引无 embedding）；DuckDB 扩展（任意 CSV/Parquet/表逐行分类，1000 行约 10 秒）",
+        "创意：jevinci——让 Jev 并行预测每个像素的颜色作画，置信度决定笔触宽度",
+        "成本对照：724 条广告拆解 37 品牌 9 分钱；3M 条回放事件→3,247 会话/132 暴怒点击/213 修复 PR，$2.17；384 条新闻→15 品牌选题 $0.19（同期 Opus 5 只跑 4 条花了 $0.77）",
+        "开源复刻潮：jaredpalmer/kev ★125（Qwen2.5-0.5B 迷你 Jev，MacBook 可训练）；NanoJev ★165（0.6B 输出完整概率分布、零输出 token 解码）；中文社区盘点 Laya 421M / Decider-2B / NanoJev 0.6B / Reflex / System-One 4B 五款；兼容 Jev 的公开 API（Qwen3.6-35B-A3B）与'把任意 HF 模型 Jev 化'的库",
+        "反对意见：@jiayuan_jy（'更快的通用分类器，LLM 完全可以做到'）；@anderslie（快的关键是并行解码推理技术，任何开源权重模型改造推理引擎都能暴露类似接口）；@iwashi86（约 1 万次 API 调用反推内部结构）；@0xBOYD（X 上热火朝天但 Reddit 只有 3 条帖子、其中 2 条还是自发的——渠道不同结论不同）",
+        "收录治理规则：同一作者滚动 7 天 3 条上限；共同发布日期视为风险信号；'160 条里有大量 0 星、一天写完的仓库，README 里的数字不一定有出处，采用之前自己跑一遍'"
+      ]
+    },
+    {
+      "time": "2026-09-18T11:06Z",
+      "link": "https://x.com/yibie/status/2100904309051281776",
+      "title": "周期巡检：61 → 100",
+      "key_data": [
+        "Foreman ★247：坐在 Codex 之上，用 Jev 独立验收'实现是否完成、测试是否充分'",
+        "NanoJev ★165：0.6B 复刻，直接输出概率分布、零输出 token 解码",
+        "yoshi ★7：给 Claude Code/Codex 做上下文裁剪，Jev 判断哪些历史还需要",
+        "typesafe-adblock ★38：逐 DOM 元素问'这是广告吗'",
+        "平台：OpenRouter 上线 Jev（beta）；Cloudflare AI Gateway 上线（Workers 可 env.AI.run 直调）",
+        "新增：DiffJury / HA-Jev / secondlayer / new-api；护栏 jev-code / opencompany；评分 pagegrade；Agent pi-jev / pi-quiet-ask / fastbrowse / super-jev；评测 Jev Pong / Jev 重排负结果 / lindfors 独立测试；开放模型 open-alternative-jev / mini-jev / ekzhang 兼容 API；游戏 jev-plays-pokemon / drone-demo"
+      ]
+    },
+    {
+      "time": "2026-09-18T16:59Z",
+      "link": "https://x.com/yibie/status/2100993122427707601",
+      "title": "周期巡检：108 → 130（新增金融交易分类）",
+      "key_data": [
+        "Atomic ★805：Jev 做成一级 structured-output provider，与其它 provider 共用 resolver",
+        "Jev Browser ★74：由 Jev 决定浏览器每一步（注意：与 cline/plugins 的 jev-browser 是不同条目）",
+        "duet-agent ★42：用 Jev 维护模型路由表",
+        "pi-fast-jev-compaction（joelhooks）：逐字保留对话只裁过期工具历史，裁不动才交 Pi 原生摘要",
+        "Hunch：自然语言规则查代码，Jev 给每个发现打标签",
+        "Abide：Jev 审 agent 每一次编辑，自报 39 处告警人工确认 10 处",
+        "pi-heed：把每个有副作用的工具调用对回用户原始要求",
+        "JevSlop：note 文章 8 个 Score 维度、单次 systemOne 请求算 0–100 废话分",
+        "SemanticSpace：用 Jev 打分把短语投到二维语义空间",
+        "WindTunnel ★49：浏览器 agent 基准；jev-eval 三方对比 Jev/GPT-4o-mini/Claude Sonnet 4.5",
+        "金融：Jevinik / jev_stock（同上）；typesafe-jev-examples（不申请 waitlist、走 OpenRouter 的工单分诊与重排示例）；typesafe-playground（客服意图→3D 世界开车）",
+        "讨论：'60 天后还会用 Jev 的六件事'、RAG 重排边界、Devin 用户喊话要 Jev",
+        "维护：typesafe-on-neon 已改名 safer-with-jev"
+      ]
+    }
+  ],
+  "relation_to_jev_lab": [
+    "yibie/awesome-jev 在 round4 主报告已记录（★182→454，'已取代此前记录的最高星索引'）；本条目补的是他作为'巡检员'的三条长帖的生态数据",
+    "补上了 fast-jev-compaction 的正面实测数字（156k→62k tokens、78%→31% 使用率）——此前我们只有 Theo 批评侧",
+    "新增未收录项目：json-render ★16,439（最大 Jev 集成）、jevinci 像素作画、DuckDB 扩展、开源复刻全家桶（kev/NanoJev/Laya/Decider-2B/Reflex/System-One 4B）、Foreman、Abide、JevSlop、WindTunnel",
+    "他的收录治理规则（同作者 7 天 3 条、共同发布日期=风险信号、0 星仓库提示）与 jev-lab 第三轮'生态索引不可轻信'的结论互证"
+  ]
+}
