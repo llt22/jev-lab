@@ -1,0 +1,85 @@
+{
+  "captured_at": "2026-09-19T02:25-02:20Z (X 本地时间为准)",
+  "space": "Jev round4 X research (2026-09-19)",
+  "login": "@lilongtaogm",
+  "searches": [
+    {
+      "query": "typesafe jev (f=live)",
+      "results": [
+        {"by": "Josh with an eye @technogeek007", "time": "2026-09-19T02:25:25Z", "link": "/technogeek007/status/2101135544331972980", "t": "广告决策层：#Jev is not trying to create the ad. It is making the decisions before the ad gets created. Look at a large set of assets, filter, select."},
+        {"by": "图南 @AiWorking_Lab", "time": "2026-09-19T02:24:27Z", "link": "/AiWorking_Lab/status/2101135301213331783", "t": "一文看懂当下最火的JEV模型（中文科普帖）"},
+        {"by": "fredwin @fredwxn", "time": "2026-09-19T02:19:06Z", "link": "/fredwxn/status/2101133955638472705", "t": "Jev ripping through AI Gateway; ship one public latency note from a design partner this week."},
+        {"by": "Max Brin @MaxBrinAI", "time": "2026-09-19T02:16:27Z", "link": "/MaxBrinAI/status/2101133285938065426", "t": "预测：忘记 TypeSafe/Jev；OAI 或 Anthropic 收购或自建，成为 LLM 调用中的 flag"},
+        {"by": "タカシマヤ @takashimaya_dev", "time": "2026-09-19T02:08:37Z", "link": "/takashimaya_dev/status/2101131314313470397", "t": "waitlist 注册后自动获得 $5 额度；Organization 也被注册（日文）"},
+        {"by": "金のニワトリ @gosrum", "time": "2026-09-19T02:07:48Z", "link": "/gosrum/status/2101131109245632784", "t": "没绑卡也能用，初始直接给了 $5（日文）"},
+        {"by": "Kenji Tsutsumi @maro_kt", "time": "2026-09-19T02:06:24Z", "link": "/maro_kt/status/2101130758635258226", "t": "Deterministic Code × Jev × General LLM：边缘 k3s 集群升级的 live benchmarks，自主运维蓝图 #jev"},
+        {"by": "cv usk @cv_usk", "time": "2026-09-19T02:06:00Z", "link": "/cv_usk/status/2101130656516624801", "t": "介绍 LangChain 博客 Building a Harness with Jev（日文）"}
+      ]
+    },
+    {
+      "query": "jev -typesafe (f=live)",
+      "results": [
+        {"by": "jun? @junisbuilding", "time": "2026-09-19T02:25:50Z", "link": "/junisbuilding/status/2101135649793507527", "t": "POC：实时自由文本重排版网页，Jev 适合设计系统（user intent → design tokens）"},
+        {"by": "李岳 @liyue_ai", "time": "2026-09-19T02:25:45Z", "link": "/liyue_ai/status/2101135626884260249", "t": "waitlist 昨晚申请早上通过（中文）"},
+        {"by": "索螺丝 @fiapp_pro", "time": "2026-09-19T02:25:42Z", "link": "/fiapp_pro/status/2101135614720778449", "t": "Jev 最大创新不是工程而是时机；从业者不屑一顾（中文）"},
+        {"by": "たきぞう @takizo210529", "time": "2026-09-19T02:25:39Z", "link": "/takizo210529/status/2101135603505221771", "t": "証票整理・仕訳判定（票据/记账）场景设想；低置信度转高额模型（日文）"},
+        {"by": "Tsuyoshi Higuchi @tyshgc", "time": "2026-09-19T02:25:38Z", "link": "/tyshgc/status/2101135599914676237", "t": "马术（盛装舞步）评分实验：gemini 分析视频生成数据，Jev 评分（日文）"},
+        {"by": "Daishin Ueyama @dueyama", "time": "2026-09-19T02:25:33Z", "link": "/dueyama/status/2101135575772446873", "t": "质疑：和 embedding 有什么不同？但用途很多，会留下来的技术"},
+        {"by": "Dushyant @DevDminGod", "time": "2026-09-19T02:25:28Z", "link": "/DevDminGod/status/2101135556487061968", "t": "'Jev is the docker of ML' — 大家都说 we had this before，但现在很多人在构建"},
+        {"by": "The Fool @ItoshimaLife", "time": "2026-09-19T02:25:24Z", "link": "/ItoshimaLife/status/2101135538007027748", "t": "质疑：We already have a smaller and working FunctionGemma 🤔"},
+        {"by": "dj @HeBeCoding", "time": "2026-09-19T02:25:21Z", "link": "/HeBeCoding/status/2101135526505988106", "t": "Use cases have exploded with jev."}
+      ]
+    },
+    {
+      "query": "#jev (f=live)",
+      "results": [
+        {"by": "こうへい @kouhei_kanazawa", "time": "2026-09-19T02:17:17Z", "link": "/kouhei_kanazawa/status/2101133495229960280", "t": "docs.typesafe.ai/models#language-support：日语能读但不擅长"},
+        {"by": "Pep3 Márquez @Pep3Marquez", "time": "2026-09-19T01:52:00Z", "link": "/Pep3Marquez/status/2101127132445343827", "t": "Vercel 上 Jev 免费到下周；适合模型路由、决策"},
+        {"by": "Nathan LeClaire @dotpem", "time": "2026-09-19T01:49:53Z", "link": "/dotpem/status/2101126602461745238", "t": "Jev After Dark"},
+        {"by": "Darren Lu @awsforagent", "time": "2026-09-19T01:45:32Z", "link": "/awsforagent/status/2101125505765714739", "t": "hands on #jev yourself"}
+      ]
+    },
+    {
+      "query": "jev vercel (f=live)",
+      "results": [
+        {"by": "Daniel Green @dgrreen", "time": "2026-09-19T02:19:27Z", "link": "/dgrreen/status/2101134040996700287", "t": "Jev is free on Vercel AI Gateway until Sept 25!"},
+        {"by": "Aaliyaan @aaliyaanX", "time": "2026-09-19T01:59:30Z", "link": "/aaliyaanX/status/2101129020700340434", "t": "the 13% number has a big asterisk: jev is free on the gateway until sept 25. it also doesn't write code or prose, so it's being compared against models doing a totally different job. — 关键纠偏"},
+        {"by": "biao哥 @fengbiaol", "time": "2026-09-19T01:49:01Z", "link": "/fengbiaol/status/2101126382822773189", "t": "中文总结：System One/《思考快与慢》系统1来源；毫秒级延时；只输出类型；waitlist 排队溢出，可先在 Vercel 尝鲜"},
+        {"by": "Cem Karaca @ckaraca", "time": "2026-09-19T01:26:45Z", "link": "/ckaraca/status/2101120780696174712", "t": "Composio, vercel/ai, rig, Phoenix 均已上线 Jev 集成；列表超过 100，每周按 star 重排"},
+        {"by": "Wizardp zz @Wizarp_zz", "time": "2026-09-19T01:14:56Z", "link": "/Wizarp_zz/status/2101117806809133159", "t": "中文 5 要点：System One 决策模型；分类比 LLM 快 200x（截断）"}
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "post": "Vercel @vercel /status/2101077346203971900 (2026-09-18T22:34Z)",
+      "text": "Jev 的采用速度比 AI Gateway 历史上任何其他模型都要快。在第一天，@typesafeai 覆盖了约 13% 的团队，是 GPT-5.6 系列的 2 倍，Fable 5.1 的 6 倍。",
+      "replies": [
+        {"by": "@awlevin", "t": "Affordability made it accessibility. Bet on Jevons paradox."},
+        {"by": "@CyaVer009", "t": "Lmao... because its the only place you can access it..."},
+        {"by": "@bigmrrobert", "t": "To be fair, this is because everyone who was telling their agent to setup Jev for them wasn't able to get past the waitlist, and they all defaulted to vercel gateway as an option."},
+        {"by": "@robbydooo", "t": "I am pretty sure at least 10% of that is me 😂"},
+        {"by": "@PujaraMihir", "t": "the comparison only works if theyre doing the same job. jev doesnt write code or prose so its not replacing gpt-5.6 anywhere, it goes in next to it. day one share measures how cheap it is to bolt on"},
+        {"by": "@aaliyaanX", "t": "13% number has a big asterisk: free until sept 25, doesn't write code/prose → 任务性质不同"},
+        {"by": "@alamosaravali", "t": "Jev is amazingly fast and smart. I've integrated it with my game to give it a truly living world"}
+      ]
+    },
+    {
+      "post": "TypeSafe AI @typesafeai /status/2100747035746193598 (2026-09-18T00:32Z)",
+      "text": "@OpenRouter 🤝 @typesafeai",
+      "replies": [
+        {"by": "@Tim Brennan", "t": "Signed up to openrouter just to use Jev"},
+        {"by": "@zmikmik", "t": "오픈 라우터 쓰면 더 느려지는거 아니야? 걱정했지만..（质疑 OpenRouter 会慢）"},
+        {"by": "@david_gc1005", "t": "Simulations will be a beast!!!!"}
+      ]
+    },
+    {
+      "post": "Guillermo Rauch (per dev.to 转述, 2026-09-16~17)",
+      "text": "Default mode in fx is auto, with a safety reviewer analyzing every command. That reviewer runs on GPT Luna today. Jev is up to 18x faster (p95) and more accurate. It's coming to @vercel AI Gateway and likely new default."
+    },
+    {
+      "post": "Pranit from Vercel @fazxes (per dev.to 转述, 2026-09-16)",
+      "text": "We benchmarked fx auto mode (safety) classifier with @typesafeai's Jev. tl;dr: ~5-18x faster and more accurate than gpt-5.6-luna, our current top choice."
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "captured_at": "2026-09-19 10:30-10:40 CST",
+  "sources": [
+    {
+      "url": "https://docs.typesafe.ai/models",
+      "verified": true,
+      "notes": [
+        "当前模型: Jev 1.13 = jev-1.13.0",
+        "价格: $42 / Btok = $0.042 / Mtok（输出免费）",
+        "限流: 250,000 token/s, 1,200 req/min（动态调整：'upcoming large GPU deals land and we let in more users'）",
+        "长度: 64k/request; 32k state+最长问题",
+        "别名: jev-latest → jev-1.13.0; jev-preview → jev-1.13.0（无 preview build）",
+        "新增段落 Language support: 'English is the primary training language and where accuracy is currently best. Other languages, including CJK scripts, are handled but not equally well; test on your own content before relying on Jev for a non-English workload, and pay close attention to Confidence when routing.'",
+        "新增段落 Data handling: 不训练客户数据; ZDR 企业选项",
+        "新增 Listing models: GET /v1/models 返回别名与版本; 版本化 ID 即使不在列表也可用",
+        "官方建议: pin 版本化 ID 而非别名; 响应 model 字段记录实际版本 — 与 jev-lab 监控版本漂移待办一致"
+      ]
+    },
+    {
+      "url": "https://docs.typesafe.ai/patterns",
+      "verified": true,
+      "notes": [
+        "第三轮未记录的 PATTERNS 区块（9-18 之后新增或未收录）:",
+        "Speculative Fan-Out — 一次请求多问题（对应 jev-lab fanout 实验）",
+        "Confidence-Gated Routing — 置信度作为第二决策轴（对应 confidence-escalation 实验）",
+        "Composite Scoring — 多维度合成单分",
+        "Intent Routing — 意图分类路由",
+        "COOKBOOKS 区块: Self-consistency, Batching, Extraction, Classification",
+        "DEMOS 区块: Smart home assistant demo"
+      ]
+    },
+    {
+      "url": "https://blog.langchain.com/building-a-harness-with-jev/",
+      "title": "Building a Harness with Jev — S. Runkle, H. Lovell, September 17, 2026",
+      "verified": true,
+      "notes": [
+        "langchain-typesafe Python 包: TypeSafeClassifier, Noul",
+        "experimental.middleware.ModelRouterMiddleware — 模型路由（choices fast/powerful + criteria）",
+        "experimental.middleware.AutoModeMiddleware — Jev 检查工具调用的风险并阻止（对应我们 agent-control 模型路由/护栏）",
+        "提及: Kyle Jeong (Browserbase) 浏览器 agent 'fractions of a cent'; Jarrod Watts live trading agent; Ryan Vogel email triage"
+      ]
+    },
+    {
+      "url": "https://pypi.org/pypi/langchain-typesafe/json",
+      "verified": true,
+      "data": {"name": "langchain-typesafe", "version": "0.0.1a2", "releases": ["0.0.1a1", "0.0.1a2"], "requires_python": ">=3.10,<4"}
+    },
+    {
+      "url": "https://registry.npmjs.org/@langchain/typesafe",
+      "verified": true,
+      "data": {"name": "@langchain/typesafe", "dist-tags": {"latest": "0.0.1"}}
+    },
+    {
+      "url": "https://siliconangle.com/2026/09/16/typesafe-ai-exits-stealth-with-40m-to-build-ai-for-use-by-software/",
+      "title": "TypeSafe AI exits stealth with $40M — Paul Gillin, SiliconANGLE (UPATED 2026-09-16 14:32 EDT)",
+      "verified": true,
+      "notes": [
+        "$40M Series Seed, DCVC 领投; Forbes 报道估值 $200M",
+        "创始人兼 CEO Diogo Almeida: OpenAI 前 RLHF/InstructGPT/ChatGPT/GPT-4 研究员, 2024 年创立",
+        "联合创始人: Erik Gafni, Sasha Sheng",
+        "引用: 'less than 100 milliseconds' 延迟; up to 100x faster and less expensive",
+        "官网价格口径: $0.39/1000 workflows（对比 GPT-5.6 Luna $3.31, Claude Haiku 4.5 $19.49）",
+        "官方自报 194x 快 / 445x 便宜 (未独立验证)"
+      ]
+    },
+    {
+      "url": "https://www.dcvc.com/news-insights/typesafe-emerges-from-stealth-with-a-new-way-of-doing-ai/",
+      "title": "DCVC leads the $40 million Series Seed — James Hardiman, 15 Sep 2026",
+      "verified": true,
+      "notes": [
+        "确认 $40M Series Seed 由 DCVC 领投",
+        "确认 Jev 'delivers frontier-level intelligence at less than 100 milliseconds of latency and is often 100 times faster and less expensive'",
+        "Almeida keynote 题目: 'Where the f**k is all the automation?'"
+      ]
+    },
+    {
+      "url": "https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/",
+      "title": "A new kind of AI model from a ChatGPT inventor is thrilling developers — Tim Fernholz, 18 Sep 2026",
+      "verified": true,
+      "notes": [
+        "Almeida 采访: 'We have lightning in a bottle, and yet it is not useful'; 两年前离开 OpenAI",
+        "API 曾因需求过高短时无法服务",
+        "Vercel 生产案例: Pranit Sharma (软件工程师) — 用 Jev 替换 OpenAI Luna 5.6 做命令安全分类器, 'results five to 18 times more quickly and with greater accuracy'",
+        "Bryo AI CTO Nikhil Mudholkar: Gemini 略准但贵 10-20 倍; 'it is the only one that hands back a real probability which makes it ideal for automating workflows'",
+        "Earendil CTO Armin Ronacher (开源 harness Pi): Jev 做 agent 监控/防 jailbreak/模型路由; 'it delegates the hallucination problem a little bit to the user'",
+        "命名: William Stanley Jevons, 19 世纪经济学家, 杰文斯悖论"
+      ]
+    },
+    {
+      "url": "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+      "title": "TypeSafe AI's Jev now available on AI Gateway — 16 Sep 2026 (Rohan Taneja, Zachary Chen, Jerilyn Zheng)",
+      "verified": true,
+      "notes": [
+        "AI SDK 7 experimental evaluate API: experimental_evaluate; model 'typesafe-ai/jev'",
+        "providerOptions.gateway.zeroDataRetention 按请求",
+        "引用官方 193.6x faster / 444.6x cheaper"
+      ]
+    },
+    {
+      "url": "https://typesafe.ai (首页)",
+      "verified": true,
+      "notes": [
+        "首页横幅: '193.6x Faster, 444.6x Cheaper.' 脚注: '*Based On Workflows For System One Tasks (Proof)'",
+        "演示对比: TypeSafe $0.000081 / 0.114s vs LLMs $0.013880 / 8.566s",
+        "'$42 Per Billion input tokens. 238x Lower input price than Claude Fable 5.1'",
+        "团队: Manifesto / Our Team / Enterprise; Discord; waitlist"
+      ]
+    },
+    {
+      "url": "https://dev.to/gabrielanhaia/jev-beat-gpt-luna-by-1-point-gpt-6-and-claude-wrote-the-answer-key-314k",
+      "title": "Jev Beat GPT Luna by 1 Point. GPT-6 and Claude Wrote the Answer Key. — Gabriel Anhaia, 17 Sep 2026",
+      "verified": true,
+      "notes": [
+        "TypeSafe 官方 workflow evals 9 模型表（转述）: Jev 67.8% $0.0004 0.4s; GPT-5.6 Luna 66.8% $0.0033 12.9s; GPT-5.6 Terra 67.9% $0.0304 10.1s; Claude Sonnet 5 67.8% $0.1174 78.1s; GPT-5.6 Sol 74.1% $0.0836 23.3s; Claude Opus 5 73.1% $0.1761 37.8s",
+        "参考标签: 'generated via an average of the responses of GPT-6 Astra and Claude Fable 5.1, both at high thinking' — 无人工标注, 模型互评",
+        "关键批判: 'None of those numbers were measured on your commands; a bake-off on your own labels is how you find out'",
+        "TypeSafe 自己承认 evals 'may carry some bias', 首页数字是 'higher end of real world gains'"
+      ]
+    },
+    {
+      "url": "https://www.creativeainews.com/articles/typesafe-jev-system-one-accuracy-2026/",
+      "title": "TypeSafe Jev: 0% Hallucination, 67.8% Accurate — 15 Sep 2026",
+      "verified": true,
+      "notes": [
+        "67.8% = 四个自动化任务均值 ($0.0004, 0.4s/run); 同 harness 最高分 74.1% (GPT-5.6 Sol)",
+        "0% hallucination 是 schema 合规含义（不产生非法结构/类型错误），不是答案正确率",
+        "Doom demo: ~10 calls/s, 0.114s vs 8.566s (GPT-5.6 Terra), ~$7/小时",
+        "Almeida 给 The Register: 'TypeSafe was founded to pursue an alternative path for AI research, focused on machine-native AI'"
+      ]
+    },
+    {
+      "url": "https://agentpedia.codes/blog/jev-system-one-models",
+      "title": "Jev & System One Models: The Claim-vs-Evidence Guide — Agentpedia, 17 Sep 2026",
+      "verified": true,
+      "notes": [
+        "发布日期: 2026-09-15; launch tweet 25M views / 61K likes 一天内",
+        "官方发布了 'we love skeptics' 自否板块 + MIT 许可复跑 adapter + live evals dashboard (per-case disagreement walkthroughs)",
+        "$40M seed DCVC; CTO Erik Gafni; COO Sasha Sheng (ex-Meta/FAIR)",
+        "RLCD: 无公开校准证据 — 无 paper、无 reliability curve、无 ECE 数字、无消融实验；HN 上被追问而未答",
+        "HN 线程 475+ 评论: BERT/DeBERTa 编码器分类器、GLiNER、constrained decoding、conformal prediction、DSPy typed signatures 对照; 同晚 HuggingFace 复现声称'无需新训练'（未被验证）",
+        "关键让步: HN 评论者说 'this is basically a zero-shot classifier' → Almeida 回复 'exactly right!'",
+        "价格三套口径并存: tweet 20-200x/40-400x; 首页 193.6x/444.6x; PR 'up to 100x'",
+        "eval 方法论偏置已披露: 标签=Astra+Fable 平均 ('we likely underestimate our model'); workflows 为自家能力团队所建; LLM 走自家 wrapper ('tends to be slower and more expensive'); LLM 类型错误来自 OpenRouter（有路由偏置）",
+        "demo caveats: Doom 用结构化游戏状态而非视觉; Wikiracing 非推理模式对比",
+        "独立测试: Near Here 50 例事件校验 96% vs Mistral Small 4 84% / Gemini 3.5 Flash-Lite 86%, $0.043/千决策 vs $2.496 (最佳独立证据); Every/Mike Taylor 27 篇文章 777 判断 <0.7s ~$0.0025, 12 段合成文 0.35s vs 8.83s (~25x), 漏 1/7 植入缺陷"
+      ]
+    },
+    {
+      "url": "https://www.dcvc.com + https://siliconangle.com + https://techcrunch.com 口径交叉",
+      "verified": true,
+      "notes": [
+        "公司成立 2024; 团队: CEO Diogo Almeida, CTO Erik Gafni, COO Sasha Sheng",
+        "San Francisco 总部; 目前 waitlist 早期访问"
+      ]
+    }
+  ]
+}
