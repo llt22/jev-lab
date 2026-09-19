@@ -16,7 +16,7 @@
       "key_data": [
         "fast-jev-compaction ★3,169（最大 Jev 项目）：Claude Code 156,000→62,000 tokens，使用率 78%→31%，16 条里 10 条原文保留；已有 Codex 移植版和 Pi 移植版",
         "Theo 反对帖拿到 2,276 赞（'压缩是重建不是过滤'）——与本仓库归档的 Theo 批评为同一事件，此处补上了赞数",
-        "平台级：vercel-labs/json-render ★16,439（生成式 UI 框架，compose 路径用 Jev 挑组件和动作）；vercel-labs/fx ★3,057（Zig 写的类 Unix coding agent，内置 typesafe_permission_reviewer——即 TechCrunch 的 fx 命令安全审查器）；vercel-labs/ai-python ★183；cline/plugins jev-browser；Atomic ★805（Jev 做成一级 structured-output provider）",
+        "平台级：vercel-labs/json-render ★16,553（生成式 UI 框架，compose 路径用 Jev 挑组件和动作——注意：该仓库 2026-01-14 创建，早于 Jev 发布约 8 个月，属'既有主流框架接入 Jev'而非 Jev 生态新生项目，star 数反映的是框架本身而非 Jev 集成）；vercel-labs/fx ★3,057（Zig 写的类 Unix coding agent，内置 typesafe_permission_reviewer——即 TechCrunch 的 fx 命令安全审查器）；vercel-labs/ai-python ★183；cline/plugins jev-browser；Atomic ★805（Jev 做成一级 structured-output provider）",
         "收录原则：'我拒掉 Coder 和 Mastra——它们只出现在价格表和模型能力目录里，那是认得这个模型，不是用它做决策'",
         "金融交易新分类：Monad 链上交易机器人（Jev 看价格喂价决定买卖，每个 300ms 区块下一笔真实订单）；Jevinik（行情+Valyu 证据判断 30 天涨跌）；jev_stock（港股短期方向预测+首交易日回测）",
         "数据库：jev() PostgreSQL 扩展（WHERE jev(people,'could work from home')，无索引无 embedding）；DuckDB 扩展（任意 CSV/Parquet/表逐行分类，1000 行约 10 秒）",

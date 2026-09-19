@@ -104,7 +104,7 @@
 **他给出的最有价值的新数据（此前未收录）：**
 
 1. **fast-jev-compaction 正面实测**（我们此前只有 Theo 批评侧）：Claude Code **156,000→62,000 tokens，上下文使用率 78%→31%，16 条里 10 条原文保留**——作者方数据，与 Theo 批评并存，正反两面的证据现在齐了；Theo 反对帖 2,276 赞。
-2. **平台级接入新增大户**：**vercel-labs/json-render ★16,439**（生成式 UI 框架，compose 路径用 Jev 挑组件和动作——按星数算目前最大的 Jev 生产集成）、vercel-labs/fx ★3,057（Zig coding agent，内置 `typesafe_permission_reviewer`，即 TechCrunch fx 命令审查器的实现本体）、vercel-labs/ai-python ★183。
+2. **既有主流框架接入 Jev（注意：json-render 不是 Jev 生态新长出的项目）**：**vercel-labs/json-render ★16,553**（生成式 UI 框架，"The Generative UI framework"，**2026-01-14 创建**，早于 Jev 发布 8 个月；Jev 是其 9 月新接入的 compose 路径组件/动作选择能力——属"老框架接入 Jev"，非生态新生项目，按星数是最大的 Jev 生产集成）、vercel-labs/fx ★3,057（Zig coding agent，内置 `typesafe_permission_reviewer`，即 TechCrunch fx 命令审查器的实现本体）、vercel-labs/ai-python ★183。
 3. **创意新形态**：**jevinci**——让 Jev **并行预测每个像素的颜色**来作画，置信度决定笔触宽度（像素级 fan-out）。
 4. **数据层**：jev() PostgreSQL 扩展（与知识猫清单 #21 同源）+ **DuckDB 扩展**（任意 CSV/Parquet 逐行分类，1000 行约 10 秒）。
 5. **开源复刻全家桶**（CUA-S1 之外的第二波）：jaredpalmer/kev ★125（Qwen2.5-0.5B，MacBook 可训练）、NanoJev ★165（0.6B，完整概率分布、零 token 解码）、中文社区五款（Laya 421M / Decider-2B / NanoJev / Reflex / System-One 4B）、Qwen3.6-35B-A3B 兼容 API、"把任意 HF 模型 Jev 化"库——**接口契约的复刻已经从"可能"变成"泛滥"**。
