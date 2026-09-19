@@ -1,0 +1,98 @@
+{
+  "captured_at": "2026-09-19 15:00 CST（ego-browser 直接抓取）",
+  "leads": [
+    {
+      "type": "独立测试",
+      "title": "supa Lab：Jev 是どれだけ優秀な if 文か（Jev vs 轻量 LLM 分类器对比）",
+      "url": "https://journal.supa.ai/jev-classifier-benchmark/",
+      "publisher": "supa 株式会社 supa Lab（日本 R&D 组织，journal.supa.ai）",
+      "date": "2026-09-18 公开",
+      "design": "统一小型 harness：同标签描述 → Jev 用 Choice criteria、LLM 用 system prompt + JSON schema {label, confidence}；Vercel AI Gateway 统一调用；客户端计时；按公开单价算成本；4 任务 208 例（routing 日英各 20、support 40、doom-numeric 64、doom-semantic 64）；指标 accuracy/macro-F1/p50/p95/千件成本/模式违反率/ECE/conf≥0.9 精度与覆盖率",
+      "models": [
+        {"name": "Jev（typesafe-ai/jev）", "price": "0.042 / 免费"},
+        {"name": "Claude Haiku 4.5", "price": "1.00 / 5.00"},
+        {"name": "GPT-5.6 Luna", "price": "0.20 / 1.20", "note": "reasoning effort minimal"},
+        {"name": "Gemini 3.5 Flash-Lite", "price": "0.30 / 2.50"},
+        {"name": "Qwen3.7 Flash", "price": "0.03 / 0.13", "note": "关闭思考（默认思考 150–900 token 需 3–12s）"}
+      ],
+      "results_table": [
+        {"task": "routing", "model": "Jev", "acc": "95.0%", "p50/p95": "352/559", "cost/1k": "$0.022", "ece": "0.047", "conf>=0.9": "100%（覆盖 92.5%）"},
+        {"task": "routing", "model": "Haiku 4.5", "acc": "92.5%", "p50/p95": "964/1681", "cost/1k": "$0.610", "ece": "0.024"},
+        {"task": "routing", "model": "GPT-5.6 Luna", "acc": "100%", "p50/p95": "1406/1839", "cost/1k": "$0.086", "ece": "0.011"},
+        {"task": "routing", "model": "Gemini 3.5 Flash-Lite", "acc": "97.5%", "p50/p95": "938/1375", "cost/1k": "$0.155", "ece": "0.010"},
+        {"task": "routing", "model": "Qwen3.7 Flash", "acc": "82.5%", "p50/p95": "1278/1950", "cost/1k": "$0.014", "ece": "0.124"},
+        {"task": "support", "model": "Jev", "acc": "100%", "p50/p95": "336/518", "cost/1k": "$0.019", "ece": "0.042", "conf>=0.9": "100%（覆盖 92.5%）"},
+        {"task": "support", "model": "Haiku 4.5", "acc": "95.0%", "cost/1k": "$0.542"},
+        {"task": "support", "model": "GPT-5.6 Luna", "acc": "97.5%", "cost/1k": "$0.073"},
+        {"task": "support", "model": "Gemini 3.5 Flash-Lite", "acc": "100%", "cost/1k": "$0.132"},
+        {"task": "support", "model": "Qwen3.7 Flash", "acc": "95.0%", "cost/1k": "$0.012"},
+        {"task": "doom-numeric", "model": "Jev", "acc": "100%", "p50/p95": "352/632", "cost/1k": "$0.033", "ece": "0.002", "note": "官方声称的数弱项未复现——阈值明确的整数比较（体力<30、角度±10°、距离≤700）全对"},
+        {"task": "doom-numeric", "model": "Haiku 4.5", "acc": "96.9%", "cost/1k": "$0.923"},
+        {"task": "doom-numeric", "model": "GPT-5.6 Luna", "acc": "98.4%", "cost/1k": "$0.133"},
+        {"task": "doom-numeric", "model": "Gemini 3.5 Flash-Lite", "acc": "92.2%", "cost/1k": "$0.246"},
+        {"task": "doom-numeric", "model": "Qwen3.7 Flash", "acc": "82.8%", "cost/1k": "$0.023"},
+        {"task": "doom-semantic", "model": "Jev", "acc": "100%", "p50/p95": "329/551", "cost/1k": "$0.028", "ece": "0.001"},
+        {"task": "doom-semantic", "model": "GPT-5.6 Luna", "acc": "100%", "cost/1k": "$0.113", "ece": "0.001"},
+        {"task": "doom-semantic", "model": "Gemini 3.5 Flash-Lite", "acc": "81.3%", "cost/1k": "$0.202", "ece": "0.163"},
+        {"task": "doom-semantic", "model": "Qwen3.7 Flash", "acc": "85.9%", "cost/1k": "$0.019", "ece": "0.125"}
+      ],
+      "findings": [
+        "精度：与轻量 LLM 相当——Jev support/doom 两项全对，routing 落 2 问（medium 判成 simple，置信度 0.36/0.76）；Luna 最佳（routing+doom-semantic 满分）",
+        "假设落空：官方'数值不擅长'在阈值为整数的 7 字段小 JSON 上未复现（doom-numeric 64/64），作者注明大数/日期/聚合未测",
+        "延迟：Jev p50 330–350ms、p95 520–630ms；轻量 LLM p50 930–1430ms、p95 1200–2060ms——约 3–4 倍差距；'与官方 193 倍不同，比独立验证的 5–25 倍更靠下'",
+        "成本：Jev 千件 2–3 美分；Haiku 54–92c、Luna 7–13c、Flash-Lite 13–25c、Qwen3.7 Flash 1–2c——'安さだけなら Jev を選ぶ理由は弱く、精度・速度・確信度をまとめて見たときに Jev が残る'",
+        "校准：Jev ECE 0.001–0.047；conf≥0.9 时精度 100%（覆盖 92.5%）——高确信自动处理成立；Qwen/Gemini 误答仍自报 0.95–1.0，ECE 0.12–0.16——'LLM 的自信度自我申报不适合做阈值'",
+        "模式违反：5 模型全部零违反——Jev 的 schema 保证在此未构成优势",
+        "日语：Jev 日英无差异（日语 20 件全对，英语反落 2 问）——与官方'English primary'表述相反的独立实测；Qwen3.7 Flash 日语 75%/90% 明显弱",
+        "结论建议：有几千条标注 → 自训 ModernBERT/DeBERTa 更便宜（例：xlm-roberta-large LoRA BANKING77 94.2% vs Sonnet 4.6 85.3%，12ms vs 2080ms）；无标注且 rubric 常变 → Jev；EU/日本数据驻留要求 → Jev 不可选（美国专区）"
+      ],
+      "cited_others": [
+        "DevelopersIO（classmethod）：NVIDIA NeMo Switchyard 难度分类 40/40 全对，p50 0.64–0.67s vs Gemini 3.5 Flash 2.1s / DeepSeek V4 Flash 7.2s",
+        "notra PR #1106：路由分类器换 Jev，1.3s→307ms、81.7%→90%，保留 LLM fallback（2.5s 超时）",
+        "anisselbd/jev-phishing-bench：2000 条钓鱼邮件 Jev vs Haiku 4.5（边界模糊任务 Jev 输）",
+        "smallestbusiness/intent-router：LoRA xlm-roberta-large 94.2% vs Sonnet 4.6 85.3%"
+      ]
+    },
+    {
+      "type": "争议",
+      "title": "Jev ToS 曾禁止基准测试（官方承认修复）",
+      "timeline": [
+        {"by": "@conjfrnk", "event": "发现 ToS 含禁止基准测试条款"},
+        {"by": "Langston Nashold @langstonnashold", "time": "2026-09-18T01:39Z", "link": "https://x.com/langstonnashold/status/2100821545216303129", "text": "Jev 的使用条款禁止对其进行基准测试。"},
+        {"by": "Eugene Shvarts @mathfax（TypeSafe 官方人员）", "time": "2026-09-19T07:55Z", "link": "https://x.com/mathfax/status/2101215621619028063", "text": "We're fixing this! That's an outdated constraint from pre-launch."},
+        {"by": "Alberto Fuentes @AlberFuen", "text": "A bit evil ToS"}
+      ],
+      "verification": "2026-09-19 15:00 抓取 typesafe.ai/terms 与 docs.typesafe.ai/legal 均已无 benchmark 字样——与'正在修复'一致（或条款位于旧版），抓取时刻可见条款已移除"
+    },
+    {
+      "type": "新基准",
+      "title": "JevBench v1（Benchmark Heaven）",
+      "by": "Florian S @airesearch12 + @benchmarkheaven",
+      "text": "准备 Jev 类模型的第一个基准 JevBench v1，计划当天推出首个 leaderboard；'有很多 lookalike openjev 项目'",
+      "status": "2026-09-19 抓取 benchmarkheaven.com 主页为 BETA/work in progress（117 benchmarks/844 models），JevBench 尚未见榜"
+    },
+    {
+      "type": "架构猜测",
+      "title": "Aditya Grover：Jev 可能是扩散 LLM（dLLM）",
+      "by": "@adityagrover_（Mercury 作者）",
+      "time": "2026-09-19T08:14Z",
+      "link": "https://x.com/adityagrover_/status/2101223416988840293",
+      "text": "Jev 与 Mercury 2.5 结合在 WebMCP 基准接近满分！类似 Mercury 2.5，我怀疑 Jev 本身是扩散 LLM。并行生成结构化输出（如 JSON）类似于在 dLLM 采样时做填充。",
+      "relation": "与 @anderslie 的'并行解码推理技术'观点同向；与官方'架构不公开'并置为假说"
+    },
+    {
+      "type": "演示",
+      "title": "rubikjev：Jev 0.5s 解 3x3 魔方",
+      "by": "@_trou3",
+      "link": "https://github.com/0xtrou/rubikjev",
+      "star": 1,
+      "text": "A fun benchmark for Jev——0.5s 解 3x3 魔方；在线 try: rubikjev.solo.engineer；仓库含 AGENTS.md/COMPLIANCE.md"
+    },
+    {
+      "type": "讨论",
+      "title": "Mikhail Rogov：免费期窗口观察",
+      "by": "@i_mika_el",
+      "text": "free until sept 25 is a tight window, curious if jev holds up outside benchmark tasks once people actually build on it this weekend"
+    }
+  ]
+}

@@ -119,3 +119,42 @@
 - **vercel/eve**：把 typesafe-ai/jev 作为默认 eval 模型——Vercel 自家产品选型，可核对
 - **browser-use/jev-ultrafast ★1046**（tagline "i. am. speed."）：知名开源浏览器 agent 库 browser-use 的 Jev 分支，用 Jev 决定浏览器每一步——注意 round3 记录过"同一 jev-ultrafast 在不同索引 star 数对不上"（2.7k vs 3533），本轮 yibie 抓取为 1046，**再次印证 star 数不可跨源比较**
 - 马里奥、MuJoCo 无人机、星际争霸用 Jev 做决策——游戏/仿真决策向
+
+## 七、X 追新线索（用户指示后主动检索，2026-09-19 15:00）
+
+> 原始抓取见 [`artifacts/round4-2026-09-19/x新线索-2026-09-19.json`](../artifacts/round4-2026-09-19/x新线索-2026-09-19.json)。
+
+### 1. supa Lab 独立测试：Jev vs 4 个轻量 LLM（本轮最高质量的可核对实验）
+
+[supa Lab（日本 supa 株式会社 R&D）《Jevはどれだけ優秀なif文か》](https://journal.supa.ai/jev-classifier-benchmark/)（2026-09-18）：**同一 harness、4 任务 208 例、Vercel AI Gateway 统一调用**，指标含 accuracy/ECE/conf≥0.9 门控精度/成本/延迟。这是目前最干净的一手对比，直接回答我们首轮"与开源小模型比"的未验证项。
+
+| 结论 | 数据 |
+| --- | --- |
+| 精度与轻量 LLM 相当 | Jev：support 100%、doom 两项 100%、routing 95%（落 2 问，置信度 0.36/0.76）；Luna 最佳 |
+| 延迟约 3–4 倍快 | Jev p50 330–350ms / p95 520–630ms；轻量 LLM p50 930–1430ms |
+| **成本输给 Qwen3.7 Flash** | Jev $0.022–0.033/千件 vs Qwen3.7 Flash $0.012–0.023——"安さだけなら選ぶ理由は弱く，精度・速度・確信度をまとめて見たときにJevが残る" |
+| **校准是真实优势** | Jev ECE 0.001–0.047，conf≥0.9 时精度 100%（覆盖 92.5%）；Qwen/Gemini 误答仍自报 0.95–1.0（ECE 0.12–0.16）——"LLM 的自我申报置信度不适合做阈值" |
+| 官方"数值弱项"未复现 | doom-numeric 64/64 全对（整数阈值比较）；作者注明大数/日期/聚合未测 |
+| 日语无劣化 | Jev 日语 20 件全对（英语反落 2 问）；Qwen3.7 Flash 日语明显弱 |
+| schema 保证不构成优势 | 5 模型强制 JSON schema 后全部零违反 |
+| 边界模糊任务仍存败绩 | anisselbd/jev-phishing-bench：2000 条钓鱼邮件 Jev 输给 Haiku 4.5 |
+
+**对 jev-lab 的直接价值**：① "conf≥0.9 → 100% 精度、覆盖 92.5%"与我们置信度闸门（0.6–0.7 阈值放行 91.7% 全对）**互相印证**——两个独立实验在高确信门控上结论一致；② "有几千标注自训 ModernBERT 更便宜"（xlm-roberta-large LoRA 94.2% vs Sonnet 4.6 85.3%、12ms vs 2s）是唯一同时给出"Jev 反面"与"何时该用传统分类器"的可执行建议；③ 成本结论 + Parallel AI 的反向论证，共同推翻"Jev 一定更便宜"的默认假设。
+
+### 2. ToS 曾禁基准测试，官方承认修复
+
+[@langstonnashold](https://x.com/langstonnashold/status/2100821545216303129)（credit @conjfrnk，09-18）指 Jev ToS 禁止基准测试；TypeSafe 的 [Eugene Shvarts @mathfax](https://x.com/mathfax/status/2101215621619028063) 回应 "We're fixing this! That's an outdated constraint from pre-launch."。**核验**：抓取时刻 typesafe.ai/terms 与 docs.typesafe.ai/legal 均已无 benchmark 字样。事件本身值得记录——发布前遗留条款 + 快速修复，也解释了为什么独立基准稀缺。
+
+### 3. JevBench v1（Benchmark Heaven）筹备中
+
+[@airesearch12](https://x.com/airesearch12/status/2101216843839004808)（Florian S，@benchmarkheaven）："Jev 类模型的第一个基准 JevBench v1，计划今天上线首个 leaderboard"。抓取时刻 benchmarkheaven.com 仍是 BETA（117 benchmarks / 844 models），JevBench 未上架——**候选监测对象**（若上线，可作为我们校准实验的对照榜单）。
+
+### 4. Aditya Grover：Jev 可能是扩散 LLM
+
+[Mercury 作者 @adityagrover_](https://x.com/adityagrover_/status/2101223416988840293)：Jev+Mercury 2.5 在 WebMCP 基准接近满分；"怀疑 Jev 本身是扩散 LLM——并行生成结构化输出类似 dLLM 采样时填充"。与 @anderslie"并行解码推理技术"同向，与官方"架构不公开"并置为**假说**（未证实）。
+
+### 5. 其他小线索
+
+- **rubikjev**（[@_trou3](https://x.com/_trou3/status/2101209823790711161)，github.com/0xtrou/rubikjev）：Jev 0.5s 解 3x3 魔方（fun demo）
+- **@i_mika_el**：免费期至 9/25 窗口太紧，"周末真正动手后 Jev 在基准外还能不能立住"——与我们的 9/25 观察点一致
+- 日文 [技術情報Wiki](https://x.com/tech_wiki/status/2101215430220349759) 转引了 supa Lab 文章；DevelopersIO 另有一例 NVIDIA NeMo Switchyard 难度路由替换（40/40 全对，p50 0.64–0.67s vs Gemini 2.1s / DeepSeek V4 Flash 7.2s）
