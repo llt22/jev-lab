@@ -10,6 +10,17 @@
   },
   "inspection_posts": [
     {
+      "time": "2026-09-17T16:13Z",
+      "link": "https://x.com/yibie/status/2100619188062523695",
+      "title": "第一份清单：46 条（按'Jev 到底在做什么决策'整理）",
+      "key_data": [
+        "Notra ★170：生产环境用开关把分类器从 LLM 切到 Jev，目标 300ms p50（生产切换案例）",
+        "vercel/eve 把 typesafe-ai/jev 作为默认 eval 模型",
+        "browser-use/jev-ultrafast ★1046（tagline 'i. am. speed.'）：决定浏览器每一步点哪里——注意：与 round3 记录的'同一 jev-ultrafast 在不同索引 star 数对不上'为同一项目，此时点抓取为 1046；browser-use 是知名开源浏览器 agent 库，此为其 Jev 分支",
+        "马里奥、MuJoCo 无人机、星际争霸都用 Jev 做决策"
+      ]
+    },
+    {
       "time": "2026-09-18T23:46Z",
       "link": "https://x.com/yibie/status/2101095525793616162",
       "title": "Jev 生态 72 小时：从 46 条到 160 条",
