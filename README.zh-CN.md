@@ -129,6 +129,7 @@ evals/      版本化 benchmark 数据集
 scripts/    可复现评测与对比工具
 artifacts/  原始 JSON 输出与生成报告
 tests/      离线单元测试
+experiments/ 可运行的集成实验
 ```
 
 ## 研究归档
@@ -138,6 +139,7 @@ tests/      离线单元测试
 | Benchmark 与校准 | [首轮验证](docs/jev-validation-2026-09-18.md) · [置信度闸门](docs/jev-round3-2026-09-18.md) |
 | Agent 控制与思考监督 | [思考监督](docs/jev-thinking-supervision-2026-09-18.md) · [生态交叉核验](docs/jev-round4-2026-09-19.md) |
 | 官方说法与平台集成 | [官方与平台审计](docs/jev-round4-supplement-2026-09-19.md) |
+| 集成实验 | [json-render + Jev](docs/json-render-jev-2026-09-19.md) |
 | 社区采用 | [一手用例](docs/jev-round5-2026-09-19.md) · [28 案例审计](docs/jev-round5-supplement-2026-09-19.md) · [社区调查](docs/jev-x-use-cases-2026-09-18.md) |
 
 ## 参与项目

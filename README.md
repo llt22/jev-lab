@@ -129,6 +129,7 @@ evals/      Versioned benchmark datasets
 scripts/    Reproducible evaluators and comparison tools
 artifacts/  Raw JSON outputs and generated reports
 tests/      Offline unit tests
+experiments/ Runnable integration experiments
 ```
 
 ## Research archive
@@ -138,6 +139,7 @@ tests/      Offline unit tests
 | Benchmarks and calibration | [Initial validation](docs/jev-validation-2026-09-18.md) · [Confidence gates](docs/jev-round3-2026-09-18.md) |
 | Agent control and reasoning supervision | [Thinking supervision](docs/jev-thinking-supervision-2026-09-18.md) · [Ecosystem cross-check](docs/jev-round4-2026-09-19.md) |
 | Official claims and integrations | [Official/platform audit](docs/jev-round4-supplement-2026-09-19.md) |
+| Integration experiments | [json-render + Jev](docs/json-render-jev-2026-09-19.md) |
 | Community adoption | [First-hand use cases](docs/jev-round5-2026-09-19.md) · [28-case audit](docs/jev-round5-supplement-2026-09-19.md) · [Community survey](docs/jev-x-use-cases-2026-09-18.md) |
 
 ## Contributing

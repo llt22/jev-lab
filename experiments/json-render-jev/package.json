@@ -1,0 +1,25 @@
+{
+  "name": "jev-lab-json-render-experiment",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "tsx src/demo.tsx",
+    "demo:live": "tsx src/demo.tsx --live",
+    "test": "node --import tsx --test src/demo.test.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@json-render/core": "0.21.0",
+    "@json-render/react": "0.21.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "tsx": "4.23.13",
+    "typescript": "5.9.3"
+  }
+}
