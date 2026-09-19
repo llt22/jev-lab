@@ -1,0 +1,62 @@
+name: Share a benchmark result
+description: Report an independent Jev replication, counterexample, or benchmark.
+title: "[Benchmark]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing evidence. Remove secrets and private data before submitting.
+  - type: input
+    id: use_case
+    attributes:
+      label: Use case
+      description: What decision or workflow did you test?
+      placeholder: Support-ticket urgency classification
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model version
+      description: Prefer the version returned by the API, not only an alias.
+      placeholder: jev-1.13.0
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Dataset and setup
+      description: Describe sample count, labels, question types, environment, and evaluation method.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Reproduction command or code
+      description: Include the smallest command or public repository needed to reproduce the run. Do not include API keys.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Results
+      description: Include measured metrics, errors, retries, and raw artifact links when available.
+    validations:
+      required: true
+  - type: textarea
+    id: interpretation
+    attributes:
+      label: Interpretation and limitations
+      description: What does the result support, and what does it not establish?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I removed API keys, tokens, customer data, and other private information.
+          required: true
+        - label: I identified the model version and separated measured results from assumptions.
+          required: true

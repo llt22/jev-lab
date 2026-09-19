@@ -2,6 +2,8 @@
 
 > **A hands-on research lab for [Jev](https://typesafe.ai) (TypeSafe's System One model)** — structured decisions, not text. We test Noul / Choice / Score primitives on real business problems (support-ticket routing, agent control, confidence gates), verify community claims with reproducible experiments, and track the ecosystem day by day.
 
+**English** | [简体中文](README.zh-CN.md)
+
 [![Tests](https://img.shields.io/badge/tests-38%20passed-brightgreen)](tests/)
 [![Python](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/)
 [![Model](https://img.shields.io/badge/model-jev--1.13.0-blueviolet)](https://docs.typesafe.ai/models)
@@ -17,7 +19,7 @@ Our measured highlights (all reproducible in this repo):
 
 | Claim | Our data | Evidence |
 | --- | --- | --- |
-| Multi-question fan-out is free | 1 → 20 Noul questions: **P50 ≈ 1.4s, no latency growth** | [`docs/jev-validation-2026-09-18.md`](docs/jev-validation-2026-09-18.md) |
+| Fan-out stayed flat in our pilot | 1 → 20 Noul questions: **P50 ≈ 1.4s, no observed latency growth** | [`docs/jev-validation-2026-09-18.md`](docs/jev-validation-2026-09-18.md) |
 | Cost is tiny | 108 requests ≈ **$0.0044** total | same report |
 | Decisions are repeatable | 3 runs × 36 tickets: **100% decision agreement** | [`artifacts/`](artifacts/) |
 | `confidence` beats argmax for gating | On failures: confidence 0.04–0.16 vs top-1 prob 0.58 — **use confidence, not argmax** | [`docs/jev-round3-2026-09-18.md`](docs/jev-round3-2026-09-18.md) |
@@ -49,7 +51,7 @@ python3 -m unittest discover -s tests   # 38 tests, stdlib only
 ## What's inside
 
 ```
-docs/       6 research rounds — validation, ecosystem, official-claim audit, community cases
+docs/       8 reports across 5 rounds — validation, ecosystem, claim audits, community cases
 evals/      6 datasets — support routing, agent control, confidence escalation, thinking supervision
 scripts/    9 reproducible eval & compare scripts (pure stdlib, no SDK)
 artifacts/  raw JSON + generated reports, incl. repeat-stability across runs
@@ -87,7 +89,7 @@ python3 scripts/evaluate_confidence_escalation.py
 
 ## Key lessons (so you don't have to learn them)
 
-1. **Fan-out is the killer feature** — ask many questions per request; latency barely moves, cost stays in the sub-cent range.
+1. **Fan-out is the feature to test first** — in our pilot, asking more questions per request barely changed latency and kept cost in the sub-cent range.
 2. **`confidence` ≠ argmax probability** — on our failing cases they differed by an order of magnitude. Gate on `confidence`.
 3. **Pin the version** — aliases move; log the `model` field from every response (`jev-1.13.0` as of 2026-09-19).
 4. **CJK is officially weaker** — "handled but not equally well"; test Chinese before trusting it.
@@ -102,6 +104,12 @@ python3 scripts/evaluate_confidence_escalation.py
 - [ ] Escalation cascade: Jev first pass → strong model only when uncertain
 - [ ] Watch post-Sept-25 pricing / retention on Vercel AI Gateway
 
-## License & disclaimer
+## Contributing
+
+Independent replications, counterexamples, and new datasets are especially useful. Read [CONTRIBUTING.md](CONTRIBUTING.md), or [submit a benchmark result](https://github.com/llt22/jev-lab/issues/new?template=benchmark-result.yml) without changing code.
+
+## Usage & disclaimer
 
 Repo is research material: **do not treat single-run probabilities as production accuracy or as permission to auto-execute.** API pricing/versions are from official docs at capture time (2026-09-19). See each report for its evidence level (verified structure / vendor-reported / author-reported).
+
+No open-source license has been declared yet. Until one is added, standard copyright restrictions apply.
