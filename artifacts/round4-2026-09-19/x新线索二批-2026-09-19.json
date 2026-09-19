@@ -1,0 +1,75 @@
+{
+  "captured_at": "2026-09-19 15:30 CST（ego-browser 登录态抓取，第二批）",
+  "leads": [
+    {
+      "type": "社区实现",
+      "title": "Gomoku harness：代码战术剪枝 + Jev 短名单决策（教科书式组合）",
+      "by": "Víťa 𝕏-Vacek @VacekvVita",
+      "post": "https://x.com/VacekvVita/status/2100609341145465325",
+      "text": "Jev harness 玩五子棋——不要求评估全部 225 步，harness 先做战术工作：每回合本地检测胜利/阻挡/分叉/broken fours，把 225 步缩到约 40 个候选，按战术层排序（S=强制胜/挡、A=关键威胁（开放式/断裂四连、分叉）、B=强攻/防、C=位置）",
+      "comment": "Antonio Coppe：'正确的形态——代码做便宜的战术剪枝，Jev 只在短名单上选。全问 225 步既浪费又是问错了问题。一个失败模式：当 S/A 空且 B 长得差不多时，别信 top Choice'",
+      "relation": "与 jev-lab '代码保存可计算部分、模型只做语义判断'原则同构；五子棋 40 候选短名单 ≈ 我们 fan-out 的选择集可控性"
+    },
+    {
+      "type": "开源复刻边界",
+      "title": "Laya 的上下文天花板（Sense Noped Out 反驳'开源搞定一切'）",
+      "by": "@SenseNopedOut",
+      "post": "https://x.com/SenseNopedOut/status/2101247756664819962",
+      "context": "引用 @hiradsab '他们已经把 Jev 搞定了'",
+      "text": "Laya 是 322–421M 的 encoder（ModernBERT/mmBERT），上下文只有 512–1024 token——你不能把 Jev 规模的 64k state + 大问题 fan-out 塞进一次请求。",
+      "relation": "对本仓库'复刻潮证明产品形态不是壁垒'的限定条件：契约可复刻，但状态规模/上下文能力的天花板不同，'搞定'要打折"
+    },
+    {
+      "type": "克隆地图",
+      "title": "Simeon Li：96 小时开源克隆全地图（robokrunch 深度文）",
+      "by": "@SimeonLi82（RoboKrunch）",
+      "thread": "https://x.com/SimeonLi82/status/2101240981576147235",
+      "article": "https://robokrunch.com/post/jev-open-source-clones-96-hours",
+      "clones": [
+        {"name": "harshatheg/Qwen-2.5-1B-RLCD", "heat": "397 likes, Apache-2.0", "detail": "Qwen2.5-1.5B base + MLX（Apple Silicon），HF Spaces 直播 demo；作者声称并行约束解码比自回归快 5.6–7x（M4 Max：420ms→75ms；28 字段企业支持 triage 1900ms→270ms 7.0x）；语法有效性 100%"},
+        {"name": "convaiinnovations/laya", "heat": "180 likes, Apache-2.0", "detail": "自带 eval + 校准数字（ECE 0.030 in-task）——'TypeSafe 从未发布的指标'；单问题 p50 38.4ms"},
+        {"name": "AlexWortega/openjev", "heat": "152 likes, MIT", "detail": "Qwen3.5-4B cross-encoder，零样本玩 Doom——从文本游戏状态 AND 原始像素（vision tower），仓库有视频"},
+        {"name": "长尾", "heat": "-", "detail": "DeBERTa-v3-large 变体、LFM2.5 RLCD builds、今晨的 Qwen3-0.6B RLCD、Mattepiu/laya-onnx（ONNX 转换——'edge 硬件的入口，值得盯'）"}
+      ],
+      "community": "r/LocalLLaMA 帖：有人在 11 代 i7 笔记本 + 6GB RTX 3060 上跑克隆（'great for CPU'）用来建模型路由；另有人做 ONNX 转换用于带幻觉守卫 + bash 防火墙的 agent harness；有人让 Laya 在 Mac 本地玩 Doom",
+      "takeaway": "Simeon 的读法：'1B 判断模型现在是一个周末项目。护城河从来不是权重，是分发（Vercel 24 小时 13% 付费团队）。这些是 CPU/NPU 负载——单次前向、无 KV cache、INT8 友好，这是一个 edge-silicon 故事。'"
+    },
+    {
+      "type": "生产实录",
+      "title": "Yonatan Gross：三天生产实战（无 demo）",
+      "by": "Yonatan Gross @yonyoniz",
+      "post": "https://x.com/yonyoniz/status/2101241236107542549",
+      "text": "How I'm actually using Jev. No demo: three days on production systems, misses included. Map, shadow, measure, promote. With @vercel agent-browser, @pydantic AI, and @trycua next. More evals coming. More: yonyon.ai",
+      "method": "Map（映射）→ Shadow（影子模式）→ Measure（度量）→ Promote（提升）——先影子运行对照再切换，'含漏判'的诚实表述（图帖）"
+    },
+    {
+      "type": "观点",
+      "title": "校准是硬部分",
+      "by": "@osanpochuudayo（葉隠れ）",
+      "post": "https://x.com/osanpochuudayo/status/2101240268343439464",
+      "text": "Calibration is the hard part. Who validated that probability or score as decision-grade? Your code can branch on the output. Can Jev prove the branch deserves to fire?",
+      "relation": "与 jev-lab 核心立场一致：概率不是生产准确率；'分支是否值得触发'需要验证"
+    },
+    {
+      "type": "观点",
+      "title": "Jev 怪在哪（Neelesh 长帖开头）",
+      "by": "@gadi_neelesh",
+      "post": "https://x.com/gadi_neelesh/status/2101238909464457727",
+      "text": "I went down the Jev rabbit hole and I think people are missing what makes this model weird. At first I thought it was just another 'look how cheap our new AI model is' launch. It's not. Jev basically asks: what if an AI model didn't need to talk? No essays. No chain of…（长帖，未完）"
+    },
+    {
+      "type": "工具",
+      "title": "Jev Model Router mod for Claude Code",
+      "by": "@shipfrontierai",
+      "post": "https://x.com/shipfrontierai/status/2101245369485312200",
+      "text": "Jev 路由子 agent 模型和主模型 effort（经 TypeSafe 直连或 Vercel Gateway）。工程细节：非对称置信度条（0.3 多花钱 / 0.6 少花钱），主模型路由默认关"
+    },
+    {
+      "type": "应用",
+      "title": "Codex 重置审判（社区玩梗）",
+      "by": "SuSu_酥酥 @NFT_Chen",
+      "post": "https://x.com/NFT_Chen/status/2101199237371551870",
+      "text": "社区不再刷 Usage，改用 Jev 审判 Tibo（@thsottiaux）会不会按 Codex 重置按钮：两段管线——关键词初筛 → Jev 结构化审计（是不是真重置、覆盖谁、是不是在开玩笑）——'干旱第 5 天 17 小时'"
+    }
+  ]
+}

@@ -158,3 +158,33 @@
 - **rubikjev**（[@_trou3](https://x.com/_trou3/status/2101209823790711161)，github.com/0xtrou/rubikjev）：Jev 0.5s 解 3x3 魔方（fun demo）
 - **@i_mika_el**：免费期至 9/25 窗口太紧，"周末真正动手后 Jev 在基准外还能不能立住"——与我们的 9/25 观察点一致
 - 日文 [技術情報Wiki](https://x.com/tech_wiki/status/2101215430220349759) 转引了 supa Lab 文章；DevelopersIO 另有一例 NVIDIA NeMo Switchyard 难度路由替换（40/40 全对，p50 0.64–0.67s vs Gemini 2.1s / DeepSeek V4 Flash 7.2s）
+
+### 6. 克隆地图：96 小时五款开源复刻 + 上下文天花板（第二批追挖）
+
+> 原始抓取见 [`artifacts/round4-2026-09-19/x新线索二批-2026-09-19.json`](../artifacts/round4-2026-09-19/x新线索二批-2026-09-19.json)。
+
+[Simeon Li（RoboKrunch）的克隆全地图](https://robokrunch.com/post/jev-open-source-clones-96-hours)：启动 4 天→HF 上 5+ 复刻、1 个 ONNX 转换、有人笔记本 CPU 跑基准。按社区热度：
+
+| 克隆 | 热度 | 要点 |
+| --- | --- | --- |
+| harshatheg/Qwen-2.5-1B-RLCD | 397👍 Apache-2.0 | MLX 调优，并行约束解码比自回归快 5.6–7x（M4 Max：420ms→75ms；28 字段 triage 1900→270ms），语法有效性 100% |
+| **convaiinnovations/laya** | 180👍 | **自带 evals 含校准数字 ECE 0.030 in-task——"TypeSafe 从未发布的指标"；单问题 p50 38.4ms** |
+| AlexWortega/openjev | 152👍 MIT | Qwen3.5-4B cross-encoder 零样本玩 Doom（文本状态 + 原始像素） |
+| 长尾 | — | DeBERTa-v3-large 变体、LFM2.5 RLCD、Qwen3-0.6B RLCD、Mattepiu/laya-onnx |
+
+**关键对话：**Sense Noped Out 对"他们已经把 Jev 搞定了"的修正——**Laya 只有 512–1024 token 上下文（322–421M encoder），塞不下 Jev 规模的 64k state + fan-out**。契约可复刻，但状态规模的天花板不同。Simeon 的读法："1B 判断模型是周末项目，护城河从来不是权重而是分发；这些是 CPU/NPU 负载、INT8 友好，属于 edge-silicon 故事。"
+
+**对 jev-lab 的价值**：① 开源复刻第一次带来**校准数字**（Laya ECE 0.030）——比 TypeSafe 自己还早发布 ECE；② "克隆在笔记本上跑路由"与社区 13% 分发论点连起来，进一步支持 round4"护城河在数据配方与分发、不在权重"；③ 上下文天花板（512–1024 vs 64k）是反方限定，引用"复刻搞定一切"时必须带这个边界。
+
+### 7. Gomoku harness：代码剪枝 + Jev 短名单（教科书组合）
+
+[Vacek 的五子棋 harness](https://x.com/VacekvVita/status/2100609341145465325)：不要求 Jev 评估全部 225 步——代码先做战术工作（检测胜/挡/分叉/断裂四连），缩到约 40 候选并按战术层排序（S 强制/A 威胁/B 攻防/C 位置），**Jev 只在短名单上选**。Antonio Coppe 评论："这是正确的形态——代码做便宜的战术剪枝，Jev 只在短名单上选；全问 225 步既浪费又是问错了问题。失败模式：当 S/A 空且 B 长得差不多时，别信 top Choice。"
+
+**与本仓库的互证**：① 这正是我们反复的"代码保存可计算部分、模型只做语义判断"；② '别信 top Choice'与置信度闸门结论一致；③ 40 候选短名单与我们"选择集可控"的观察同构。
+
+### 8. 其他（第二批）
+
+- **Yonatan Gross 三天生产实录**：Map → Shadow → Measure → Promote（影子模式对照再切换，明言含漏判）——"生产切换前先影子运行"的做法值得写进我们 Phase 1 的 A/B 设计
+- **@osanpochuudayo**："校准是硬部分。谁验证过那个概率是 decision-grade？你的代码可以按输出分支，Jev 能证明分支该触发吗？"——与本仓库核心立场完全一致
+- **Jev Model Router mod for Claude Code**（@shipfrontierai）：非对称置信度条 0.3/0.6 控制花费，主模型路由默认关
+- **Codex 重置审判**（@NFT_Chen）：社区用 Jev 做"关键词初筛 → Jev 结构化审计"判 Tibo 会不会按重置按钮——玩梗，但管线形态是标准两段式
