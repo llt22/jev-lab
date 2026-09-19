@@ -1,11 +1,12 @@
 # Jev API 测试工作区
 
-这是一个独立的 TypeSafe **Jev（System One）API** 实验目录，用来测试 Noul、Choice、Score 等结构化判断能力，并评估业务场景（例如客服工单分流）。它不属于 `ekc-ai-rebuild` 项目；目前只有环境配置，没有测试程序或 SDK 依赖。
+这是一个独立的 TypeSafe **Jev（System One）API** 实验目录，用来测试 Noul、Choice、Score 等结构化判断能力，并评估业务场景（例如客服工单分流）。它不属于 `ekc-ai-rebuild` 项目；评测脚本只用 Python 标准库，没有第三方依赖或 SDK，可直接运行。
 
 ## 准备
 
 1. 在本目录的 `.env` 中填写 `TYPESAFE_API_KEY=你的密钥`。不要把密钥写入脚本、提交到 Git 或贴到聊天中。
 2. `.gitignore` 已忽略 `.env`；`.env.example` 只提供变量名模板。
+3. 单元测试不需要密钥，可离线运行：`python3 -m unittest discover -s tests`。
 
 ## 直接调用 API
 
@@ -33,6 +34,9 @@ curl --fail-with-body --silent --show-error \
 | [首轮验证报告](docs/jev-validation-2026-09-18.md) | 客服路由基准、fan-out、成本、重复稳定性、关键词基线、Agent 控制面三项 |
 | [流式思考监督](docs/jev-thinking-supervision-2026-09-18.md) | 通过第三方网关观察思考窗口并尝试打断（机制实验，未成功缩短作答） |
 | [第三轮调研](docs/jev-round3-2026-09-18.md) | 官方口径核实、生态索引质量、置信度升级闸门三轮实测 |
+| [第四轮调研](docs/jev-round4-2026-09-19.md) | 三家独立第三方实测、TechCrunch 主流报道、开源 System One 家族 CUA-S1、生态同名组织风险 |
+| [第四轮·补充](docs/jev-round4-supplement-2026-09-19.md) | 官方文档增量（Language support / PATTERNS / evals 表）、$40M 融资事实、Vercel / LangChain / OpenRouter 平台化接入、Vercel 13% 采纳数据纠偏 |
+| [第五轮调研](docs/jev-round5-2026-09-19.md) | 别人正在拿 Jev 干什么：医疗/DevOps/ERP/内容评分/PR/语音控制等一手使用案例与聚合站 |
 
 原始产物在 `artifacts/`，数据集在 `evals/`，评测脚本在 `scripts/`，单元测试在 `tests/`。
 
