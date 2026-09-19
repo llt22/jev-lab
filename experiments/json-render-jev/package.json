@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "demo": "tsx src/demo.tsx",
-    "demo:live": "tsx src/demo.tsx --live",
+    "demo:live": "npm run demo:gateway",
+    "demo:gateway": "tsx src/demo.tsx --gateway",
+    "demo:typesafe": "node --env-file-if-exists=../../.env --import tsx src/demo.tsx --typesafe",
     "test": "node --import tsx --test src/demo.test.tsx",
     "typecheck": "tsc --noEmit"
   },

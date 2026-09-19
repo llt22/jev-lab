@@ -186,6 +186,58 @@ export const offlineEvaluator: Experimental_CompositionEvaluator = async ({
   usage: { inputTokens: 0 },
 });
 
+const TYPESAFE_API_URL = "https://api.typesafe.ai/v1/systemone";
+const TYPESAFE_MODEL = "jev-1.13.0";
+const typesafeResponseSchema = z.object({
+  answers: z.record(
+    z.string(),
+    z.object({
+      type: z.literal("choice"),
+      choice: z.string(),
+      confidence: z.number().min(0).max(1).optional(),
+    }),
+  ),
+  usage: z.object({ input_tokens: z.number().int().nonnegative().optional() }).optional(),
+});
+
+export function createTypeSafeEvaluator(
+  apiKey: string,
+  fetchImpl: typeof fetch = fetch,
+): Experimental_CompositionEvaluator {
+  const key = apiKey.trim();
+  if (!key) throw new Error("A TypeSafe API key is required.");
+  return async ({ state, questions, signal }) => {
+    const response = await fetchImpl(TYPESAFE_API_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+        "User-Agent": "jev-lab-json-render/1.0",
+      },
+      body: JSON.stringify({ model: TYPESAFE_MODEL, state, questions }),
+      signal,
+    });
+    if (!response.ok) {
+      const detail = (await response.text()).slice(0, 300);
+      throw new Error(
+        `TypeSafe evaluation failed (HTTP ${response.status})${detail ? `: ${detail}` : "."}`,
+      );
+    }
+    const parsed = typesafeResponseSchema.safeParse(await response.json());
+    if (!parsed.success)
+      throw new Error("TypeSafe evaluation returned an invalid response.");
+    return {
+      answers: Object.fromEntries(
+        Object.entries(parsed.data.answers).map(([name, answer]) => [
+          name,
+          { choice: answer.choice, confidence: answer.confidence },
+        ]),
+      ),
+      usage: { inputTokens: parsed.data.usage?.input_tokens },
+    };
+  };
+}
+
 const { registry } = defineRegistry(catalog, {
   components: {
     Dashboard: ({ props, children }) => (
@@ -268,18 +320,27 @@ export async function composeDashboard(evaluate: Experimental_CompositionEvaluat
 }
 
 async function main() {
-  const live = process.argv.includes("--live");
-  const apiKey = process.env.AI_GATEWAY_API_KEY?.trim();
-  if (live && !apiKey)
-    throw new Error("AI_GATEWAY_API_KEY is required for --live.");
-  const evaluate = live
-    ? experimental_createEvaluator({ model: "typesafe-ai/jev", apiKey: apiKey! })
-    : offlineEvaluator;
+  const gateway = process.argv.includes("--gateway") || process.argv.includes("--live");
+  const typesafe = process.argv.includes("--typesafe");
+  if (gateway && typesafe) throw new Error("Choose either --gateway or --typesafe.");
+  const mode = gateway ? "gateway" : typesafe ? "typesafe" : "offline";
+  const gatewayKey = process.env.AI_GATEWAY_API_KEY?.trim();
+  const typesafeKey = process.env.TYPESAFE_API_KEY?.trim();
+  if (gateway && !gatewayKey)
+    throw new Error("AI_GATEWAY_API_KEY is required for --gateway.");
+  if (typesafe && !typesafeKey)
+    throw new Error("TYPESAFE_API_KEY is required for --typesafe.");
+  const evaluate = gateway
+    ? experimental_createEvaluator({ model: "typesafe-ai/jev", apiKey: gatewayKey! })
+    : typesafe
+      ? createTypeSafeEvaluator(typesafeKey!)
+      : offlineEvaluator;
   const result = await composeDashboard(evaluate);
   console.log(
     JSON.stringify(
       {
-        mode: live ? "jev" : "offline",
+        mode,
+        model: gateway ? "typesafe-ai/jev" : typesafe ? TYPESAFE_MODEL : null,
         prompt: PROMPT,
         stopReason: result.complete.stopReason,
         elapsedMs: result.complete.elapsedMs,

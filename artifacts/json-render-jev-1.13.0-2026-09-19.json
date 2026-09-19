@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-19",
+  "integration": {
+    "json_render_core": "0.21.0",
+    "json_render_react": "0.21.0",
+    "transport": "TypeSafe System One API",
+    "model": "jev-1.13.0"
+  },
+  "prompt": "Generate an operations dashboard with the recent orders table first, then revenue, orders, and new-customer metrics in one row, followed by weekly revenue.",
+  "result": {
+    "stop_reason": "finish",
+    "elapsed_ms": 2803,
+    "input_tokens": 3395,
+    "element_count": 7,
+    "html_bytes": 737
+  },
+  "phases": [
+    {
+      "name": "select",
+      "elapsed_ms": 1970,
+      "answers": {
+        "root": ["dashboard", 1.0],
+        "select_dashboard": ["use:dashboard", 0.97],
+        "select_orders_table": ["use:ordersTable", 1.0],
+        "select_metric_row": ["use:metricRow", 0.99],
+        "select_revenue_metric": ["use:revenueMetric", 0.99],
+        "select_orders_metric": ["use:ordersMetric", 0.99],
+        "select_customers_metric": ["use:customersMetric", 0.99],
+        "select_weekly_revenue": ["use:weeklyRevenue", 1.0]
+      }
+    },
+    {
+      "name": "layout",
+      "elapsed_ms": 830,
+      "answers": {
+        "orders_table_parent": ["dashboard", 1.0],
+        "orders_table_order": [1, 0.96],
+        "metric_row_order": [2, 0.81],
+        "revenue_metric_parent": ["metricRow", 1.0],
+        "revenue_metric_order": [1, 0.93],
+        "orders_metric_parent": ["metricRow", 1.0],
+        "orders_metric_order": [2, 0.55],
+        "customers_metric_parent": ["metricRow", 1.0],
+        "customers_metric_order": [3, 0.68],
+        "weekly_revenue_parent": ["dashboard", 1.0],
+        "weekly_revenue_order": [3, 0.43]
+      }
+    }
+  ],
+  "tree": {
+    "type": "Dashboard",
+    "children": [
+      { "type": "OrdersTable" },
+      {
+        "type": "MetricRow",
+        "children": [
+          { "type": "Metric", "label": "Revenue" },
+          { "type": "Metric", "label": "Orders" },
+          { "type": "Metric", "label": "New customers" }
+        ]
+      },
+      { "type": "RevenueBars", "label": "Weekly revenue" }
+    ]
+  },
+  "notes": [
+    "No API keys or authorization headers are stored in this artifact.",
+    "This is one synthetic run and is not an accuracy benchmark.",
+    "The successful run used the TypeSafe API directly, not Vercel AI Gateway."
+  ]
+}

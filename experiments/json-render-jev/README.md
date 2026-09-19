@@ -8,9 +8,10 @@ API with an app-owned dashboard catalog. It verifies the full local path:
 3. `@json-render/react` renders the Spec to HTML.
 
 The default evaluator is deterministic so the integration remains testable
-without credentials. Live mode replaces only that evaluator with the official
-Vercel AI Gateway adapter and `typesafe-ai/jev`; the catalog, candidates,
-composer, validation, and renderer remain identical.
+without credentials. Live modes replace only that evaluator: `demo:gateway`
+uses the official Vercel AI Gateway adapter, while `demo:typesafe` calls the
+TypeSafe System One API directly. The catalog, candidates, composer, validation,
+and renderer remain identical.
 
 ```sh
 cd experiments/json-render-jev
@@ -18,8 +19,11 @@ npm install
 npm test
 npm run demo
 
-# Live Jev evaluation through Vercel AI Gateway
-AI_GATEWAY_API_KEY=... npm run demo:live
+# Live Jev evaluation through TypeSafe (loads ../../.env when present)
+npm run demo:typesafe
+
+# Or use the official Vercel AI Gateway adapter
+AI_GATEWAY_API_KEY=... npm run demo:gateway
 ```
 
 Do not expose the Gateway key to browser code. The live model selects prepared
