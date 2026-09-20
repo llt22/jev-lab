@@ -1,0 +1,206 @@
+{
+  "captured_at": "2026-09-20 16:20 CST (ego-browser, 登录态 @lilongtaogm)",
+  "space": "Jev round7 X research (2026-09-20)",
+  "coverage": "2026-09-20 15:00 → 2026-09-20 16:20 CST",
+  "note": "第七轮为第六轮后约 1 小时内的增量调研，聚焦当天下午的新动态",
+  "findings": [
+    {
+      "id": "laya-vs-jev-controversy",
+      "type": "竞品叙事（需批判性核实）",
+      "url": "https://x.com/hemantXAI/status/2101575968905216261",
+      "by": "Hemant @hemantXAI（openJev Verdict / Laya 关联作者）",
+      "time": "2026-09-20 15:35",
+      "key_claims": [
+        "『非自回归决策模型一年前已由独立研究开创，TypeSafe 不是突破』",
+        "引用 arXiv:2503.23303（2025-03）与 arXiv:2510.01237（2025-09）作为 prior art",
+        "Laya 优于 Jev：typed-decisions 0.766 vs 0.727；AG News 0.950 vs 0.910；ECE 0.081 vs 0.246（3x 校准）；33ms vs 236-276ms",
+        "Khmer 语 ModernBERT 0.000 准确率但 0.952 confidence（tokenizer 撕裂）—— 编码器路线的语言盲区",
+        "Laya Router：22 字母 Unicode 脚本检测，0.09ms 英文 / 0.54ms Devanagari"
+      ],
+      "verification": "arXiv 两篇论文已直接核实——均与『非自回归决策模型』无关：2503.23303 是销售转化预测 RL（SalesRLAgent），2510.01237 是 LLM 幻觉缓解的置信度路由。作者 Nandakishor M 正是 Laya 创始人。『架构一年前已发表』的声称不成立（论文内容不支持）。竞品营销话术。",
+      "counter_evidence": "JevBench v1.2.2 实测：Jev Calibration 82.7 vs Laya 62.5；Laya Intelligence 63.2 vs Jev 90.4。hemant 声称的 ECE 0.081 与 JevBench 的 Laya 62.5 校准分存在明显落差，需原始数据才能调和。"
+    },
+    {
+      "id": "nakajima-carpool-bench",
+      "type": "独立基准（新）",
+      "url": "https://x.com/snakajima/status/2101568939830759550",
+      "by": "Satoshi Nakajima @snakajima（GraphAI 作者）",
+      "time": "2026-09-20 15:07",
+      "data": {
+        "Claude Opus": "74.1%, 2.1s, $60",
+        "GPT-5.6 Sol": "74.9%, 2.2s, $27",
+        "Gemini 3.2 flash": "72.9%, 1.5s, $9",
+        "JEV": "74.3%, 0.13s, $0.34"
+      },
+      "note": "拼车优化（carpooling optimization）基准，衡量决策模型 vs LLM 的约束满足能力。准确率全部 74%±1（打平），但成本差 80-176 倍、速度差 12-16 倍。尚未发布仓库，为初步结果。"
+    },
+    {
+      "id": "jev-recall",
+      "type": "开源项目（已核实 ★13）",
+      "url": "https://github.com/samdotmak/jev-recall",
+      "by": "samdotmak + Claude",
+      "time": "2026-09-20",
+      "key_points": [
+        "『Retrieve by relevance, not resemblance』—— 向量检索找『长得像』，Jev 判断『真正相关』",
+        "示例：『订 Tartine 杏仁挞』需要召回『Leo 坚果过敏』，embedding 只会捞烘焙记忆",
+        "方法：每个记忆一个校准 yes/no、单请求并行、置信度阈值过滤（非 Top-K）、无相关时返回空集",
+        "评测（238 条背景记忆，18 个反直觉关联测试）：BM25 1/18、OpenAI embedding 3/18、Claude Sonnet 5 17/18（$0.020 / 7.6s）、Jev Recall 17/18（$0.00044 / 0.35s）",
+        "即：与 Sonnet 打平质量，成本 1/46，快 20 倍",
+        "MIT，含 demo 站点与 benchmark；『每轮必检』的工程可行性"
+      ]
+    },
+    {
+      "id": "typear",
+      "type": "开源复刻（数值字段）",
+      "url": "https://github.com/TypeAR-AI/TypeAR",
+      "by": "TypeAR-AI（zmtomorrow）",
+      "time": "2026-09-20（含 09-19 更新）",
+      "key_points": [
+        "『Type-Safe Decoding for Autoregressive LLMs』—— 给开源自回归模型加 Jev 式类型安全接口",
+        "解决 Jev 契约的数值字段缺口：integer/float 用 tokenizer-native 约束解码直接输出",
+        "单 token 类别选择（negligible output cost）、可选 thinking mode with per-field budget、前缀缓存线性输入成本",
+        "★12、16 commits，含 evals/benchmark/runtime"
+      ]
+    },
+    {
+      "id": "kinasremek-open-implementations",
+      "type": "开源实现选型图谱",
+      "url": "https://x.com/KinasRemek/status/2101577810301026687",
+      "by": "Remek Kinas",
+      "time": "2026-09-20 15:42",
+      "key_points": [
+        "本地即时『if』：featherless-ai/simple-jev、zhengxuyu/litjev（零训练）；Apple Silicon：bnsd55/jevmlx、SemIf MLX backend",
+        "领域质量优先：bespokelabsai/nimble（contrastive curation + 2676 例 + LoRA r=16 + 1 epoch）；RFDT in simple-jev",
+        "机制理解：jaredpalmer/kev（block-causal mask + pointer head，1h45m 训练）；r-ms/mini-jev（置信区间 + 消融）",
+        "毫秒窄域编码器路线：laya 421M / jeff GLiFormer 400M / open-jev-deberta-v3-large / Verdict 151M ——『自评与 JevBench 差距最大』",
+        "数值字段：TypeAR；扩散路线：DiffusionGemma（技术最趣、唯一多模态，但未合并 PR）"
+      ]
+    },
+    {
+      "id": "higgsfield-routing",
+      "type": "生产级模型路由",
+      "url": "https://x.com/higgsfield_ai/status/2101022473248727177",
+      "by": "Higgsfield AI",
+      "time": "2026-09-19 02:56",
+      "key_points": [
+        "50+ 前沿模型 API 平台用 Jev 自动路由 GenAI 模型：『为任务挑选最具成本效益的模型，平衡速度与质量』",
+        "5.4 万浏览、482 赞—— 平台自身用 Jev 做成本优化",
+        "生产级（不是 demo）：Higgsfield API 是产品"
+      ]
+    },
+    {
+      "id": "iannuttall-bookmarks",
+      "type": "一手使用（新数据）",
+      "url": "https://x.com/iannuttall/status/2101369410447437889",
+      "by": "Ian Nuttall",
+      "time": "2026-09-20 01:54",
+      "key_points": [
+        "1.6k 书签 22 秒分类完，比 GLM 4.7 Flash 快 155 倍、便宜 10 倍",
+        "用于 keep.md 向用户展示最有趣的书签（产品内）"
+      ]
+    },
+    {
+      "id": "redp314-feed-filter",
+      "type": "一手使用（feed 过滤）",
+      "url": "https://x.com/redp314/status/2100915304062710263",
+      "by": "Paolo Rosson @redp314",
+      "time": "2026-09-18 19:50",
+      "key_points": [
+        "动态优化器：每条帖子一次调用 Jev → 9 个类型化答案（ragebait/广告/低质量/敌对/有用/我会保存吗）",
+        "代码转 HIDE / SKIM / KEEP；150 条真实 For You 帖 10 秒 $0.015",
+        "300 条未见书签测试：63% KEEP；16 条示例 few-shot + 几行代码（无 LLM 无训练）"
+      ]
+    },
+    {
+      "id": "breezyuan-roundup",
+      "type": "平衡复盘",
+      "url": "https://x.com/BreezeYuan/status/2101569902897492023",
+      "by": "Yuan @BreezeYuan",
+      "time": "2026-09-20 15:00",
+      "key_points": [
+        "周末复盘所有 demo 后：『pretty bad at writing but great at quick calls，便宜到普通 LLM 调用算浪费的场景都可用』",
+        "它更像『一个便宜的 yes/no 按钮放进 loop』",
+        "关键平衡：在 Greg 的 long browser benchmark 上 1/20，当前配置 17/20 ——『窄问题+明确规则很好，开放式任务很快崩』"
+      ]
+    },
+    {
+      "id": "multiplyface-decision-density",
+      "type": "中文分析",
+      "url": "https://x.com/multiplyface/status/2101574236854718886",
+      "by": "Joe在出海 @multiplyface",
+      "time": "2026-09-20 15:28",
+      "key_points": [
+        "『Jev 改的不是聊天，是决策密度』",
+        "三玩法：问题扇出 / 置信度门控 / 级联",
+        "新数据：nailthy62 试衣 demo 620ms 决策、单次 $0.0011",
+        "『执行变便宜后，稀缺的不是能不能做，是敢不敢更频繁地做』"
+      ]
+    },
+    {
+      "id": "xingpt-review",
+      "type": "中文综述",
+      "url": "https://x.com/xingpt/status/2101578499085504656",
+      "by": "XinGPT 🐶 @xingpt",
+      "time": "2026-09-20 15:45",
+      "key_points": [
+        "『当 AI 不再忙着说话，软件开始学会判断』：浏览器/Mario/无人机/交易/信息流筛子五案例",
+        "新案例：Your Signal Chrome 扩展（兴趣+过滤偏好，Jev 判断 X 帖相关/是否实料/推广，高亮淡化折叠隐藏，可撤销，需自己 API Key）",
+        "『答案符合格式，不代表判断符合事实』—— 罕见的准确表述",
+        "分工细化：规划/生成/选工具/查风险/执行，能力不同、各取所长"
+      ]
+    },
+    {
+      "id": "aiops-tutorial",
+      "type": "入门教程",
+      "url": "https://x.com/nssntus/status/2101576313656299914",
+      "by": "AI Ops Notes @nssntus",
+      "time": "2026-09-20",
+      "key_points": [
+        "『Jev From Zero to One』：constrained decision models 实战教程",
+        "定位：『a gate, not a writer』"
+      ]
+    },
+    {
+      "id": "api-401-issue",
+      "type": "接入摩擦",
+      "url": "https://x.com/moc_tx89/status/2101575650821955840",
+      "by": "moctx @moc_tx89",
+      "time": "2026-09-20",
+      "key_points": [
+        "新用户拿 API 访问权限被 401 拒绝（96 浏览）—— 与之前观察的 waitlist/容量问题一致，接入摩擦仍存在"
+      ]
+    },
+    {
+      "id": "mylifcc-5-layers",
+      "type": "社区情绪",
+      "url": "https://x.com/mylifcc/status/2101578373382504621",
+      "by": "lifcc @mylifcc",
+      "time": "2026-09-20",
+      "key_points": [
+        "JEV 五层：JEV 是啥 → 不就是分类模型吗 → 也不行啊 → 流量真高先做个东西发出来 → JEV 真香",
+        "反映社区从质疑到跟风的情绪弧线"
+      ]
+    },
+    {
+      "id": "official-no-change",
+      "type": "官方动态（无实质变化）",
+      "url": "https://x.com/typesafeai",
+      "by": "TypeSafe AI",
+      "time": "2026-09-20",
+      "key_points": [
+        "时间线无新发布：仍为免费期（至 9/25）、Venice beta、征集负面反馈",
+        "Sasha '这个帖子有新的版本' 指 model-jaggedness 页更新"
+      ]
+    },
+    {
+      "id": "langchainjp-procedural-graphs",
+      "type": "相关研究方向",
+      "url": "https://x.com/LangChainJP/status/2101574617760424050",
+      "by": "LangChainJP",
+      "time": "2026-09-20",
+      "key_points": [
+        "arXiv Procedural Graphs: Self-Evolving Execution Structures for LLM Agents —— 与 Jev 无关但同向的 agent 执行结构研究"
+      ]
+    }
+  ]
+}

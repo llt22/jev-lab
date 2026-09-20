@@ -142,6 +142,7 @@ experiments/ Runnable integration experiments
 | Integration experiments | [json-render + Jev](docs/json-render-jev-2026-09-19.md) |
 | Community adoption | [First-hand use cases](docs/jev-round5-2026-09-19.md) · [28-case audit](docs/jev-round5-supplement-2026-09-19.md) · [Community survey](docs/jev-x-use-cases-2026-09-18.md) |
 | Round 6 survey | [Evaluators, clone wave, and scale evidence](docs/jev-round6-2026-09-20.md) |
+| Round 7 survey | [Competitor narrative checked, open-implementation selection map](docs/jev-round7-2026-09-20.md) |
 
 ## Contributing
 
