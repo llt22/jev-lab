@@ -1,0 +1,414 @@
+{
+  "captured_at": "2026-09-20 15:00 CST (ego-browser, 登录态 @lilongtaogm)",
+  "space": "Jev round6 X research (2026-09-20)",
+  "coverage": "2026-09-19 11:00 → 2026-09-20 15:00 CST",
+  "source": "X 实时检索（typesafe jev / jev production / JevBench / 中文社区 / 官方账号）+ zenn.dev + GitHub 仓库核实",
+  "findings": [
+    {
+      "id": "langchain-jev-judge",
+      "type": "官方文章",
+      "url": "https://x.com/LangChain/status/2101454284927959080",
+      "title": "Jev-as-a-Judge for Agent Evals (By Daniel Shea and Seán Roche)",
+      "by": "LangChain",
+      "time": "2026-09-20 上午 (6小时前)",
+      "key_points": [
+        "Jev 作为第三种 agent evaluator（code-based / LLM-as-judge 之外）",
+        "accuracy：binary does_pass 500 次重复 Jev 全对；Terra 99.8%、Luna 96.4%、Claude 80.0%",
+        "variance：Jev 0.0000149；Luna 433x、Terra 913x、Claude 92x 更高",
+        "成本：$0.00035/call，总计 $0.34 vs Claude $28.17",
+        "latency：平均 0.44s",
+        "目标 agent：Deep Agents + LangSmith，5 个 weather requests，quality + does_pass 两个信号",
+        "结论前瞻：Jev 让在线评估成本可承受，10k traces/day 生产 agent",
+        "定性：观察性结论，不证明训练目标导致低方差"
+      ]
+    },
+    {
+      "id": "toto-sushi-langchain-verify",
+      "type": "社区转发",
+      "url": "https://x.com/toto__sushi/status/2101556210516316223",
+      "by": "シバ犬 @toto__sushi",
+      "time": "2026-09-20",
+      "key_points": [
+        "LangChain 验证：同一输出 100 次评分，合否 100/100 相同",
+        "质量分数方差：Jev 是其他 LLM judge 的 1/92 到 1/913"
+      ]
+    },
+    {
+      "id": "jevbench-v122",
+      "type": "独立基准更新",
+      "url": "https://benchmarkheaven.com/jev-models",
+      "title": "JevBench v1.2.2 (2026-09-20 抓取)",
+      "by": "Benchmark Heaven (Florian S)",
+      "key_points": [
+        "21 系统 × 534 决策（easy 72 / standard 96 / judge 146 / hard 220），sha256 5b9d5d0355d7…",
+        "#1 classifier.dev (fast tier) 84.8 —— 但它是 Jev 的代理 API（runs Jev behind its own API），flat plan ~$0.0033/千决策，匹配 Jev 的 Intelligence 90.1",
+        "#2 Jev 1.13.0 75.3（Intelligence 90.4 / Calibration 82.7 / Speed 83.3 / Cost 51.7，$0.041/千决策）",
+        "#3 SemIf (Qwen3.5-4B) 74.6 —— 开源复刻仍差 0.7 分",
+        "#4 djev (Maisa, diffusion-gemma) 74.3，Intel 88.4",
+        "#5 Laya (ModernBERT-large 421M) 70.1，Cost 86.2 最高",
+        "#9 jeff (GLiFormer 400M) 66.9",
+        "#12 GPT-5.6 Luna (low) 66.0 —— Intelligence 96.8 最高但成本分 28.2 拖累",
+        "#15 Gemini 3.1 Flash-Lite 60.8、#16 DeepSeek V4.1 Flash 58.1（Calibration 96.7 最高）",
+        "#18 GLiNER2 (gliner2.5-base) 52.9",
+        "Qwen3.8 27B、Needle 3 未跑完各档（partial run）",
+        "自托管/demo 端点延迟 ×2 (+0.15s) 调整为生产负载近似 —— 假设，非测量"
+      ]
+    },
+    {
+      "id": "klones-6-in-2-days",
+      "type": "生态汇总",
+      "url": "https://x.com/KUMAN_R/status/2101473262693994936",
+      "title": "Jev 克隆版 2 天 6 个（Kuman 日语翻译 + Latent Space AINews 汇总）",
+      "by": "Kuman @KUMAN_R",
+      "time": "2026-09-20 08:47",
+      "key_points": [
+        "❶ Laya — ModernBERT 系编码器 421M + PPO 训练",
+        "❷ DiffusionGemmaJev — 扩散模型再现，基准接近",
+        "❸ Bespoke Nimble — Qwen3.5-9B LoRA，自评 90%（原版 93%）",
+        "❹ SemIf（旧 OpenJev）— Qwen3.5 + NLI 分类器，4B 和 35B",
+        "❺ Jevlike — 嵌入 40KB 轻量注意力",
+        "❻ Kev-0.5B — 0.5B LoRA，MacBook Pro 可运行",
+        "Latent Space 推测：ModernBERT 说 vs 扩散模型说",
+        "6 个架构各不相同（本体不公开，各自推测）"
+      ]
+    },
+    {
+      "id": "yibie-laya-jev-cascade",
+      "type": "独立实测（可复现）",
+      "url": "https://x.com/yibie/status/2101553680889598094",
+      "repo": "https://github.com/yibie/laya-jev-lab",
+      "title": "实测：Jev 与 Laya 对比 + 级联方案（40 条中文客服消息）",
+      "by": "yibie",
+      "time": "2026-09-20 14:06",
+      "key_points": [
+        "纯 Jev 31/40=78%、平均置信度 0.88、延迟 588ms；纯 Laya 23/40=57%、0.71、7.6ms",
+        "难度拆解：清晰题 Jev 100% / Laya 75%；模糊题 70%/60%；边界题 40%/20%",
+        "级联 Laya→Jev：阈值 0.60 甜点，准确率持平 78%、快 1.8x、升级率 55%",
+        "关键失败模式：Laya 置信度-准确率曲线非单调；『我要退款，东西还没发货』Laya 0.92 判 logistics（错），Jev 0.98 判 billing（对）",
+        "级联拦得住『知道自己不确定』的错，拦不住『自信地错』",
+        "阈值扫描：0.30→0.95 详细表；0.70-0.95 升级率涨但准确率不涨（75%）",
+        "教训 1：单独测 Laya 时结论『conf≥0.7 时 86-100%』是小样本假象",
+        "教训 2：信息越少越自信要单独防；输入信息量增加时置信度没下降",
+        "教训 3：级联收益来自流量结构（清晰题占比）",
+        "仓库：40 条基准、20 个实验脚本、级联代码、原始输出全公开（M4 Max / MLX）"
+      ]
+    },
+    {
+      "id": "layamain",
+      "type": "开源复刻核实",
+      "url": "https://github.com/NandhaKishorM/laya",
+      "title": "Laya（Convai Innovations / NandhaKishorM）",
+      "by": "NandhaKishorM",
+      "time": "2026-09-20 抓取",
+      "key_points": [
+        "★1.8k / Fork 165 / ★1.8k，Apache-2.0，50 commits，v0.3.4",
+        "『Multilingual, non-autoregressive System 1 decision engine』：single forward pass 33ms（T4），7.2ms/question batched",
+        "三个 checkpoint：laya (ModernBERT-large 421M, 512 ctx, EN) / laya-multilingual (mmBERT-base 322M, 1024, 100+ lang, 2x faster) / laya-typed-decisions (421M, 1024)",
+        "内置 Router：preload 后 sub-35ms 自动检测语言并选择 checkpoint",
+        "RLCD 训练（strictly proper scoring rules）",
+        "pip install laya"
+      ]
+    },
+    {
+      "id": "biscuit-28k-report",
+      "type": "独立实测（2.8万请求）",
+      "url": "https://zenn.dev/biscuit/articles/typesafe-ai-jev-benchmark-2026-09",
+      "title": "TypeSafe AI「Jev」の実効性能検証レポート（約2.8万リクエスト）",
+      "by": "biscuit (zenn.dev)",
+      "time": "2026-09-20 发布",
+      "key_points": [
+        "25,800 请求，总成本 $2.1，jev-1.13.0，日本自宅 8 并行",
+        "latency：1问 98ms → 500问 239ms 服务器侧；Keep-Alive 下往返 235ms/309ms/297ms/409ms",
+        "输入 token 只计 1 次：400 条无关数据 +4200 token，1问与500问差分相同（4255）",
+        "日语：MASSIVE 83.2% vs 英 83.0%（无显著差）；JSICK 85.4 vs 87.4；PAWS-X 70.2 vs 82.6（p<0.001，表记揺れ一因）",
+        "全ひらがな化：MASSIVE 83.2%→72.2%",
+        "confidence 闸门：MASSIVE 日 conf≥0.9 覆盖 72.2%、精度 93.9%；JSICK 94-96%",
+        "概率过信：返回概率 0.98-0.99 的实际正确率只有 93-95%；JSICK 0.7-0.9 段实际 58-61%",
+        "Score：Pearson 日 0.848 / 英 0.901；MAE 日 0.51 / 英 0.33；高评偏移（不相关对评高）",
+        "Score 的 confidence 不能当误差指标（0.7以下组误差反而小）",
+        "选择项顺序 shuffle/逆序：无位置偏差；删说明文：83%→75-78%；10 选限缩：→94%",
+        "OOD：删正确答案后，日 24.0%/英 29.6% 仍 conf≥0.9 错误选择；'都选不对'无法表达",
+        "加 none_of_the_above：约 6 成正确选它，但剩余 4 成仍 conf 0.84 选错",
+        "提示注入：attack 在 utterance 内日 23.2%/英 9.0% 被带偏；无攻击 0%；无害句 0%；放 note 字段仅 1%",
+        "PAWS-X：2 文末加 1 无害句 99.8% 变『不同』（Jev 字面阅读）",
+        "文档指定字段外内容几乎被忽略（≈1%）",
+        "噪声数据：20k token 无关记录，PAWS-X 70.7→70.0%、MASSIVE 81.3→84.0% 无显著劣化（字段隔离下）",
+        "数值：日付统一格式 100%、9 位数字比较 100%、3 位加法 70%（阈值 0.99→100%）、50 元素计数上限 82%",
+        "空输入不报错：Choice 空输入 conf 0.97-0.98 仍选 technical；加 none 则 0.98-1.00",
+        "可用性：25,800 次仅 1 次 503 重试，0 最终失败",
+        "连接开销：日本 RTT 136ms，TLS1.2 415ms vs TLS1.3 280ms，Keep-Alive 必要"
+      ]
+    },
+    {
+      "id": "layton-21-cases",
+      "type": "系统文章",
+      "url": "https://x.com/Layton_Gott/status/2101450120466174351",
+      "title": "Jev Use Cases Clearly Explained（21 用例，1.1 万浏览）",
+      "by": "Layton Gott",
+      "time": "2026-09-20 07:15",
+      "key_points": [
+        "21 用例：self-healing tool calls / agent loop controller / model routing / branch pruning / tool selection / irreversible action gate / dynamic permissions / spend firewall / confidence-based human queues / first-pass LLM judge / trace observability / semantic code linting / retrieval reranker / source verifier / context filter / support routing / refund triage / lead qualification / incident controller / marketplace dispatch / sales policy",
+        "测试建议：100-500 历史样本、shadow mode、阈值 0.95/0.70-0.95/<0.70",
+        "明确不适用：代码生成、开放式研究、长解释",
+        "『Typed outputs solve one reliability problem. They do not magically solve judgment.』",
+        "未来架构分层：Frontier model → Jev → CUA specialists → Tiny rerankers → Tiny classifiers → Code"
+      ]
+    },
+    {
+      "id": "buddypia-ont-96",
+      "type": "一手使用",
+      "url": "https://x.com/buddypia/status/2101548620671746202",
+      "by": "じゅん@AI駆動開発 (CyberAgent)",
+      "time": "2026-09-20 13:46",
+      "key_points": [
+        "『Jev 是判断变得便宜快的模型，不是准确的模型』",
+        "知识图谱 ontology 标签判定：处理时间削 96%",
+        "『高精度知识图谱需要巨大 LLM』是错的（另一帖）",
+        "TypeSafe 推荐与大型推理模型（System 2）并用"
+      ]
+    },
+    {
+      "id": "diogo-rlcd-lecture",
+      "type": "官方思想",
+      "url": "https://x.com/KUMAN_R/status/2101555052892614726",
+      "by": "Kuman @KUMAN_R",
+      "time": "2026-09-20 14:12",
+      "key_points": [
+        "Diogo Almeida 发布前 6 周演讲『Why RLCD beats RLHF』（youtube）",
+        "①『我是 OpenAI 少数讨厌 ChatGPT 的人』②『所有 LLM 都要 human loop 是因为我们把人放进了 loop』③『过度承诺是 feature，by design』④『幻觉对我而言内在于优化人类偏好』⑤『Claude Code 仍是 assistance era，仍 RLHF』⑥『我们只是自动化写软件，表现力没变』⑦『RLHF 不算错，但像奇怪的绕路』⑧『原缩放法则错了（spicy）』→ 6 周后 Jev 发布"
+      ]
+    },
+    {
+      "id": "trolley-problem",
+      "type": "伦理/决策测试",
+      "url": "https://x.com/FinanceYF5/status/2101545447773159650",
+      "by": "AI Will @FinanceYF5",
+      "time": "2026-09-20 13:34",
+      "key_points": [
+        "让 Jev 连续 100 次电车难题：拉杆牺牲 1 救 5 或什么都不做",
+        "首轮实验：Jev 以 99% 概率选择拉下拉杆",
+        "价值判断类决策的稳定倾向性（功利主义偏向）"
+      ]
+    },
+    {
+      "id": "subway-surfers-50",
+      "type": "一手实验",
+      "url": "https://x.com/FinanceYF5/status/2101502474691698971",
+      "by": "AI Will @FinanceYF5",
+      "time": "2026-09-20 12:00",
+      "key_points": [
+        "Jev 同时运行 50 局《地铁跑酷》，操作速度超过人类，整次成本 <1 美分",
+        "大模型负责理解推理决策，Jev 负责高速执行"
+      ]
+    },
+    {
+      "id": "selfdriving-tactical",
+      "type": "一手实验",
+      "url": "https://x.com/NFT_Chen/status/2101234910677926117",
+      "by": "SuSu_酥酥 @NFT_Chen",
+      "time": "2026-09-19 17:00",
+      "key_points": [
+        "自动驾驶战术层：代码管感知（lidar→扇区）+ 硬安全（reflex 永远优先），Jev 只在 ~3Hz 战术判断",
+        "15.3s 过第 2 站 hold course 87%，41 次调用 $0.00244；24.2s 精准停在滑动门前（wait 100%）",
+        "33.7s 0 碰撞，81 次调用 <0.5 美分；场景不变直接复用上次判断",
+        "延迟 170-260ms，token 极省",
+        "前情：9-17 一小时复刻特斯拉 FSD（67 万浏览）"
+      ]
+    },
+    {
+      "id": "dino-game",
+      "type": "一手实验",
+      "url": "https://x.com/libapi_/status/2101555752905347395",
+      "by": "libapi",
+      "time": "2026-09-20 14:15",
+      "key_points": [
+        "恐龙跳跃小游戏，人 vs Jev 竞速，Jev 每次起跳经 Netlify serverless 真实调 API",
+        "无需下载登录，打开即玩"
+      ]
+    },
+    {
+      "id": "jek-minecraft-enderdragon",
+      "type": "一手实验（开源）",
+      "url": "https://x.com/rronak_/status/2101544156757950697",
+      "repo": "https://github.com/rmalde/minecraft-agent",
+      "by": "Ronak Malde @rronak_",
+      "time": "2026-09-20 14:00",
+      "key_points": [
+        "Jev + Astra 在 Minecraft 8 分 43 秒击败末影龙",
+        "成本 <$1：Jev $0.01 + Astra $0.96",
+        "架构：Jev 控制玩家（WASD/空格/点击/鼠标），Astra 异步规划发指令",
+        "学习：代理失败时 Astra 把技能写为 mjs 文件，随场景调用直到速通成功",
+        "开源 rmalde/minecraft-agent"
+      ]
+    },
+    {
+      "id": "gokay-whale-game",
+      "type": "一手实验",
+      "url": "https://x.com/gokayfem/status/2101022590722810271",
+      "by": "gokaygokay @gokayfem",
+      "time": "2026-09-19 02:56",
+      "key_points": [
+        "决策游戏（鲸鱼背上的城市）：GPT-6 Astra 设计世界、Jev 选择行动、H3 Max Turbo 把每轮决策转视频",
+        "5 分钟 264 个片段（决策+视频）"
+      ]
+    },
+    {
+      "id": "langeai-grokbot",
+      "type": "一手文章",
+      "url": "https://x.com/0xlangeai/status/2101555600618602625",
+      "by": "蓝哥AI @0xlangeai",
+      "time": "2026-09-20 14:14",
+      "key_points": [
+        "Jev 判分流 + Grok Bot 干活（『Jev 管判，Grok Bot 管干』）",
+        "时间线四问：Choice 信息/情绪、Noul 是否相关、Score 转发风险、Choice 下一步（收藏/忽略/值得回复）",
+        "8 条合成帖测试：下一步/相关性 8/8，信息情绪/转发风险 7/8；平均 235ms，jev-1.13.0",
+        "软错都在『忽略』方向，无误推『值得回复』",
+        "高 confidence→Bot 继续，低 confidence→停下来交给人",
+        "别神话：Jev 仍会选错，只保证不出选项圈子；confidence 是犹豫度不是准确率"
+      ]
+    },
+    {
+      "id": "saunakdg-gtm",
+      "type": "系统文章",
+      "url": "https://x.com/saunakdg/status/2101547334580789713",
+      "by": "Saunak Dasgupta @saunakdg",
+      "time": "2026-09-20 14:00",
+      "key_points": [
+        "GTM 决策链：ICP fit → problem-likelihood → signal strength → priority",
+        "10 个例子：广告评分（Matthew Berman 724 ads 40s/$0.09；723 ads × 30 buyer personas = 21,690 判断 $0.22）、内容档案（Ian Nuttall 3,282 帖 8 问 8m34s/$0.1282）、lead-message fit（700 leads 40s/$0.09）、ICP vs problem fit（Piyush Patel Account Grader 1000→100）、social listening（AIsa/Rafael 150 tweets→750 决策→79 值得回复 $0.007）",
+        "『便宜决策上游、昂贵分析下游』架构",
+        "注明都是 demo receipts，非生产经济性，不含周边基础设施成本"
+      ]
+    },
+    {
+      "id": "venice-api",
+      "type": "平台渠道",
+      "url": "https://x.com/AskVenice/status/2101097027174309926",
+      "by": "Venice",
+      "time": "2026-09-19 23:52",
+      "key_points": [
+        "Jev 上线 Venice API（beta）：意回答不写代码、返回类型化答案",
+        "官方转发『It's Jev, not Jev』"
+      ]
+    },
+    {
+      "id": "official-vercel-free",
+      "type": "官方动态",
+      "url": "https://x.com/typesafeai/status/2101490102866493522",
+      "by": "TypeSafe AI",
+      "time": "2026-09-20 上午",
+      "key_points": [
+        "官方转发 Vercel 免费到 9 月 25 日（Jev on AI Gateway）",
+        "官方『we love skeptics』持续征集负面反馈（model-jaggedness Discord）",
+        "Sasha Sheng：『Jev 太慢、太贵、太笨，我们还有锦囊』"
+      ]
+    },
+    {
+      "id": "klarina-nimble-bonsai",
+      "type": "一手评估",
+      "url": "https://x.com/karinadoteth/status/2101539947148886188",
+      "by": "Karina Q @karinadoteth",
+      "time": "2026-09-20 13:00",
+      "key_points": [
+        "评估 Jev 及 OSS 变体：设计验证 → OSS Nimble 9B；数据验证（交易数据 vs 链上 RPC）→ Bonsai 2 27B",
+        "Jev 及其变体（如 Nimble）在特定任务上不如专用 OSS"
+      ]
+    },
+    {
+      "id": "hft-debunk",
+      "type": "批评/反算",
+      "url": "https://x.com/xCano61/status/2101553940080791785",
+      "by": "Cano @xCano61",
+      "time": "2026-09-20 14:00",
+      "key_points": [
+        "《Jev Doesn't Trade. Running the Numbers on the HFT Hype》反算 HFT 炒作",
+        "40M 融资、OpenAI 出身创始人"
+      ]
+    },
+    {
+      "id": "crypto9s-skeptic",
+      "type": "负面观点",
+      "url": "https://x.com/Crypto_9s/status/2101553252651372855",
+      "by": "Crypto9s",
+      "time": "2026-09-20 14:00",
+      "key_points": [
+        "『至今没想到 Jev 能干啥：决策质量低、高速执行有脚本就行了』",
+        "引用 AI Will 地铁跑酷：『Jev 提供完全不同的能力』"
+      ]
+    },
+    {
+      "id": "jeff-jevbench",
+      "type": "开源复刻",
+      "url": "https://x.com/LoganMarkewich/status/2101473352074625344",
+      "by": "Logan Markewich",
+      "time": "2026-09-20 上午",
+      "key_points": [
+        "Jeff（GLiFormer 400M，基于 @knowledgator GliFormer）加入 JevBench 排名第 9（66.9）",
+        "『排名更高的只有基于 LLM/解码器的模型』"
+      ]
+    },
+    {
+      "id": "zho-kev",
+      "type": "开源复刻",
+      "url": "https://x.com/ZHO_ZHO_ZHO/status/2101551314199335221",
+      "by": "-Zho- @ZHO_ZHO_ZHO",
+      "time": "2026-09-20 15:00",
+      "key_points": [
+        "Kev-0.5B：较完整的开源 Jev-like 研究实现",
+        "shared state → isolated parallel question branches → learned pointer readout → probability distribution",
+        "一次 prefill 处理多个互不泄漏判断，不做 autoregressive decoding"
+      ]
+    },
+    {
+      "id": "heystefan-designer",
+      "type": "高传播",
+      "url": "https://x.com/heystefan_/status/2101369117496521042",
+      "by": "Stefan @heystefan_",
+      "time": "2026-09-19 01:53",
+      "key_points": [
+        "『当设计师获得 Jev 访问权限』17.8 万浏览、101 赞、209 转推、3,826"
+      ]
+    },
+    {
+      "id": "ctate-jsonrender",
+      "type": "高传播",
+      "url": "https://x.com/ctatedev/status/2101022101750571357",
+      "by": "Chris Tate @ctatedev",
+      "time": "2026-09-19",
+      "key_points": [
+        "json-render + jev：生成式 UI『组件、动作、设计系统毫秒内渲染』",
+        "115 万浏览、203 赞、680 转推"
+      ]
+    },
+    {
+      "id": "nextbigfuture",
+      "type": "媒体",
+      "url": "https://x.com/GeoffreyLush1/status/2101555633191547155",
+      "by": "Geoffrey Lush @GeoffreyLush1",
+      "time": "2026-09-20",
+      "key_points": [
+        "nextbigfuture《Typesafe AI JEV is a Transformational Unlock for AI Decisions & Classifications》"
+      ]
+    },
+    {
+      "id": "doomers-marketing-case",
+      "type": "营销案例研究",
+      "url": "https://x.com/GOROman/status/2101553380347068782",
+      "by": "NULL=RUN @GOROman",
+      "time": "2026-09-20",
+      "key_points": [
+        "doomers.ai《TypeSafe AI Jev Launch on X: The Case Study》—— Jev 如何被营销公司炒热"
+      ]
+    },
+    {
+      "id": "ailab-metro-50-views",
+      "type": "高传播补充",
+      "url": "https://x.com/FinanceYF5/status/2101502474691698971",
+      "by": "AI Will @FinanceYF5",
+      "time": "2026-09-20",
+      "key_points": [
+        "50 局地铁跑酷相关：@SUOHA_AI 此前 Browser Use 接 JEV 高速演示（9-18）"
+      ]
+    }
+  ]
+}
