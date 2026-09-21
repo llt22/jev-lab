@@ -144,6 +144,7 @@ experiments/ Runnable integration experiments
 | Round 6 survey | [Evaluators, clone wave, and scale evidence](docs/jev-round6-2026-09-20.md) |
 | Round 7 survey | [Competitor narrative checked, open-implementation selection map](docs/jev-round7-2026-09-20.md) |
 | Round 8 survey | [GA launch, Spanish pre-registered audit, LLM-probability counter-evidence](docs/jev-round8-2026-09-21.md) |
+| Round 9 survey | [295 real Jev builds: cascade in production, scale comparisons, content QC layer](docs/jev-round9-2026-09-21.md) |
 
 ## Contributing
 

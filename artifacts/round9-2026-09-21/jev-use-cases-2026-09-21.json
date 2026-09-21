@@ -1,0 +1,233 @@
+{
+  "captured_at": "2026-09-21 06:30 CST",
+  "space": "Jev round9 X research (2026-09-21)",
+  "coverage": "2026-09-20 16:20 → 2026-09-21 06:30 CST",
+  "focus": "别人怎么用 Jev 的（使用案例专轮）—— Made with Jev 聚合站（295 builds）+ X 帖子核实",
+  "aggregator": {
+    "site": "https://madewithjev.com",
+    "maintainer": "Jon Kraayenbrink @kraayenJon",
+    "stats": "295 builds / 91 guides / 8 use cases / 31,817 views / 32 online",
+    "categories": "Agents and browsers 60 · Content and growth 39 · Research and data 33 · Games and real time 29 · Triage and routing 21 · Trading and markets 5 · Robotics and devices 6 · Tools and apps 102",
+    "quality_note": "每条目链接到 source post 并标注作者报告的成本/速度；站点明示 'All figures come from the author. Check the source before you quote them.'"
+  },
+  "findings": [
+    {
+      "id": "fraud-jev-kimi-cascade",
+      "src": "https://x.com/nutlope/status/2100614659690713543",
+      "by": "Hassan (nutlope)",
+      "use_case": "欺诈检测（Jev + Kimi K3 级联）",
+      "details": "Jev 1.42s 分类 100 封邮件（50 真/50 欺诈）；31 封 <95% 置信路由到 Kimi K3；合成 96/100 准确率；全程 16 秒 $0.07（Kimi $0.068 + Jev $0.003）。作者原话：'use a fast specialized model like Jev for the narrow task, then route the uncertain cases to a larger LLM'",
+      "significance": "置信度升级闸门的标准落地——与 jev-lab confidence-escalation 实验同构的生产级例子"
+    },
+    {
+      "id": "500-emails-35-cents",
+      "src": "https://x.com/rileybrown/status/2100404532119269426",
+      "by": "Riley Brown",
+      "use_case": "邮件分类",
+      "details": "500 封邮件几秒分类完，3.5 美分（3.9K 赞）"
+    },
+    {
+      "id": "1500-emails-triage",
+      "src": "https://x.com/ryanvogel/status/2100042788851101842",
+      "by": "Ryan Vogel",
+      "use_case": "收件箱分流",
+      "details": "约 1,500 封自己的邮件一次跑完按需求分类（3.5K 赞）"
+    },
+    {
+      "id": "job-match-400",
+      "src": "https://x.com/sarvagya_kul/status/2100980770206879849",
+      "by": "Sarvagya Kulshreshtha",
+      "use_case": "职位匹配",
+      "details": "400 家公司 × 1 个候选人画像：12 秒预测最有希望的职位、给置信度、标不匹配；成本 $0.0005；产品 textbackdoor"
+    },
+    {
+      "id": "ocr-900-images",
+      "src": "https://x.com/fayazara/status/2100953838891192789",
+      "by": "Fayaz Ahmed",
+      "use_case": "图片分类（OCR + Jev）",
+      "details": "OCR 把图转文本，Jev 选类；约 900 张图 40 秒"
+    },
+    {
+      "id": "whatsapp-25-groups",
+      "src": "https://x.com/t0t0_build/status/2101082444577567162",
+      "by": "t0t0",
+      "use_case": "WhatsApp 客户群实时监控",
+      "details": "Jev 实时监控 25+ 客户群，判断是否紧急/有未处理订单；有需要才唤醒 LLM 写消息"
+    },
+    {
+      "id": "bot-chief-of-staff",
+      "src": "https://x.com/milindlabs/status/2100515910754750741",
+      "by": "Milind S (OpenMausBot)",
+      "use_case": "多 Agent 编排（主机参谋）",
+      "details": "Jev 读任务 → 唤醒正确 teammate（从 bench）→ 给每个 agent 分配模型；OpenMausBot 用用户现有订阅的模型"
+    },
+    {
+      "id": "slack-agent-2x",
+      "src": "https://x.com/johnyeo_/status/2100987661926252737",
+      "by": "John Yeo",
+      "use_case": "Slack Agent 加速（skill 路由）",
+      "details": "agent 原本要读 skills 找工具很慢；Jev 先读 prompt 分类最佳 skill/tool/params 再交给 agent；报称快 2 倍"
+    },
+    {
+      "id": "no-llm-chatbot",
+      "src": "https://x.com/CodingGarden/status/2100665210419950031",
+      "by": "CJ (Coding Garden)",
+      "use_case": "无 LLM 聊天机器人",
+      "details": "Jev 从 web 搜索/Wikipedia/天气/Todoist/Home Assistant 里选 tool+args；即时回答、带引用、无幻觉（1.2K 赞）"
+    },
+    {
+      "id": "diffjury",
+      "src": "https://x.com/raihankhan_rk/status/2100584682664628454",
+      "by": "Raihan Khan",
+      "use_case": "PR 审查（DiffJury, live）",
+      "details": "粘贴公开 PR 链接，Jev 判断可安全合并或需审查；diffjury.up.railway.app；graphify 团队"
+    },
+    {
+      "id": "firehose-judge",
+      "by": "Leo Mata",
+      "use_case": "Bluesky firehose 审核",
+      "details": "每条采样帖 8 问（意图/话题/情感/诱饵/敌意/讽刺/bot-ness/可否展示）；跑在 1 个 Cloudflare Durable Object；Jev 不肯下结论的进 'needs a human' 通道；约 $0.00003/条"
+    },
+    {
+      "id": "jev-antispam-bot",
+      "by": "Nikita Kolmogorov",
+      "use_case": "Telegram 反垃圾",
+      "details": "每条群消息 13 个垃圾问题（crypto 推广/假客服）；只删高置信命中；跳过 admin；Jev 不可用时不动（fail-safe）"
+    },
+    {
+      "id": "mastra-jev-moderation",
+      "by": "CodeAlive",
+      "use_case": "Mastra agent 输入审核",
+      "details": "单文件 processor；Jev typed answer 消除'从文本解析 verdict 失败 fail-open'风险；中位 ~0.4s"
+    },
+    {
+      "id": "wikiracing",
+      "by": "TypeSafe AI (官方案例)",
+      "use_case": "Wikiracing（高基数选择）",
+      "details": "从一页跳到目标页，每跳在数百/千链接中选；Choice 上限 255，所以先评分再选 top——high cardinality 的标准解法"
+    },
+    {
+      "id": "slay-the-spire-2",
+      "src": "https://x.com/coolish/status/2100570517954838897",
+      "by": "Paul Wei",
+      "use_case": "游戏（杀戮尖塔 2）",
+      "details": "每步 0.7 秒，画面没看清就操作完了；此前 GPT-6 Astra 能力强但慢"
+    },
+    {
+      "id": "smash-bros-4chars",
+      "src": "https://x.com/maubaron/status/2100738237237002706",
+      "by": "Mau Baron",
+      "use_case": "游戏（Smash Bros 自对打）",
+      "details": "Jev 同时控制 4 角色，每步几分之一秒选最优；2,200 万 token 才几分钱；'does not replace gpt6 astra but possibilities are endless'（3.7K 赞）"
+    },
+    {
+      "id": "tbc-leveling-agent",
+      "by": "chalkychalk42",
+      "use_case": "WoW 升级 agent（成本递减）",
+      "details": "跟随书面攻略；已做过的决策复用 → 每小时成本随时间下降；TBC 2.4.3 私服"
+    },
+    {
+      "id": "1kpapers",
+      "src": "https://x.com/nutlope/status/2100426999546184123",
+      "by": "Hassan (nutlope)",
+      "use_case": "论文批量分类（1kpapers.com live）",
+      "details": "1,018 篇 AI 论文分类：$0.08、每篇 256ms 中位；管线 = DeepSeek V4 Flash 摘要 + Jev 24 主题分类 + 可视化；摘要 $3.99 + 分类 $0.08 总共 $4 出头"
+    },
+    {
+      "id": "construction-plan-26",
+      "src": "https://x.com/hari_trinay/status/2101118529936519453",
+      "by": "Trinay Hari (Proq)",
+      "use_case": "施工图分类（生产对照）",
+      "details": "26 张图纸 2.9 秒 $0.0052；与生产管线(GPT-4.1)/GPT-6 Astra 在 sheet 级分类 100% 一致；便宜 17-21 倍、快 5 倍"
+    },
+    {
+      "id": "outreach-intent",
+      "src": "https://x.com/pierreeliottlal/status/2100912453999587657",
+      "by": "Pierre-Eliott Lallemant (GojiberryAI)",
+      "use_case": "外联意图信号分析",
+      "details": "数千条外联消息找'哪些意图信号带来 booked demos'：40 秒、<$0.20；还能 rank leads/测消息匹配"
+    },
+    {
+      "id": "zillow-nl-search",
+      "src": "https://x.com/venturetwins/status/2101341075684434245",
+      "by": "Justine Moore",
+      "use_case": "Zillow 自然语言搜索",
+      "details": "上千条 listing 按网站没有的维度分类（架构/翻新状态/离高速距离）：<20 秒、$0.18——'Jev 可以是网站上的更好自然语言搜索'"
+    },
+    {
+      "id": "game-coach",
+      "by": "Joel Lewis",
+      "use_case": "国际象棋教练（truth/judgment 分离）",
+      "details": "Stockfish 说位置价值（truth），Jev 决定怎么告诉玩家（judgment）；跑在 Cloudflare browser"
+    },
+    {
+      "id": "viral-100k",
+      "src": "https://x.com/0xMovez/status/2101325703635435523",
+      "by": "Movez",
+      "use_case": "病毒式帖分析（规模对比，本轮最强）",
+      "details": "100,000 条病毒式 X 帖 20.4 秒 $0.67（每条 14 个 yes/no）；Claude Opus 5 同语料只过 214 条花 $0.98；每帖 ~680x 便宜；全量 Opus 要 $458。发现：superlative claim 2.34% 病毒率 vs baseline 1.22%（1.92x）"
+    },
+    {
+      "id": "maxfusion-1891",
+      "src": "https://x.com/aresotik/status/2100949805573030378",
+      "by": "ares (Maxfusion)",
+      "use_case": "广告库分析",
+      "details": "整个品牌的 ad library：1,891 广告 19 秒 $0.12，逐广告标漏斗阶段 + 创意风格；将上 MCP"
+    },
+    {
+      "id": "persona-ab-4000",
+      "src": "https://x.com/SimAudience/status/2101117203060019431",
+      "by": "Sim Audience",
+      "use_case": "模拟 A/B 测试",
+      "details": "4,000+ 真实调查参与者画像对两条 launch tweet 投票：12 秒出模拟 A/B 结果；免费"
+    },
+    {
+      "id": "superx-61q",
+      "src": "https://x.com/robj3d3/status/2100722975645598191",
+      "by": "Rob Hallam (SuperX)",
+      "use_case": "帖子评分",
+      "details": "草稿每次 61 问 ~1 秒 $0.0004；在 9,481 真实帖/207 创作者上拟合；'选出更火帖 2 次中 1 次以上'（未核实）"
+    },
+    {
+      "id": "ai-slop-detector",
+      "src": "https://x.com/kraayenJon/status/2101157548346794059",
+      "by": "Jon Kraayenbrink",
+      "use_case": "AI slop 检测（free tool）",
+      "details": "URL 检查 35 种 AI slop 特征（紫色渐变/emoji 标题/seamlessly/假评论/bento grid）：243ms、$0.00015"
+    },
+    {
+      "id": "snifftest",
+      "by": "Daniel Willoughby",
+      "use_case": "散文 linter（代码过滤 + Jev 判断）",
+      "details": "可数规则（长破折号/禁词）本地跑；判断规则（结尾行只复述）才给 Jev，一段一段、用户同意后；从不改写文本"
+    },
+    {
+      "id": "theo-video",
+      "src": "https://x.com/theo/status/2101857305570721847",
+      "by": "Theo (t3.gg)",
+      "use_case": "主流开发者深谈（关键态度信号）",
+      "details": "30 分钟视频 'Jev 太不可思议了。我担心人们用错了它'（7.8 万浏览）；此前是 Jev 压缩策略批评者，现在转向'怎么用才对'"
+    },
+    {
+      "id": "greptile-realtime",
+      "src": "https://x.com/dakshgup/status/2101678769022841297",
+      "by": "Daksh Gupta (Greptile)",
+      "use_case": "实时错误检查（生产工具）",
+      "details": "手写代码时实时标出错误/不准确句子；greptile.com/realtime；也适用于英语（下划线标不准确句）"
+    },
+    {
+      "id": "made-with-jev-meta",
+      "src": "https://x.com/kraayenJon/status/2101896366297329693",
+      "by": "Jon Kraayenbrink",
+      "use_case": "聚合站",
+      "details": "295 builds / 91 guides 记录人们用 Jev 做了什么，每条链接源帖并显示作者报告的成本/速度"
+    },
+    {
+      "id": "aiventure-chinese",
+      "src": "https://x.com/AIVENTURE808/status/2101472924314046901",
+      "by": "QUE (确）",
+      "use_case": "中文综述",
+      "details": "'Jev 不负责回答，只负责决定下一步'——三种返回值、真实应用、适用边界、产品机会"
+    }
+  ]
+}
