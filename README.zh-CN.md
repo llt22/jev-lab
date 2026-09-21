@@ -143,6 +143,7 @@ experiments/ 可运行的集成实验
 | 社区采用 | [一手用例](docs/jev-round5-2026-09-19.md) · [28 案例审计](docs/jev-round5-supplement-2026-09-19.md) · [社区调查](docs/jev-x-use-cases-2026-09-18.md) |
 | 第六轮调研 | [评估器、复刻浪潮与规模化证据](docs/jev-round6-2026-09-20.md) |
 | 第七轮调研 | [竞品叙事核实与开源实现选型图谱](docs/jev-round7-2026-09-20.md) |
+| 第八轮调研 | [全面开放、西班牙语预注册审计与判定机治理框架](docs/jev-round8-2026-09-21.md) |
 
 ## 参与项目
 

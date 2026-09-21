@@ -1,0 +1,164 @@
+{
+  "captured_at": "2026-09-21 05:45 CST",
+  "space": "Jev round8 X research (2026-09-21)",
+  "coverage": "2026-09-20 16:20 → 2026-09-21 05:45 CST",
+  "source": "X 实时检索 + zenn.dev / dev.classmethod.jp 文章读取 + GitHub 仓库核实 + benchmarkheaven.com 直接抓取",
+  "findings": [
+    {
+      "id": "official-ga",
+      "type": "官方重大动态",
+      "url": "https://x.com/typesafeai/status/2101786156572823624",
+      "title": "Jev 向所有人开放，无等待列表",
+      "by": "TypeSafe AI",
+      "time": "2026-09-21 05:30 UTC",
+      "key_points": [
+        "console.typesafe.ai 直接开始使用，无 waitlist",
+        "所有用户初始 $5 信用额度（约 1.2 亿 token）",
+        "64.8 万浏览、9,393 赞、1,401 转推",
+        "终结前七轮反复观察的 waitlist/容量问题——API 曾因需求过高不可用（TechCrunch 报道），现在是产能扩充后的全面开放",
+        "评论区分化：支持（jevshield、用例）与质疑（『它不构建的话有什么用』1.1 万浏览）并存"
+      ]
+    },
+    {
+      "id": "jev-acento-spanish-audit",
+      "type": "独立审计（预注册、可复现）—— 本轮最扎实",
+      "url": "https://x.com/ingmmartinez/status/2101848155679535326",
+      "repo": "https://github.com/marcosmartinez/jev-acento",
+      "by": "Marcos Martinez (Fligoo)",
+      "time": "2026-09-21",
+      "key_points": [
+        "19,200 次调用、3,200 配对项、4 数据集（XNLI 1000 / PAWS-X 1000 / MASSIVE 600 / Belebele 600）、$0.58、jev-1.13.0 pin",
+        "三臂设计：A 英/英、B 西/英、C 西/西，字节相同、预注册 PREREG.sha256",
+        "西语文本扣 accuracy：XNLI −6.4pp、PAWS-X −6.2pp、MASSIVE −3.7pp、Belebele −3.0pp（全部超过 3pp 阈值）",
+        "困难任务校准破裂：XNLI ECE 0.057→0.101、PAWS-X 0.033→0.078；AURC XNLI 0.053→0.101、Belebele 三倍",
+        "阈值 0.9 操作后果：覆盖率掉 2-9pp，自动化部分错误率升 1.3-1.9 倍——『英语校准的阈值不可移植到西语』",
+        "西语写 questions 无帮助：3 数据集 null、1 个 ambiguous；建议保留英语 instructions/criteria",
+        "西语 token 多 17-38%，但完整调用只增 0.1-8.2%（固定问题开销稀释）",
+        "模型内在抖动 0.2-2.1%（κ 0.955-0.998）",
+        "API 机制细节：Noul 不返回 confidence；confidence 与 p_max 关系残差 ≤0.02；choice 与 probabilities argmax 19,200 次中 8 次不一致（两位小数平局）",
+        "对照俄罗斯审计（XNLI accuracy −11pp、ECE 0.032→0.096、token 3x）：西语约为其一半幅度的拉丁文字损失",
+        "MIT、CLI 可对自己数据重跑、明确披露代码大部分 agent 编写"
+      ]
+    },
+    {
+      "id": "devio-gemini-vs-jev",
+      "type": "独立实验（假设检验）—— 验证『Jev 快只因不生成文本』",
+      "url": "https://dev.classmethod.jp/articles/jev-vs-gemini-flash-cross-match/",
+      "by": "けーま (川田圭真) / DevelopersIO (Classmethod)",
+      "time": "2026-09-21",
+      "key_points": [
+        "质疑→验证：『Jev 快只是因为它不生成文章？那 LLM 输出压到几个 token 也应该一样快』",
+        "同样 107 案例、同样 questions（import Jev 脚本）、Gemini 3.8 Flash structured output 压到 2 数字 + keepalive（对 Gemini 有利）",
+        "结果：Jev 中位 709ms vs Gemini 1635ms（2.3 倍慢）；Gemini thinking=0 的 57 件仍 1616ms——『生成量不是原因，TTFT 是』",
+        "Gemini 概率全部贴 0/1：exact 107/107 全 0.0/1.0；semantic 64 件 1.0 + 29 件 0.0，迷茫仅 1 件——『自我申报值 vs 内部计算值』",
+        "Gemini 5 个错判概率全 1.0/1.0/0.95/0.0/0.2——自信地错，阈值门控失效；Jev 的矛盾案例给 0.6-0.7 中间值可走人工审查",
+        "成本：$0.0023 vs $0.0429（约 19 倍），Gemini 输入 token 反而只有 Jev 一半（246 vs 509）",
+        "结论：概率用于门控时，Jev 的『模型内部计算的概率』比 LLM 的『文本输出的自我申报概率』实用得多",
+        "附：DiffusionGemma-as-Jev vLLM PR #57250 未合并、prototype、0.2s DGX Spark"
+      ]
+    },
+    {
+      "id": "jevbench-v127",
+      "type": "独立基准更新",
+      "url": "https://benchmarkheaven.com/jev-models",
+      "by": "Benchmark Heaven",
+      "time": "2026-09-20 计分（当日抓取）",
+      "key_points": [
+        "v1.2 → v1.2.7：21 → 31 系统，sha256 d239212ee6e4",
+        "classifier.dev 降级为 '"'"'honorable mention'"'"'（84.8 但注明 runs another entrant's model）—— 官方修正了代理层占位问题",
+        "Jev 1.13.0 重回 #1（75.4）",
+        "新增：SimpleJev Qwen3.8-27B #9（67.3）、kev 0.6B #11（66.7）、GLiNER2.5 multi #19（63.1）、kev 0.5B #18、kev 4B #20、kev 8B #23",
+        "openJev Verdict 1.4 升 #4（72.5，Calibration 74 大增）",
+        "SemIf 74.7、djev 74.3、Laya 70.1 保持前列",
+        "格局：Jev(75.4) > 开源三强(74.7/74.3/72.5) > Laya(70.1) > 编码器+工具型（63-67）"
+      ]
+    },
+    {
+      "id": "google-diffusiongemma-as-jev",
+      "type": "Google 官方生态",
+      "url": "https://x.com/googlegemma/status/2101069861598482817",
+      "by": "Google Gemma (官方) + Matt Mastracci (vLLM 补丁作者)",
+      "time": "2026-09-19",
+      "key_points": [
+        "Google 官方账号宣传『DiffusionGemma as Jev』：画布扩散单步去除化、完整双向注意力、多模态（Gemma 4 视觉）",
+        "Matt Mastracci 评估：Jev 更快？不（API vs DGX Spark）；Jev 更聪明？不（大致持平）—— 69.2 万浏览",
+        "进展：手机近实时视觉检测（9.8 万浏览）、Jevenator 2 多模态 benchmark（人物识别 700ms/frame @7x5）、开放式问题原语（实体/数字提取+计数）",
+        "vLLM PR #57250 仍未合并（2026-09-21 时点）、prototype",
+        "意义：Google 实验室官方路线（扩散模型 vs Jev）——『竞争者在主流生态内』的信号"
+      ]
+    },
+    {
+      "id": "jevshield",
+      "type": "开源项目（新，安全门）",
+      "url": "https://github.com/lgy1027/jevshield",
+      "by": "lgy1027",
+      "time": "2026-09-21（官方开放公告评论区发现）",
+      "key_points": [
+        "Sub-100ms AI Agent 安全断路器：破坏性操作（删库/高危 Shell）执行前拦截",
+        "双层验证矩阵：Severity Tier（Choice）× Irreversibility（Noul）交叉验证消除误报",
+        "零配置本地启发式回退（无 key 也能用）、LangChain 集成、Apache-2.0 v0.1.1",
+        "提示注入 framing：docstring/args 包装为 data-not-instructions 前言",
+        "与 LangChain AutoMode、Jev-cu policy.mjs 同范式的新实现"
+      ]
+    },
+    {
+      "id": "zenn-exapolicy-judgment",
+      "type": "治理视角文章",
+      "url": "https://zenn.dev/exapolicy/articles/06c15d967e4245",
+      "by": "プロマネ武蔵 / Exapolicy",
+      "time": "2026-09-21",
+      "key_points": [
+        "『Jev 不解释为什么』不是缺陷是设计——LLM 事后编造的说明更不可靠",
+        "评估机 vs 判定机：AI 评估（概率）→ Policy 判定（阈值）→ Human 判断（保留案例）",
+        "三个外置说明责任点：事前（问的设计）、事后（判断的记录）、判断点（人介入条件）",
+        "关键批判：Jev 是云端 API——『3 个外置只有在评估本地运行时才真正成立』；分流对象（邮件/工单/未公开案件名）整段被送出；速快价低让流出量更大",
+        "『该问的不是多快，而是评估在哪里跑』",
+        "与我们实验室『输入输出全部落盘、阈值即策略』主张完全互补"
+      ]
+    },
+    {
+      "id": "aiagents-70-500ms-skeptic",
+      "type": "质疑",
+      "url": "https://x.com/AIAGENTEDITORS/status/2101848758837539153",
+      "by": "AIエージェント編集部",
+      "time": "2026-09-21",
+      "key_points": [
+        "质疑 70-500ms 是谁测的：TypeSafe 自测、未被第三方验证",
+        "呼应我们的判断：第三方独立测量（biscuit 98-239ms 服务器侧）已经验证过这个量级",
+        "补充事实：现有多方独立证据（biscuit/jev-acento/DevelopersIO）已支持 100-500ms 量级"
+      ]
+    },
+    {
+      "id": "only-shiyi-chinese",
+      "type": "中文社区",
+      "url": "https://x.com/only_shiyi/status/2101845221487341841",
+      "by": "only_11 @only_shiyi",
+      "time": "2026-09-21",
+      "key_points": [
+        "『Jev 是把 AI 大模型中的判断能力剥出来做更有意义的事』—— 中文科普（由 AI 生成标注）"
+      ]
+    },
+    {
+      "id": "dashboardlim-gtm",
+      "type": "一手建议",
+      "url": "https://x.com/dashboardlim/status/2101845438135439815",
+      "by": "Lian Lim",
+      "time": "2026-09-21",
+      "key_points": [
+        "第一次测试建议：inbox routing（收件箱路由）—— jev 的典型用例",
+        "$0.042/1M token 的成本定位"
+      ]
+    },
+    {
+      "id": "openrouter-decision-endpoint",
+      "type": "渠道提示",
+      "url": "https://x.com/tonari_taikoku/status/2101847392236573115",
+      "by": "隣のAI大国 @tonari_taikoku",
+      "time": "2026-09-21",
+      "key_points": [
+        "OpenRouter 上是 typesafe/jev-latest，但要用 Decisions 端点而非 chat——空振り先查 URL",
+        "渠道使用提示（接入摩擦仍存在）"
+      ]
+    }
+  ]
+}
